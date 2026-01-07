@@ -52,14 +52,20 @@ export default function Contact() {
                 {
                   icon: Mail,
                   label: 'Email',
-                  value: 'hello@perfactworks.online',
-                  href: 'mailto:hello@perfactworks.online',
+                  value: 'worksperfact@gmail.com',
+                  href: 'mailto:worksperfact@gmail.com',
                 },
                 {
                   icon: Phone,
                   label: 'Phone',
-                  value: '+1 (555) 123-4567',
-                  href: 'tel:+15551234567',
+                  value: '+91 92114 65772',
+                  href: 'tel:+919211465772',
+                },
+                {
+                  icon: Phone,
+                  label: 'Phone (Alt)',
+                  value: '+91 99996 31770',
+                  href: 'tel:+919999631770',
                 },
                 {
                   icon: MapPin,

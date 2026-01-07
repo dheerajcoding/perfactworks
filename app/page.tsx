@@ -42,12 +42,12 @@ export default function Home() {
             '@graph': [
               {
                 '@type': 'Organization',
-                '@id': 'https://perfactworks.online/#organization',
+                '@id': 'https://perfactworks.com/#organization',
                 name: 'PerfactWorks',
-                url: 'https://perfactworks.online',
+                url: 'https://perfactworks.com',
                 logo: {
                   '@type': 'ImageObject',
-                  url: 'https://perfactworks.online/logo.png',
+                  url: 'https://perfactworks.com/logo.png',
                 },
                 description: 'Premium technology consulting services for startups and enterprises. Expert custom web application development, SaaS MVP, HRMS/LMS/ERP systems, cloud deployment, and AI automation.',
                 foundingDate: '2023',
@@ -58,7 +58,7 @@ export default function Home() {
                 contactPoint: {
                   '@type': 'ContactPoint',
                   contactType: 'Business Inquiries',
-                  email: 'hello@perfactworks.online',
+                  email: 'worksperfact@gmail.com',
                   availableLanguage: ['English'],
                 },
                 sameAs: [
@@ -68,29 +68,29 @@ export default function Home() {
               },
               {
                 '@type': 'WebSite',
-                '@id': 'https://perfactworks.online/#website',
-                url: 'https://perfactworks.online',
+                '@id': 'https://perfactworks.com/#website',
+                url: 'https://perfactworks.com',
                 name: 'PerfactWorks',
                 publisher: {
-                  '@id': 'https://perfactworks.online/#organization',
+                  '@id': 'https://perfactworks.com/#organization',
                 },
                 potentialAction: {
                   '@type': 'SearchAction',
-                  target: 'https://perfactworks.online/?s={search_term_string}',
+                  target: 'https://perfactworks.com/?s={search_term_string}',
                   'query-input': 'required name=search_term_string',
                 },
               },
               {
                 '@type': 'WebPage',
-                '@id': 'https://perfactworks.online/#webpage',
-                url: 'https://perfactworks.online',
+                '@id': 'https://perfactworks.com/#webpage',
+                url: 'https://perfactworks.com',
                 name: 'PerfactWorks | Technology Consulting & Custom Software Development',
                 description: 'Premium technology consulting services for startups and enterprises. Expert custom web application development, SaaS MVP, HRMS/LMS/ERP systems.',
                 isPartOf: {
-                  '@id': 'https://perfactworks.online/#website',
+                  '@id': 'https://perfactworks.com/#website',
                 },
                 about: {
-                  '@id': 'https://perfactworks.online/#organization',
+                  '@id': 'https://perfactworks.com/#organization',
                 },
               },
             ],

@@ -388,7 +388,7 @@ export default function EnterpriseSystemsPage() {
             provider: {
               '@type': 'Organization',
               name: 'PerfactWorks',
-              url: 'https://perfactworks.online',
+              url: 'https://perfactworks.com',
             },
             areaServed: 'Worldwide',
             serviceType: 'Enterprise Software Development',

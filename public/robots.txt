@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://perfactworks.online
+Host: https://perfactworks.com
 
 # Sitemaps
-Sitemap: https://perfactworks.online/sitemap.xml
+Sitemap: https://perfactworks.com/sitemap.xml

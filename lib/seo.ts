@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 // Base URL for the site
-export const SITE_URL = 'https://perfactworks.online'
+export const SITE_URL = 'https://perfactworks.com'
 export const SITE_NAME = 'PerfactWorks'
 export const SITE_DESCRIPTION = 'Premium technology consulting services for startups and enterprises. Full-stack development, SaaS MVP, custom enterprise systems, cloud deployment, and AI automation.'
 

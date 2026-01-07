@@ -345,7 +345,7 @@ export default function WebDevelopmentPage() {
             provider: {
               '@type': 'Organization',
               name: 'PerfactWorks',
-              url: 'https://perfactworks.online',
+              url: 'https://perfactworks.com',
             },
             areaServed: 'Worldwide',
             serviceType: 'Web Development',

@@ -31,7 +31,7 @@ const socials = [
   { icon: Github, href: 'https://github.com', label: 'GitHub' },
   { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
   { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-  { icon: Mail, href: 'mailto:hello@perfactworks.online', label: 'Email' },
+  { icon: Mail, href: 'mailto:worksperfact@gmail.com', label: 'Email' },
 ]
 
 export default function Footer() {
@@ -49,23 +49,6 @@ export default function Footer() {
               Engineering Perfection in Every Solution. Your trusted technology partner for
               building scalable, secure, and innovative digital products.
             </p>
-            <div className="flex gap-4">
-              {socials.map((social) => {
-                const Icon = social.icon
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 rounded-lg glass hover:bg-white/20 transition-colors"
-                    aria-label={social.label}
-                  >
-                    <Icon className="w-5 h-5" />
-                  </a>
-                )
-              })}
-            </div>
           </div>
 
           {/* Links */}

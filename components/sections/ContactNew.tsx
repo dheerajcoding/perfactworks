@@ -321,9 +321,10 @@ export default function ContactNew() {
               <h3 className="text-xl font-bold text-white mb-6">Direct Contact</h3>
               <div className="space-y-4">
                 {[
-                  { icon: Mail, label: 'Email', value: 'hello@perfactworks.online', href: 'mailto:hello@perfactworks.online' },
-                  { icon: Phone, label: 'Phone', value: '+1 (555) 123-4567', href: 'tel:+15551234567' },
-                  { icon: Globe, label: 'Website', value: 'perfactworks.online', href: 'https://perfactworks.online' }
+                  { icon: Mail, label: 'Email', value: 'worksperfact@gmail.com', href: 'mailto:worksperfact@gmail.com' },
+                  { icon: Phone, label: 'Phone', value: '+91 92114 65772', href: 'tel:+919211465772' },
+                  { icon: Phone, label: 'Phone', value: '+91 99996 31770', href: 'tel:+919999631770' },
+                  { icon: Globe, label: 'Website', value: 'perfactworks.com', href: 'https://perfactworks.com' }
                 ].map((item, index) => (
                   <motion.a
                     key={index}

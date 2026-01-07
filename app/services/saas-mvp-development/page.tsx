@@ -400,7 +400,7 @@ export default function SaaSMVPPage() {
             provider: {
               '@type': 'Organization',
               name: 'PerfactWorks',
-              url: 'https://perfactworks.online',
+              url: 'https://perfactworks.com',
             },
             areaServed: 'Worldwide',
             serviceType: 'MVP Development',

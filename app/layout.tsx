@@ -13,14 +13,14 @@ export const metadata: Metadata = {
   authors: [{ name: 'PerfactWorks' }],
   creator: 'PerfactWorks',
   publisher: 'PerfactWorks',
-  metadataBase: new URL('https://perfactworks.online'),
+  metadataBase: new URL('https://perfactworks.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: 'PerfactWorks | Engineering Perfection in Every Solution',
     description: 'Premium global technology consultancy for startups, founders, and enterprises.',
-    url: 'https://perfactworks.online',
+    url: 'https://perfactworks.com',
     siteName: 'PerfactWorks',
     locale: 'en_US',
     type: 'website',
