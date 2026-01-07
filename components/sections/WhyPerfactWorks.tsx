@@ -8,34 +8,34 @@ import Card from '../ui/Card'
 
 const differentiators = [
   {
-    icon: Zap,
-    title: 'Lightning-Fast Delivery',
-    description: 'We ship production-ready code in weeks, not months. Our agile approach ensures rapid iteration and continuous deployment.',
+    icon: Users,
+    title: 'Founder-Led Expertise',
+    description: 'Work directly with experienced technology leaders, not junior developers. Every project is guided by skilled architects with proven track records building enterprise systems and scaling startups.',
   },
   {
     icon: Target,
-    title: 'Results-Driven Approach',
-    description: 'Every line of code serves a business goal. We focus on metrics that matter: conversion rates, user engagement, and ROI.',
+    title: 'Custom-Built Solutions',
+    description: 'No templates, no cookie-cutter approaches. We build bespoke technology solutions tailored to your unique business challenges, workflows, and growth objectives.',
   },
   {
-    icon: Users,
-    title: 'Senior-Level Expertise',
-    description: 'Work directly with seasoned engineers and architects. No juniors, no outsourcing—just world-class talent.',
+    icon: Zap,
+    title: 'Business-First Development',
+    description: 'Every line of code serves a business goal. We focus on metrics that matter: conversion rates, user engagement, operational efficiency, and measurable ROI.',
   },
   {
     icon: Trophy,
-    title: 'Proven Track Record',
-    description: '50+ successful projects, 98% client satisfaction, and partnerships with industry leaders across 5 continents.',
+    title: 'Transparent Process & Pricing',
+    description: 'Clear timelines, fixed-scope pricing, and daily progress updates. No surprises, no hidden costs. We deliver what we promise, when we promise it.',
   },
 ]
 
 export default function WhyPerfactWorks() {
   return (
-    <Section>
+    <Section id="why-perfactworks">
       <SectionHeader
         subtitle="Why Choose Us"
-        title="What Sets PerfactWorks Apart"
-        description="We're not just another development shop. We're your strategic technology partner committed to your success."
+        title="Your Trusted Technology Partner"
+        description="We're not just developers—we're strategic partners committed to your success."
       />
       <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
         {differentiators.map((item, index) => {
@@ -43,63 +43,121 @@ export default function WhyPerfactWorks() {
           return (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50, rotateY: index % 2 === 0 ? -15 : 15 }}
+              whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ 
+                delay: index * 0.15,
+                duration: 0.7,
+                ease: [0.6, 0.05, 0.01, 0.9],
+              }}
+              style={{
+                transformStyle: 'preserve-3d',
+                perspective: '1000px',
+              }}
             >
               <Card hover className="h-full relative overflow-hidden group">
-                {/* Background Glow Effect */}
+                {/* Animated Liquid Background */}
                 <motion.div
-                  animate={{ opacity: [0.1, 0.2, 0.1], scale: [1, 1.1, 1] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                  className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full blur-3xl -z-10"
+                  animate={{ 
+                    background: [
+                      'radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%)',
+                      'radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%)',
+                      'radial-gradient(circle at 50% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%)',
+                      'radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%)',
+                    ],
+                    scale: [1, 1.2, 1.1, 1],
+                  }}
+                  transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+                  className="absolute inset-0 -z-10"
                 />
 
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4 relative z-10">
                   <div className="flex-shrink-0 relative">
                     <motion.div
-                      whileHover={{ rotate: 360, scale: 1.1 }}
-                      transition={{ duration: 0.6 }}
+                      whileHover={{ 
+                        rotate: [0, -10, 10, -10, 0],
+                        scale: 1.15,
+                      }}
+                      transition={{ duration: 0.5 }}
                       className="p-3 rounded-xl bg-gradient-to-br from-primary-500 to-purple-600 relative"
                     >
-                      {/* Icon Glow */}
+                      {/* Pulsing Glow */}
                       <motion.div
-                        animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.5, 0.3] }}
+                        animate={{ 
+                          scale: [1, 1.8, 1],
+                          opacity: [0.3, 0.6, 0.3],
+                        }}
                         transition={{ duration: 2, repeat: Infinity }}
-                        className="absolute inset-0 bg-primary-500/50 rounded-xl blur-md"
+                        className="absolute inset-0 bg-primary-500/50 rounded-xl blur-xl"
                       />
+                      
+                      {/* Rotating Ring */}
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+                        className="absolute inset-[-4px] border-2 border-primary-400/30 rounded-xl"
+                      />
+                      
                       <Icon className="w-6 h-6 text-white relative z-10" />
                     </motion.div>
                     
-                    {/* Check Badge */}
+                    {/* Animated Check Badge */}
                     <motion.div
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      transition={{ delay: index * 0.1 + 0.3, type: 'spring' }}
-                      className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center"
+                      initial={{ scale: 0, rotate: -180 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.15 + 0.4, type: 'spring', stiffness: 200 }}
+                      whileHover={{ scale: 1.2, rotate: 360 }}
+                      className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center shadow-lg"
                     >
                       <CheckCircle className="w-3 h-3 text-white" />
                     </motion.div>
                   </div>
+                  
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-primary-500 transition-colors">
+                    <motion.h3 
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.15 + 0.2 }}
+                      className="text-xl font-bold mb-2 group-hover:text-primary-500 transition-colors"
+                    >
                       {item.title}
-                    </h3>
-                    <p className="text-slate-600 dark:text-slate-400">
+                    </motion.h3>
+                    <motion.p 
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.15 + 0.3 }}
+                      className="text-slate-600 dark:text-slate-400"
+                    >
                       {item.description}
-                    </p>
+                    </motion.p>
                   </div>
                 </div>
 
-                {/* Progress Indicator */}
+                {/* Animated Progress Bar */}
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: '100%' }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 + 0.5, duration: 0.8 }}
-                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-primary-500 to-secondary-500"
-                />
+                  transition={{ delay: index * 0.15 + 0.5, duration: 1 }}
+                  className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-primary-500 via-purple-500 to-primary-500"
+                  style={{
+                    backgroundSize: '200% 100%',
+                  }}
+                >
+                  <motion.div
+                    animate={{ backgroundPosition: ['0% 0%', '200% 0%'] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+                    className="w-full h-full"
+                    style={{
+                      background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)',
+                      backgroundSize: '50% 100%',
+                    }}
+                  />
+                </motion.div>
               </Card>
             </motion.div>
           )

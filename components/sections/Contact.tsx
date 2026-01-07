@@ -36,11 +36,11 @@ export default function Contact() {
   }
 
   return (
-    <Section className="bg-slate-50 dark:bg-slate-900/50">
+    <Section className="bg-slate-50 dark:bg-slate-900/50" id="contact">
       <SectionHeader
-        subtitle="Get in Touch"
-        title="Let's Build Something Amazing"
-        description="Ready to transform your business? Reach out and let's discuss your project."
+        subtitle="Start Your Project"
+        title="Book a Free Consultation—No Strings Attached"
+        description="Let's discuss your project requirements, timeline, and how we can help you achieve your business goals. Typical response time: Within 24 hours."
       />
       <div className="grid lg:grid-cols-2 gap-12">
         {/* Contact Info */}
@@ -113,29 +113,47 @@ export default function Contact() {
 
         {/* Contact Form */}
         <Card hover={false}>
-          {/* Security Badges */}
+          {/* Trust Signals */}
           <div className="flex flex-wrap gap-3 mb-6 pb-6 border-b border-slate-200 dark:border-slate-700">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-2 px-3 py-1 glass rounded-full"
+              className="flex items-center gap-2 px-3 py-2 glass rounded-full"
             >
               <Shield className="w-4 h-4 text-green-500" />
-              <span className="text-xs font-semibold">SSL Secured</span>
+              <span className="text-xs font-semibold">No Spam—Ever</span>
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-2 px-3 py-1 glass rounded-full"
+              className="flex items-center gap-2 px-3 py-2 glass rounded-full"
             >
               <Lock className="w-4 h-4 text-blue-500" />
-              <span className="text-xs font-semibold">Data Protected</span>
+              <span className="text-xs font-semibold">Your Data is Private</span>
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-2 px-3 py-1 glass rounded-full"
+              className="flex items-center gap-2 px-3 py-2 glass rounded-full"
             >
               <CheckCircle className="w-4 h-4 text-primary-500" />
-              <span className="text-xs font-semibold">GDPR Compliant</span>
+              <span className="text-xs font-semibold">24hr Response Time</span>
             </motion.div>
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-lg font-bold mb-2">What Happens Next?</h3>
+            <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+              <li className="flex items-start gap-2">
+                <span className="text-primary-500 font-bold">1.</span>
+                <span>We'll review your requirements within 24 hours</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-primary-500 font-bold">2.</span>
+                <span>Schedule a free 30-min consultation call</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-primary-500 font-bold">3.</span>
+                <span>Receive a detailed proposal with timeline & pricing</span>
+              </li>
+            </ul>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -198,6 +216,13 @@ export default function Contact() {
                 className="w-full px-4 py-3 rounded-lg glass focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-slate-800"
               >
                 <option value="">Select a service</option>
+                <option value="web-development">Custom Web Application Development</option>
+                <option value="saas-mvp">SaaS & MVP Development</option>
+                <option value="enterprise">Custom Enterprise Systems (HRMS/LMS/ERP/CRM)</option>
+                <option value="cloud-devops">Cloud Deployment & DevOps</option>
+                <option value="ai-automation">AI & Business Automation</option>
+                <option value="consulting">Technology Consulting</option>
+                <option value="other">Other</option>
                 <option value="consulting">Technology Consulting</option>
                 <option value="ai">AI & Automation</option>
                 <option value="web">Web Development</option>

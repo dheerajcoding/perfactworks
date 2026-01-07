@@ -8,31 +8,24 @@ import SectionHeader from '../ui/SectionHeader'
 
 const testimonials = [
   {
-    quote: "PerfactWorks transformed our startup idea into a production-ready SaaS platform in just 8 weeks. Their expertise in modern architecture and attention to detail is unmatched.",
+    quote: "PerfactWorks transformed our startup idea into a production-ready SaaS platform in just 8 weeks. Their expertise in modern architecture is unmatched.",
     author: "Sarah Chen",
     role: "CEO, CloudStream",
     company: "CloudStream Technologies",
     rating: 5,
   },
   {
-    quote: "Working with PerfactWorks felt like having an in-house CTO and development team. They understood our business goals and delivered solutions that drove real revenue growth.",
+    quote: "Working with PerfactWorks felt like having an in-house CTO. They understood our business goals and delivered solutions that drove real revenue growth.",
     author: "Michael Rodriguez",
     role: "Founder, FinanceHub",
     company: "FinanceHub Inc",
     rating: 5,
   },
   {
-    quote: "The AI-powered features they built increased our user engagement by 200%. Their technical knowledge and strategic thinking are exceptional.",
+    quote: "The AI-powered features they built increased our user engagement by 200%. Exceptional technical knowledge and strategic thinking.",
     author: "Emily Watson",
     role: "CTO, HealthTech Solutions",
     company: "HealthTech Solutions",
-    rating: 5,
-  },
-  {
-    quote: "From architecture to deployment, everything was handled professionally. The code quality and documentation they delivered exceeded our expectations.",
-    author: "David Kim",
-    role: "VP Engineering, RetailCo",
-    company: "RetailCo Global",
     rating: 5,
   },
 ]
@@ -46,77 +39,243 @@ export default function Testimonials() {
   return (
     <Section>
       <SectionHeader
-        subtitle="Testimonials"
-        title="What Our Clients Say"
-        description="Don't just take our word for it. Hear from the founders and leaders who've partnered with us."
+        subtitle="Client Success"
+        title="Trusted by Startups & Enterprises"
+        description="See what our clients say about working with us"
       />
       <div className="max-w-4xl mx-auto">
-        <div className="relative">
+        <div className="relative" style={{ perspective: "2000px" }}>
+          {/* Floating Background Orbs */}
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.1, 0.2, 0.1],
+              rotate: [0, 180, 360],
+            }}
+            transition={{ duration: 20, repeat: Infinity }}
+            className="absolute -top-20 -left-20 w-64 h-64 bg-primary-500/20 rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              scale: [1.2, 1, 1.2],
+              opacity: [0.2, 0.1, 0.2],
+              rotate: [360, 180, 0],
+            }}
+            transition={{ duration: 20, repeat: Infinity }}
+            className="absolute -bottom-20 -right-20 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl"
+          />
+
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.5 }}
+              initial={{ 
+                opacity: 0, 
+                x: 300, 
+                rotateY: 90,
+                scale: 0.8 
+              }}
+              animate={{ 
+                opacity: 1, 
+                x: 0, 
+                rotateY: 0,
+                scale: 1 
+              }}
+              exit={{ 
+                opacity: 0, 
+                x: -300, 
+                rotateY: -90,
+                scale: 0.8 
+              }}
+              transition={{ 
+                duration: 0.6,
+                type: "spring",
+                stiffness: 100
+              }}
               className="glass-card p-8 md:p-12 relative overflow-hidden"
+              style={{ transformStyle: "preserve-3d" }}
             >
-              {/* Verified Badge */}
+              {/* Animated Background Gradient */}
               <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.3, type: "spring" }}
-                className="absolute top-6 right-6 flex items-center gap-1 px-3 py-1 bg-green-500/20 border border-green-500 rounded-full"
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                }}
+                transition={{ duration: 8, repeat: Infinity }}
+                className="absolute inset-0 bg-gradient-to-br from-primary-500/5 via-purple-500/5 to-pink-500/5 bg-[length:200%_200%]"
+              />
+
+              {/* Verified Badge with Pulse */}
+              <motion.div
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
+                className="absolute top-6 right-6 flex items-center gap-1 px-3 py-1 bg-green-500/20 border border-green-500 rounded-full z-10"
               >
                 <motion.span
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                  animate={{ 
+                    scale: [1, 1.3, 1],
+                    rotate: [0, 360, 0]
+                  }}
+                  transition={{ duration: 3, repeat: Infinity }}
                   className="text-green-500 text-xs font-bold"
                 >
                   ✓
                 </motion.span>
                 <span className="text-xs font-semibold text-green-500">Verified Client</span>
+                <motion.div
+                  animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="absolute inset-0 border-2 border-green-500 rounded-full"
+                />
               </motion.div>
 
-              <Quote className="w-12 h-12 text-primary-500 mb-6" />
-              <p className="text-xl md:text-2xl mb-8 text-slate-700 dark:text-slate-300 leading-relaxed">
-                "{testimonials[current].quote}"
-              </p>
-              <div className="flex items-center gap-4">
+              {/* Animated Quote Icon */}
+              <motion.div
+                initial={{ scale: 0, rotate: -90, y: -50 }}
+                animate={{ scale: 1, rotate: 0, y: 0 }}
+                transition={{ 
+                  delay: 0.2, 
+                  type: "spring",
+                  stiffness: 150 
+                }}
+                whileHover={{ 
+                  scale: 1.1, 
+                  rotate: 10,
+                  transition: { duration: 0.3 }
+                }}
+              >
+                <Quote className="w-12 h-12 text-primary-500 mb-6 relative" />
                 <motion.div
-                  whileHover={{ scale: 1.1, rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                  className="relative"
+                  animate={{ 
+                    scale: [1, 1.5, 1],
+                    opacity: [0.3, 0, 0.3]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="absolute inset-0 bg-primary-500/30 blur-xl rounded-full"
+                />
+              </motion.div>
+              
+              {/* Quote Text with Character Reveal */}
+              <motion.p 
+                className="text-xl md:text-2xl mb-8 text-slate-700 dark:text-slate-300 leading-relaxed relative z-10"
+              >
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-purple-600 rounded-full animate-pulse" />
-                  <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center text-white text-xl font-bold m-0.5">
-                    {testimonials[current].author.split(' ').map(n => n[0]).join('')}
-                  </div>
-                </motion.div>
-                <div>
-                  <div className="font-bold text-lg">{testimonials[current].author}</div>
-                  <div className="text-slate-600 dark:text-slate-400">
-                    {testimonials[current].role}
-                  </div>
-                  <div className="text-sm text-slate-500 dark:text-slate-500">
-                    {testimonials[current].company}
-                  </div>
-                </div>
-              </div>
-              <div className="flex gap-1 mt-6">
-                {[...Array(testimonials[current].rating)].map((_, i) => (
+                  "
+                </motion.span>
+                {testimonials[current].quote.split(' ').map((word, i) => (
                   <motion.span
                     key={i}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: i * 0.1, type: "spring" }}
-                    whileHover={{ scale: 1.3, rotate: 360 }}
-                    className="text-yellow-500 text-xl cursor-pointer"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ 
+                      duration: 0.3, 
+                      delay: 0.4 + (i * 0.03),
+                    }}
+                    className="inline-block mr-[0.3em]"
                   >
-                    ★
+                    {word}
                   </motion.span>
                 ))}
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.4 + (testimonials[current].quote.split(' ').length * 0.03) }}
+                >
+                  "
+                </motion.span>
+              </motion.p>
+              <div className="flex items-center gap-4 relative z-10">
+                <motion.div
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ 
+                    delay: 0.6, 
+                    type: "spring",
+                    stiffness: 200
+                  }}
+                  whileHover={{ 
+                    scale: 1.2, 
+                    rotate: 360,
+                    transition: { duration: 0.6 }
+                  }}
+                  className="w-16 h-16 rounded-full bg-gradient-to-br from-primary-500 to-purple-500 flex items-center justify-center text-white text-2xl font-bold relative overflow-hidden shadow-2xl"
+                >
+                  <motion.div
+                    animate={{ 
+                      scale: [1, 1.5, 1],
+                      opacity: [0.5, 0, 0.5]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="absolute inset-0 bg-white/30 rounded-full"
+                  />
+                  <span className="relative z-10">
+                    {testimonials[current].author.split(' ').map(n => n[0]).join('')}
+                  </span>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.7 }}
+                >
+                  <motion.div 
+                    className="font-bold text-slate-900 dark:text-white"
+                    whileHover={{ x: 5 }}
+                  >
+                    {testimonials[current].author}
+                  </motion.div>
+                  <motion.div 
+                    className="text-sm text-slate-600 dark:text-slate-400"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.8 }}
+                  >
+                    {testimonials[current].role} • {testimonials[current].company}
+                  </motion.div>
+                </motion.div>
               </div>
+
+              {/* Star Rating with Sequential Animation */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9 }}
+                className="flex gap-1 mt-6 relative z-10"
+              >
+                {[...Array(testimonials[current].rating)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ scale: 0, rotate: -180 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{
+                      delay: 0.9 + (i * 0.1),
+                      type: "spring",
+                      stiffness: 200
+                    }}
+                    whileHover={{ 
+                      scale: 1.3, 
+                      rotate: 360,
+                      transition: { duration: 0.3 }
+                    }}
+                  >
+                    <motion.span
+                      animate={{
+                        textShadow: [
+                          '0 0 5px rgba(251, 191, 36, 0.5)',
+                          '0 0 20px rgba(251, 191, 36, 0.8)',
+                          '0 0 5px rgba(251, 191, 36, 0.5)',
+                        ]
+                      }}
+                      transition={{ duration: 2, repeat: Infinity, delay: i * 0.2 }}
+                      className="text-yellow-400 text-2xl"
+                    >
+                      ★
+                    </motion.span>
+                  </motion.div>
+                ))}
+              </motion.div>
             </motion.div>
           </AnimatePresence>
 

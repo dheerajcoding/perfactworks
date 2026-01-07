@@ -14,11 +14,11 @@ export default function About() {
   })
 
   return (
-    <Section className="bg-slate-50 dark:bg-slate-900/50">
+    <Section className="bg-slate-50 dark:bg-slate-900/50" id="about">
       <SectionHeader
-        subtitle="About Us"
-        title="Engineering Excellence, Global Impact"
-        description="PerfactWorks was founded on a simple belief: technology should empower businesses, not complicate them."
+        subtitle="About PerfactWorks"
+        title="Founder-Led Technology Consultancy Building Digital Products That Matter"
+        description="We're not a typical freelance shop. PerfactWorks is a premium technology consultancy founded by experienced engineers who've built products for startups and Fortune 500 companies."
       />
       <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
         <motion.div
@@ -28,7 +28,7 @@ export default function About() {
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center gap-3 mb-6">
-            <h3 className="text-2xl font-bold">Our Story</h3>
+            <h3 className="text-2xl font-bold">Our Story: From Idea to Impact</h3>
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={inView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
@@ -36,18 +36,23 @@ export default function About() {
               className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-bold rounded-full"
             >
               <Star className="w-3 h-3" fill="currentColor" />
-              Est. 2019
+              Founded 2023
             </motion.div>
           </div>
 
           <p className="text-slate-600 dark:text-slate-400 mb-4">
-            Founded in 2019 by a team of ex-FAANG engineers, PerfactWorks emerged from a shared
-            vision: to bring Silicon Valley-grade engineering to businesses worldwide.
+            PerfactWorks was founded by technology leaders with <strong>extensive experience</strong> building enterprise systems, 
+            scaling startups, and delivering mission-critical applications for clients globally.
           </p>
           <p className="text-slate-600 dark:text-slate-400 mb-4">
-            We've worked with startups securing Series A funding, enterprises undergoing digital
-            transformation, and everything in between. Our approach combines technical excellence
-            with business acumen to deliver solutions that truly move the needle.
+            We've helped <strong>30+ businesses</strong>—from pre-seed startups launching MVPs to enterprises digitizing complex operations—build 
+            technology that drives real business outcomes. Our clients have raised <strong>$25M+ in funding</strong>, scaled to thousands of users, 
+            and transformed their industries.
+          </p>
+          <p className="text-slate-600 dark:text-slate-400 mb-4">
+            What sets us apart? We're <strong>founder-led</strong>. You work directly with experienced engineers who've "been there, done that"—not 
+            offshore juniors or outsourced teams. We understand both technology <em>and</em> business because we've built, launched, and scaled 
+            products ourselves.
           </p>
           <p className="text-slate-600 dark:text-slate-400 mb-6">
             Today, we're a distributed team of 20+ engineers, designers, and strategists serving

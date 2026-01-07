@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
 import Button from './ui/Button'
@@ -17,22 +17,29 @@ const navigation = [
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [hidden, setHidden] = useState(false)
+  const { scrollY } = useScroll()
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0
+    if (latest > previous && latest > 150) {
+      setHidden(true)
+    } else {
+      setHidden(false)
     }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    setScrolled(latest > 20)
+  })
 
   return (
     <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
+      variants={{
+        visible: { y: 0 },
+        hidden: { y: "-100%" }
+      }}
+      animate={hidden ? "hidden" : "visible"}
+      transition={{ duration: 0.35, ease: "easeInOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass shadow-lg' : 'bg-transparent'
+        scrolled ? 'bg-dark-800/80 backdrop-blur-xl border-b border-neon-cyan/20 shadow-lg shadow-neon-cyan/10' : 'bg-transparent'
       }`}
     >
       <nav className="container-custom">
@@ -40,7 +47,7 @@ export default function Header() {
           {/* Logo */}
           <motion.a
             href="/"
-            className="text-2xl font-bold gradient-text"
+            className="text-2xl font-bold bg-gradient-to-r from-neon-cyan to-neon-blue bg-clip-text text-transparent"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -53,11 +60,12 @@ export default function Header() {
               <motion.a
                 key={item.name}
                 href={item.href}
-                className="text-slate-700 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+                className="text-gray-300 hover:text-neon-cyan transition-colors font-medium relative group"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 {item.name}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-neon-cyan group-hover:w-full transition-all duration-300"></span>
               </motion.a>
             ))}
           </div>
@@ -65,9 +73,14 @@ export default function Header() {
           {/* CTA & Theme Toggle */}
           <div className="hidden md:flex items-center space-x-4">
             <ThemeToggle />
-            <Button variant="primary" size="sm" href="/contact">
+            <motion.a
+              href="/contact"
+              whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(0, 240, 255, 0.5)' }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-2 bg-gradient-to-r from-neon-cyan to-neon-blue text-dark-900 font-bold rounded-lg shadow-lg shadow-neon-cyan/30"
+            >
               Book a Call
-            </Button>
+            </motion.a>
           </div>
 
           {/* Mobile Menu Button */}
