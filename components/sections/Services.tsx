@@ -10,43 +10,43 @@ const services = [
   {
     icon: Code,
     title: 'Full-Stack Web Development',
-    description: 'Enterprise-grade custom web application development using MERN stack, Node.js, React, and Next.js. We build high-performance, scalable web applications tailored to your business needs.',
+    description: 'Custom web application development using modern technologies like MERN stack, Node.js, React, and Next.js. We build reliable, scalable web applications tailored to your business needs.',
     features: ['React & Next.js Apps', 'Node.js Backend APIs', 'Database Design', 'E-commerce Platforms'],
     href: '/services/web-development',
   },
   {
     icon: Rocket,
     title: 'SaaS & MVP Development',
-    description: 'Launch your startup MVP in 6-8 weeks with our rapid prototyping methodology. We specialize in MVP development for startups with scalable SaaS architecture and go-to-market support.',
-    features: ['MVP in 6-8 Weeks', 'SaaS Architecture', 'Product Strategy', 'Scalable Infrastructure'],
+    description: 'Launch your startup MVP efficiently with our agile development approach. We help startups build their first product with clean code, smart architecture, and room to grow.',
+    features: ['MVP Development', 'SaaS Architecture', 'Product Strategy', 'Scalable Design'],
     href: '/services/saas-mvp-development',
   },
   {
     icon: Brain,
-    title: 'Custom Enterprise Systems',
-    description: 'Bespoke HRMS, LMS, ERP, and CRM development for enterprises. Transform your business processes with custom-built systems designed for your specific workflows and requirements.',
-    features: ['Custom HRMS Development', 'LMS Platforms', 'ERP Systems', 'CRM Solutions'],
+    title: 'Custom Business Systems',
+    description: 'Custom HRMS, LMS, and CRM development for growing businesses. We build tailored systems that match your workflow and help you scale efficiently.',
+    features: ['Custom HRMS Development', 'LMS Platforms', 'Business Systems', 'CRM Solutions'],
     href: '/services/enterprise-systems',
   },
   {
     icon: Cloud,
     title: 'Cloud Deployment & DevOps',
-    description: 'Scale effortlessly with robust cloud infrastructure on AWS, Azure, or GCP. Expert DevOps services with CI/CD pipelines, container orchestration, and infrastructure as code.',
-    features: ['AWS/Azure/GCP Deployment', 'CI/CD Pipelines', 'Docker & Kubernetes', 'Infrastructure as Code'],
+    description: 'Deploy your application with confidence on AWS, Azure, or GCP. We set up reliable cloud infrastructure with automated deployments and proper monitoring.',
+    features: ['Cloud Deployment', 'CI/CD Pipelines', 'Docker Containers', 'Automated Workflows'],
     href: '/services/cloud-devops',
   },
   {
     icon: Brain,
     title: 'AI & Business Automation',
-    description: 'Leverage cutting-edge AI and machine learning to automate business processes, gain insights, and drive innovation. Custom AI solutions for real business problems.',
-    features: ['Process Automation', 'ML Model Development', 'NLP Solutions', 'Predictive Analytics'],
+    description: 'Integrate AI capabilities to streamline your business processes. We implement practical automation solutions and AI features that solve real business challenges.',
+    features: ['Process Automation', 'AI Integration', 'Smart Features', 'Workflow Optimization'],
     href: '/services/ai-automation',
   },
   {
     icon: Shield,
     title: 'Technology Consulting',
-    description: 'Strategic technology consulting services to align technology with your business objectives. Expert guidance on tech stack selection, architecture review, and digital transformation.',
-    features: ['Tech Stack Selection', 'Architecture Review', 'Digital Transformation', 'CTO Advisory'],
+    description: 'Get expert guidance on your technology decisions. We help you choose the right tools, plan your architecture, and make smart technical choices for your business.',
+    features: ['Tech Stack Selection', 'Architecture Planning', 'Technical Guidance', 'Best Practices'],
     href: '/services',
   },
 ]
@@ -56,8 +56,8 @@ export default function Services() {
     <Section className="bg-slate-50 dark:bg-slate-900/50" id="services">
       <SectionHeader
         subtitle="Our Services"
-        title="Technology Solutions That Drive Growth"
-        description="From MVP to enterprise—we build scalable software solutions tailored to your business needs."
+        title="Web Applications & Custom Solutions"
+        description="We specialize in building professional websites, web applications, and custom software solutions—our core expertise and main focus."
       />
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         {services.map((service, index) => {

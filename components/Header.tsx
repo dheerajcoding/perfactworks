@@ -11,6 +11,7 @@ const navigation = [
   { name: 'Case Studies', href: '/case-studies' },
   { name: 'Process', href: '/process' },
   { name: 'About', href: '/about' },
+  { name: 'Students', href: '/students' },
   { name: 'Contact', href: '/contact' },
 ]
 

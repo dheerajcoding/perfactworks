@@ -9,8 +9,8 @@ import Card from '../ui/Card'
 const differentiators = [
   {
     icon: Users,
-    title: 'Founder-Led Expertise',
-    description: 'Work directly with experienced technology leaders, not junior developers. Every project is guided by skilled architects with proven track records building enterprise systems and scaling startups.',
+    title: 'Dedicated Team',
+    description: 'Work with committed developers who take pride in their craft. We focus on quality over quantity, ensuring every line of code meets high standards and serves your business needs.',
   },
   {
     icon: Target,
@@ -24,8 +24,8 @@ const differentiators = [
   },
   {
     icon: Trophy,
-    title: 'Transparent Process & Pricing',
-    description: 'Clear timelines, fixed-scope pricing, and daily progress updates. No surprises, no hidden costs. We deliver what we promise, when we promise it.',
+    title: 'Honest & Transparent',
+    description: 'Clear communication, realistic timelines, and fair pricing. No surprises, no hidden costs. We believe in building trust through transparency and delivering on our commitments.',
   },
 ]
 

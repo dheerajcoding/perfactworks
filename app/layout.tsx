@@ -4,7 +4,11 @@ import './globals.css'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import ParticleBackground from '@/components/ParticleBackground'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+})
 
 export const metadata: Metadata = {
   title: 'PerfactWorks | Engineering Perfection in Every Solution',

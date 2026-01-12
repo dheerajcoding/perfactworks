@@ -17,8 +17,8 @@ export default function ParticleBackground() {
     canvas.height = window.innerHeight
 
     const particles: Particle[] = []
-    const particleCount = 100
-    const connectionDistance = 150
+    const particleCount = 50
+    const connectionDistance = 120
 
     class Particle {
       x: number

@@ -17,8 +17,8 @@ export default function About() {
     <Section className="bg-slate-50 dark:bg-slate-900/50" id="about">
       <SectionHeader
         subtitle="About PerfactWorks"
-        title="Founder-Led Technology Consultancy Building Digital Products That Matter"
-        description="We're not a typical freelance shop. PerfactWorks is a premium technology consultancy founded by experienced engineers who've built products for startups and Fortune 500 companies."
+        title="Your Trusted Partner for Web Applications & Digital Solutions"
+        description="We're a dedicated team specializing in web applications, professional websites, and custom software solutions for businesses and organizations."
       />
       <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
         <motion.div
@@ -41,22 +41,21 @@ export default function About() {
           </div>
 
           <p className="text-slate-600 dark:text-slate-400 mb-4">
-            PerfactWorks was founded by technology leaders with <strong>extensive experience</strong> building enterprise systems, 
-            scaling startups, and delivering mission-critical applications for clients globally.
+            PerfactWorks was founded with a mission to provide <strong>quality, trustworthy software development</strong> services. 
+            We bring dedication, expertise, and a commitment to excellence in every project we undertake.
           </p>
           <p className="text-slate-600 dark:text-slate-400 mb-4">
-            We've helped <strong>30+ businesses</strong>—from pre-seed startups launching MVPs to enterprises digitizing complex operations—build 
-            technology that drives real business outcomes. Our clients have raised <strong>$25M+ in funding</strong>, scaled to thousands of users, 
-            and transformed their industries.
+            We've successfully delivered projects for <strong>growing startups and businesses</strong>—helping them launch MVPs, build custom 
+            solutions, and create reliable software that serves their customers well. Our focus is on delivering <strong>quality work</strong> that 
+            provides real value.
           </p>
           <p className="text-slate-600 dark:text-slate-400 mb-4">
-            What sets us apart? We're <strong>founder-led</strong>. You work directly with experienced engineers who've "been there, done that"—not 
-            offshore juniors or outsourced teams. We understand both technology <em>and</em> business because we've built, launched, and scaled 
-            products ourselves.
+            What sets us apart? <strong>We care about your success</strong>. You work with dedicated developers who are invested in delivering 
+            quality solutions—not rushed work or shortcuts. We combine technical knowledge with honest communication and transparent processes.
           </p>
           <p className="text-slate-600 dark:text-slate-400 mb-6">
-            Today, we're a distributed team of 20+ engineers, designers, and strategists serving
-            clients across North America, Europe, and Asia.
+            We're a focused team committed to delivering reliable, well-built software solutions
+            for businesses that value quality and trust.
           </p>
 
           {/* Achievement Badges */}
@@ -96,7 +95,7 @@ export default function About() {
             {
               icon: Users,
               title: 'Our Team',
-              description: 'Senior engineers with 7+ years average experience from top tech companies and startups.',
+              description: 'Skilled developers committed to delivering quality work and building lasting client relationships.',
             },
             {
               icon: Award,

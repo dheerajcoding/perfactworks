@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight, TrendingUp } from 'lucide-react'
+import Image from 'next/image'
 import Section from '../ui/Section'
 import SectionHeader from '../ui/SectionHeader'
 import Card from '../ui/Card'
@@ -9,43 +10,82 @@ import Button from '../ui/Button'
 
 const caseStudies = [
   {
-    title: 'FinTech SaaS Platform',
-    client: 'PayFlow Technologies',
-    category: 'SaaS Development',
-    description: 'Built a comprehensive financial management platform serving 10,000+ businesses with real-time analytics and automated reporting.',
+    title: 'Learning Management System (LMS)',
+    client: 'Connxn',
+    category: 'Web Application',
+    description: 'Built a comprehensive LMS platform with course management, video lectures, assignments, and progress tracking, actively used by 300+ students and instructors.',
     metrics: [
-      { label: 'User Growth', value: '300%' },
-      { label: 'Processing Speed', value: '2.5s' },
-      { label: 'Uptime', value: '99.9%' },
+      { label: 'Active Users', value: '300+' },
+      { label: 'Courses', value: '50+' },
+      { label: 'Satisfaction', value: '4.7/5' },
     ],
-    tags: ['React', 'Node.js', 'PostgreSQL', 'AWS'],
-    image: 'gradient-from-blue-500-to-cyan-500',
+    tags: ['React', 'Node.js', 'MongoDB', 'AWS'],
+    image: '/images/imagelms.png',
   },
   {
-    title: 'AI-Powered Healthcare App',
-    client: 'MediCare Solutions',
-    category: 'AI & Mobile',
-    description: 'Developed an AI-driven diagnostic assistant with ML models achieving 94% accuracy, serving 50,000+ patients monthly.',
+    title: 'Human Resource Management System',
+    client: 'Global Consultancy',
+    category: 'Web Application',
+    description: 'Developed a complete HRMS solution managing employee records, attendance, payroll, leave management, and performance tracking for 100+ employees.',
     metrics: [
-      { label: 'Accuracy', value: '94%' },
-      { label: 'Response Time', value: '<3s' },
-      { label: 'Patient Satisfaction', value: '4.8/5' },
+      { label: 'Active Users', value: '100+' },
+      { label: 'Efficiency', value: '+65%' },
+      { label: 'Accuracy', value: '99.8%' },
     ],
-    tags: ['Python', 'TensorFlow', 'React Native', 'HIPAA'],
-    image: 'gradient-from-purple-500-to-pink-500',
+    tags: ['Java', 'Spring Boot', 'Hibernate', 'MySQL', 'Microservices'],
+    image: '/images/imagehrms.png',
   },
   {
-    title: 'E-Commerce Transformation',
-    client: 'RetailHub Global',
-    category: 'Web Development',
-    description: 'Redesigned and scaled an e-commerce platform handling $5M+ in monthly transactions with 60% faster load times.',
+    title: 'Lead Management System',
+    client: 'Group Inc',
+    category: 'Web Application',
+    description: 'Created a robust lead tracking and management system with automated workflows, pipeline management, and detailed analytics for improved sales conversion.',
     metrics: [
-      { label: 'Revenue Increase', value: '+125%' },
-      { label: 'Page Load', value: '-60%' },
-      { label: 'Conversion', value: '+45%' },
+      { label: 'Lead Tracking', value: '1000+' },
+      { label: 'Conversion', value: '+40%' },
+      { label: 'Response Time', value: '<2min' },
     ],
-    tags: ['Next.js', 'Shopify', 'Stripe', 'Vercel'],
-    image: 'gradient-from-orange-500-to-red-500',
+    tags: ['Next.js', 'Node.js', 'PostgreSQL', 'Chart.js'],
+    image: '/images/imageLEAD.png',
+  },
+  {
+    title: 'Quality Management System (QMS)',
+    client: 'ARS',
+    category: 'Web Application',
+    description: 'Designed a comprehensive QMS for quality control, audit management, compliance tracking, and document management with automated workflows.',
+    metrics: [
+      { label: 'Compliance', value: '100%' },
+      { label: 'Audit Time', value: '-50%' },
+      { label: 'Documentation', value: '500+' },
+    ],
+    tags: ['Java', 'Spring Boot', 'JPA', 'PostgreSQL', 'Maven'],
+    image: '/images/imageqms.png',
+  },
+  {
+    title: 'AI Transcript Analyser',
+    client: 'Insurance Quality',
+    category: 'AI Application',
+    description: 'Built an AI-powered transcript analysis tool that automatically extracts insights, sentiment analysis, key topics, and generates summaries from audio/video transcripts.',
+    metrics: [
+      { label: 'Accuracy', value: '92%' },
+      { label: 'Processing', value: '<30s' },
+      { label: 'Languages', value: '5+' },
+    ],
+    tags: ['Python', 'NLP', 'OpenAI', 'React', 'FastAPI'],
+    image: '/images/imagetranscript.png',
+  },
+  {
+    title: 'AI Data Analysis Platform',
+    client: 'Insurance Quality',
+    category: 'AI Application',
+    description: 'Developed an intelligent data analysis platform using machine learning to automate data processing, pattern recognition, predictive analytics, and visualization.',
+    metrics: [
+      { label: 'Accuracy', value: '89%' },
+      { label: 'Data Sets', value: '1000+' },
+      { label: 'Insights', value: 'Real-time' },
+    ],
+    tags: ['Python', 'TensorFlow', 'Pandas', 'React', 'D3.js'],
+    image: '/images/imageanalyser.png',
   },
 ]
 
@@ -70,21 +110,20 @@ export default function CaseStudies() {
               ✓ Success
             </motion.div>
 
-            {/* Image Placeholder */}
+            {/* Image */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
-              className={`h-48 rounded-xl bg-gradient-to-br ${study.image} mb-6 flex items-center justify-center relative overflow-hidden`}
+              className="h-48 rounded-xl mb-6 relative overflow-hidden bg-slate-100 dark:bg-slate-800"
             >
-              <motion.div
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.3, 0.6, 0.3]
-                }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="absolute inset-0 bg-white/10"
+              <Image
+                src={study.image}
+                alt={study.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
-              <TrendingUp className="w-16 h-16 text-white/50 relative z-10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
             </motion.div>
 
             {/* Content */}

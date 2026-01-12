@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Send, Mail, Phone, Globe, Calendar, CheckCircle, Shield, Lock, Clock, Sparkles, ArrowRight } from 'lucide-react'
+import emailjs from '@emailjs/browser'
 
 export default function ContactNew() {
   const [formData, setFormData] = useState({
@@ -15,16 +16,62 @@ export default function ContactNew() {
   })
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('loading')
-    
-    setTimeout(() => {
+    setErrorMessage('')
+
+    try {
+      // EmailJS configuration from environment variables
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+      const autoReplyTemplateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_AUTOREPLY_ID
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('EmailJS configuration is missing. Please check your environment variables.')
+      }
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        company: formData.company || 'Not provided',
+        budget: formData.budget || 'Not specified',
+        service: formData.service,
+        message: formData.message,
+        to_name: 'PerfactWorks Team',
+      }
+
+      // Send admin notification email
+      await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      )
+
+      // Send auto-reply to customer if template ID is configured
+      if (autoReplyTemplateId) {
+        await emailjs.send(
+          serviceId,
+          autoReplyTemplateId,
+          templateParams,
+          publicKey
+        )
+      }
+
+      console.log('Emails sent successfully')
       setStatus('success')
       setFormData({ name: '', email: '', company: '', budget: '', service: '', message: '' })
-      setTimeout(() => setStatus('idle'), 4000)
-    }, 1500)
+      setTimeout(() => setStatus('idle'), 5000)
+    } catch (error: any) {
+      console.error('Email send failed:', error)
+      setStatus('error')
+      setErrorMessage(error.text || error.message || 'Failed to send message. Please try again.')
+      setTimeout(() => setStatus('idle'), 5000)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -271,6 +318,18 @@ export default function ContactNew() {
                   >
                     <p className="text-green-400 font-semibold">
                       🎉 Thank you! We'll get back to you within 24 hours.
+                    </p>
+                  </motion.div>
+                )}
+
+                {status === 'error' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-center p-4 bg-red-500/10 border border-red-500/30 rounded-xl"
+                  >
+                    <p className="text-red-400 font-semibold">
+                      ❌ {errorMessage}
                     </p>
                   </motion.div>
                 )}

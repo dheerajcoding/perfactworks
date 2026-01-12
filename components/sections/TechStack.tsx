@@ -15,16 +15,22 @@ const technologies = [
   
   // Backend
   { name: 'Node.js', category: 'Backend' },
+  { name: 'Java', category: 'Backend' },
+  { name: 'Spring Boot', category: 'Backend' },
+  { name: 'Hibernate', category: 'Backend' },
   { name: 'Python', category: 'Backend' },
-  { name: 'Go', category: 'Backend' },
   { name: 'Django', category: 'Backend' },
   { name: 'Express', category: 'Backend' },
+  { name: 'Microservices', category: 'Backend' },
+  { name: 'REST API', category: 'Backend' },
   
   // Database
   { name: 'PostgreSQL', category: 'Database' },
+  { name: 'MySQL', category: 'Database' },
   { name: 'MongoDB', category: 'Database' },
   { name: 'Redis', category: 'Database' },
   { name: 'Elasticsearch', category: 'Database' },
+  { name: 'JPA', category: 'Database' },
   
   // Cloud
   { name: 'AWS', category: 'Cloud' },
@@ -32,6 +38,8 @@ const technologies = [
   { name: 'GCP', category: 'Cloud' },
   { name: 'Docker', category: 'Cloud' },
   { name: 'Kubernetes', category: 'Cloud' },
+  { name: 'Maven', category: 'Cloud' },
+  { name: 'Gradle', category: 'Cloud' },
   
   // AI/ML
   { name: 'TensorFlow', category: 'AI/ML' },

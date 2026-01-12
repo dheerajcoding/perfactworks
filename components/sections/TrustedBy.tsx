@@ -6,12 +6,12 @@ import { useState, useEffect } from 'react'
 import Section from '../ui/Section'
 
 const clients = [
-  { name: 'TechCorp', logo: 'TC', color: 'from-blue-400 to-cyan-500' },
-  { name: 'Innovate Inc', logo: 'II', color: 'from-purple-400 to-pink-500' },
-  { name: 'Digital Solutions', logo: 'DS', color: 'from-green-400 to-emerald-500' },
-  { name: 'CloudFirst', logo: 'CF', color: 'from-orange-400 to-red-500' },
-  { name: 'AI Ventures', logo: 'AV', color: 'from-indigo-400 to-blue-500' },
-  { name: 'StartupHub', logo: 'SH', color: 'from-pink-400 to-rose-500' },
+  { name: 'Reddington Group Inc', logo: 'RG', color: 'from-blue-400 to-cyan-500' },
+  { name: 'ARS Financial Enterprises', logo: 'ARS', color: 'from-purple-400 to-pink-500' },
+  { name: 'Indifone', logo: 'I', color: 'from-green-400 to-emerald-500' },
+  { name: 'Educational Institution', logo: 'EI', color: 'from-orange-400 to-red-500' },
+  { name: 'Corporate Organization', logo: 'CO', color: 'from-indigo-400 to-blue-500' },
+  { name: 'Sales Organization', logo: 'SO', color: 'from-pink-400 to-rose-500' },
 ]
 
 export default function TrustedBy() {

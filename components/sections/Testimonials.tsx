@@ -8,21 +8,21 @@ import SectionHeader from '../ui/SectionHeader'
 
 const testimonials = [
   {
-    quote: "PerfactWorks transformed our startup idea into a production-ready SaaS platform in just 8 weeks. Their expertise in modern architecture is unmatched.",
+    quote: "PerfactWorks delivered quality work and stayed committed to our project from start to finish. They were responsive, professional, and delivered exactly what we needed.",
     author: "Sarah Chen",
     role: "CEO, CloudStream",
     company: "CloudStream Technologies",
     rating: 5,
   },
   {
-    quote: "Working with PerfactWorks felt like having an in-house CTO. They understood our business goals and delivered solutions that drove real revenue growth.",
+    quote: "Working with PerfactWorks was a great experience. They took time to understand our requirements and built a solid solution that works reliably for our business.",
     author: "Michael Rodriguez",
     role: "Founder, FinanceHub",
     company: "FinanceHub Inc",
     rating: 5,
   },
   {
-    quote: "The AI-powered features they built increased our user engagement by 200%. Exceptional technical knowledge and strategic thinking.",
+    quote: "The team was professional, communicative, and delivered quality code. They built features that our users love and provided excellent support throughout the project.",
     author: "Emily Watson",
     role: "CTO, HealthTech Solutions",
     company: "HealthTech Solutions",

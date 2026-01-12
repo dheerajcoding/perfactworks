@@ -64,34 +64,6 @@ export default function HeroNew() {
         suppressHydrationWarning
       />
 
-      {/* 3D Tech Visual */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-5 opacity-10" suppressHydrationWarning>
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
-          className="w-[800px] h-[800px] relative"
-        >
-          {[...Array(8)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute top-1/2 left-1/2 w-2 h-2 bg-neon-cyan rounded-full"
-              style={{
-                transform: `rotate(${i * 45}deg) translateX(300px)`,
-              }}
-              animate={{
-                scale: [1, 2, 1],
-                opacity: [0.5, 1, 0.5],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                delay: i * 0.2,
-              }}
-            />
-          ))}
-        </motion.div>
-      </div>
-
       {/* Content */}
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
@@ -109,7 +81,7 @@ export default function HeroNew() {
               <Sparkles className="w-4 h-4 text-neon-cyan" />
             </motion.div>
             <span className="text-sm font-semibold text-neon-cyan uppercase tracking-wider">
-              Global Technology & Consulting
+              Trusted • Reliable • Quality-Driven
             </span>
           </motion.div>
 
@@ -123,13 +95,6 @@ export default function HeroNew() {
             {mounted ? (
               <>
                 {text}
-                <motion.span
-                  animate={{ opacity: [1, 0, 1] }}
-                  transition={{ duration: 0.8, repeat: Infinity }}
-                  className="text-neon-cyan"
-                >
-                  |
-                </motion.span>
               </>
             ) : (
               <span className="opacity-0">{fullText}</span>
@@ -144,9 +109,9 @@ export default function HeroNew() {
             className="flex flex-wrap justify-center gap-4 md:gap-6 mb-12 text-gray-400"
           >
             {[
-              { icon: Code, text: 'Custom Software' },
-              { icon: Globe, text: 'Scalable Systems' },
-              { icon: Zap, text: 'Digital Transformation' },
+              { icon: Code, text: 'Web Applications' },
+              { icon: Globe, text: 'Professional Websites' },
+              { icon: Zap, text: 'Custom Solutions' },
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -182,22 +147,6 @@ export default function HeroNew() {
             >
               Explore Our Capabilities
             </motion.button>
-          </motion.div>
-
-          {/* Scroll Indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, y: [0, 10, 0] }}
-            transition={{ delay: 3, duration: 2, repeat: Infinity }}
-            className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-          >
-            <div className="w-6 h-10 border-2 border-neon-cyan rounded-full flex justify-center pt-2">
-              <motion.div
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className="w-1 h-2 bg-neon-cyan rounded-full"
-              />
-            </div>
           </motion.div>
         </div>
       </div>

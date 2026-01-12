@@ -1,16 +1,19 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import HeroNew from '@/components/sections/HeroNew'
-import Services from '@/components/sections/Services'
-import WhyPerfactWorks from '@/components/sections/WhyPerfactWorks'
-import TrustedBy from '@/components/sections/TrustedBy'
-import Stats from '@/components/sections/Stats'
-import Testimonials from '@/components/sections/Testimonials'
-import CTABanner from '@/components/sections/CTABanner'
-import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import ScrollProgress from '@/components/ScrollProgress'
 import { motion } from 'framer-motion'
+
+// Dynamically import below-the-fold components
+const Services = dynamic(() => import('@/components/sections/Services'), { ssr: true })
+const WhyPerfactWorks = dynamic(() => import('@/components/sections/WhyPerfactWorks'), { ssr: true })
+const TrustedBy = dynamic(() => import('@/components/sections/TrustedBy'), { ssr: true })
+const Stats = dynamic(() => import('@/components/sections/Stats'), { ssr: true })
+const Testimonials = dynamic(() => import('@/components/sections/Testimonials'), { ssr: true })
+const CTABanner = dynamic(() => import('@/components/sections/CTABanner'), { ssr: true })
+const Footer = dynamic(() => import('@/components/Footer'), { ssr: true })
 
 export default function Home() {
   return (
@@ -49,7 +52,7 @@ export default function Home() {
                   '@type': 'ImageObject',
                   url: 'https://perfactworks.com/logo.png',
                 },
-                description: 'Premium technology consulting services for startups and enterprises. Expert custom web application development, SaaS MVP, HRMS/LMS/ERP systems, cloud deployment, and AI automation.',
+                description: 'Professional web applications, custom websites, and software solutions for businesses. Specializing in modern web development with quality, reliability, and trusted service.',
                 foundingDate: '2023',
                 address: {
                   '@type': 'PostalAddress',
@@ -84,8 +87,8 @@ export default function Home() {
                 '@type': 'WebPage',
                 '@id': 'https://perfactworks.com/#webpage',
                 url: 'https://perfactworks.com',
-                name: 'PerfactWorks | Technology Consulting & Custom Software Development',
-                description: 'Premium technology consulting services for startups and enterprises. Expert custom web application development, SaaS MVP, HRMS/LMS/ERP systems.',
+                name: 'PerfactWorks | Trusted Technology Partner & Custom Software Development',
+                description: 'Quality technology services for growing businesses. Reliable custom web application development, SaaS MVP, business systems, and trusted solutions.',
                 isPartOf: {
                   '@id': 'https://perfactworks.com/#website',
                 },

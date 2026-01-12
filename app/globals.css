@@ -25,15 +25,35 @@
     --foreground: 241 245 249;
   }
 
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
   body {
     background-color: rgb(255 255 255);
     color: rgb(15 23 42);
     font-feature-settings: "rlig" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
   .dark body {
     background-color: rgb(15 23 42);
     color: rgb(241 245 249);
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  img, video {
+    content-visibility: auto;
+    max-width: 100%;
+    height: auto;
   }
 }
 
