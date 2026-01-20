@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Search, Palette, Wrench, Rocket, ArrowRight } from 'lucide-react'
+import { Search, FileText, Palette, Wrench, TestTube, Rocket, ArrowRight } from 'lucide-react'
 import Section from '../ui/Section'
 import SectionHeader from '../ui/SectionHeader'
 import Card from '../ui/Card'
@@ -10,30 +10,44 @@ const steps = [
   {
     icon: Search,
     number: '01',
-    title: 'Discover',
+    title: 'Discovery',
     description: 'We dive deep into your business goals, challenges, and technical requirements to craft a tailored strategy.',
-    deliverables: ['Discovery Workshop', 'Technical Audit', 'Project Roadmap', 'Cost Estimation'],
+    deliverables: ['Discovery Workshop', 'Technical Audit', 'Project Roadmap'],
+  },
+  {
+    icon: FileText,
+    number: '02',
+    title: 'Planning',
+    description: 'Define project scope, timelines, milestones, and resource allocation for smooth execution.',
+    deliverables: ['Project Plan', 'Timeline & Milestones', 'Resource Allocation'],
   },
   {
     icon: Palette,
-    number: '02',
+    number: '03',
     title: 'Design',
-    description: 'Our designers create intuitive, beautiful interfaces while architects plan scalable, secure systems.',
-    deliverables: ['UI/UX Design', 'System Architecture', 'Database Design', 'API Specifications'],
+    description: 'Create intuitive, beautiful interfaces and plan scalable, secure system architecture.',
+    deliverables: ['UI/UX Design', 'System Architecture', 'Database Design'],
   },
   {
     icon: Wrench,
-    number: '03',
-    title: 'Build',
-    description: 'Agile development with weekly sprints, continuous integration, and regular demos to ensure alignment.',
-    deliverables: ['Clean Code', 'Automated Tests', 'Documentation', 'Security Hardening'],
+    number: '04',
+    title: 'Development',
+    description: 'Agile development with weekly sprints, continuous integration, and regular demos.',
+    deliverables: ['Clean Code', 'Automated Tests', 'Documentation'],
+  },
+  {
+    icon: TestTube,
+    number: '05',
+    title: 'Testing',
+    description: 'Comprehensive testing including unit, integration, security, and performance testing.',
+    deliverables: ['Quality Assurance', 'Security Audit', 'Performance Testing'],
   },
   {
     icon: Rocket,
-    number: '04',
-    title: 'Scale',
-    description: 'Launch confidently with our support. We monitor, optimize, and iterate based on real-world performance.',
-    deliverables: ['Deployment', 'Monitoring Setup', 'Performance Tuning', 'Ongoing Support'],
+    number: '06',
+    title: 'Launch & Support',
+    description: 'Deploy confidently with our support. Monitor, optimize, and iterate based on real-world performance.',
+    deliverables: ['Deployment', 'Monitoring Setup', 'Ongoing Support'],
   },
 ]
 
@@ -43,10 +57,9 @@ export default function Process() {
       <SectionHeader
         subtitle="Our Process"
         title="From Vision to Reality"
-        description="A proven methodology that ensures quality, speed, and transparency at every stage."
+        description="A proven 6-step methodology that ensures quality, speed, and transparency at every stage."
       />
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-        {steps.map((step, index) => {
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">{steps.map((step, index) => {
           const Icon = step.icon
           return (
             <motion.div
@@ -54,15 +67,31 @@ export default function Process() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.15, duration: 0.5 }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
               className="relative group"
             >
-              {/* Animated Arrow Connector */}
-              {index < steps.length - 1 && (
+              {/* Animated Arrow Connector - Only for first row */}
+              {index < 2 && (
                 <motion.div
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.15 + 0.5, duration: 0.5 }}
+                  transition={{ delay: index * 0.1 + 0.5, duration: 0.5 }}
+                  className="hidden lg:block absolute top-1/2 -right-4 z-10"
+                >
+                  <motion.div
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    <ArrowRight className="w-6 h-6 text-primary-500" />
+                  </motion.div>
+                </motion.div>
+              )}
+              {/* Arrow for second row */}
+              {index >= 3 && index < 5 && (
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 + 0.5, duration: 0.5 }}
                   className="hidden lg:block absolute top-1/2 -right-4 z-10"
                 >
                   <motion.div

@@ -150,7 +150,7 @@ export default function Hero() {
             transition={{ duration: 0.3 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance"
           >
-            {['PerfactWorks', ' Builds ', 'Scalable Digital Products', ' That Grow Businesses'].map((word, i) => (
+            {['PERFACTWORKS', ' Builds ', 'Scalable Digital Products', ' That Grow Businesses'].map((word, i) => (
               <motion.span
                 key={i}
                 initial={{ opacity: 0, y: 50, rotateX: -90 }}
@@ -167,15 +167,14 @@ export default function Hero() {
             ))}
           </motion.h1>
 
-          {/* Subheadline with SEO keywords */}
+          {/* Supporting Sub-headline */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 mb-8 max-w-3xl mx-auto text-balance"
+            className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 mb-8 max-w-3xl mx-auto text-balance font-medium"
           >
-            Premium <strong className="font-semibold text-slate-700 dark:text-slate-300">technology consulting services</strong> for startups and enterprises. 
-            Expert <strong className="font-semibold text-slate-700 dark:text-slate-300">custom web application development</strong>, SaaS MVP, AI automation, and cloud deployment solutions.
+            Custom web, app, and software solutions built for scale, performance, and security.
           </motion.p>
 
           {/* Value Proposition Points with Floating Animation */}

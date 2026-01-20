@@ -32,9 +32,18 @@ export default function About() {
           </div>
 
           <p className="text-slate-600 dark:text-slate-400 mb-4">
-            PerfactWorks was founded with a mission to provide <strong>quality, trustworthy software development</strong> services. 
+            <strong>PERFACTWORKS</strong> was founded with a mission to provide <strong>quality, trustworthy software development</strong> services. 
             We bring dedication, expertise, and a commitment to excellence in every project we undertake.
           </p>
+          
+          {/* Mission-Driven Paragraph */}
+          <div className="bg-gradient-to-r from-primary-50 to-purple-50 dark:from-primary-900/20 dark:to-purple-900/20 border-l-4 border-primary-500 p-4 rounded-r-lg mb-4">
+            <p className="text-slate-700 dark:text-slate-300 font-medium">
+              <strong>Our Mission:</strong> Engineering quality software solutions with a focus on scalability, performance, and long-term partnership. 
+              We don't just build software—we architect sustainable technology foundations that grow with your business.
+            </p>
+          </div>
+          
           <p className="text-slate-600 dark:text-slate-400 mb-4">
             We've successfully delivered projects for <strong>growing startups and businesses</strong>—helping them launch MVPs, build custom 
             solutions, and create reliable software that serves their customers well. Our focus is on delivering <strong>quality work</strong> that 
@@ -46,7 +55,7 @@ export default function About() {
           </p>
           <p className="text-slate-600 dark:text-slate-400 mb-6">
             We're a focused team committed to delivering reliable, well-built software solutions
-            for businesses that value quality and trust.
+            for businesses that value quality, scalability, and long-term partnerships.
           </p>
 
           {/* Achievement Badges */}

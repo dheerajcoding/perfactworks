@@ -178,9 +178,27 @@ export default function ContactNew() {
               Extraordinary
             </span>
           </h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-4">
             Book a free 30-minute consultation. No commitments, just honest advice on how we can help achieve your goals.
           </p>
+          
+          {/* Conversion Boost Text */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="flex items-center justify-center gap-4 text-sm md:text-base"
+          >
+            <div className="flex items-center gap-2 text-green-400">
+              <CheckCircle className="w-5 h-5" />
+              <span className="font-semibold">Free consultation</span>
+            </div>
+            <div className="w-1 h-1 bg-gray-500 rounded-full" />
+            <div className="flex items-center gap-2 text-neon-cyan">
+              <Clock className="w-5 h-5" />
+              <span className="font-semibold">Response within 24 hours</span>
+            </div>
+          </motion.div>
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">

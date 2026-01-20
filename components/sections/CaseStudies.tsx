@@ -14,6 +14,10 @@ const caseStudies = [
     client: 'Connxn',
     category: 'Web Application',
     description: 'Built a comprehensive LMS platform with course management, video lectures, assignments, and progress tracking, actively used by 300+ students and instructors.',
+    problem: 'Educational institution needed a centralized platform to manage courses, track student progress, and facilitate online learning.',
+    solution: 'Developed a full-featured LMS with course management, video lectures, assignments, quizzes, and real-time progress tracking.',
+    technology: 'React, Node.js, MongoDB, AWS S3 for video storage, Socket.io for real-time updates',
+    result: '300+ active users, 50+ courses launched, 4.7/5 satisfaction rating, 65% reduction in administrative time',
     metrics: [
       { label: 'Active Users', value: '300+' },
       { label: 'Courses', value: '50+' },
@@ -27,6 +31,10 @@ const caseStudies = [
     client: 'Global Consultancy',
     category: 'Web Application',
     description: 'Developed a complete HRMS solution managing employee records, attendance, payroll, leave management, and performance tracking for 100+ employees.',
+    problem: 'Company struggled with manual HR processes, scattered employee data, and time-consuming payroll calculations.',
+    solution: 'Built an integrated HRMS with automated attendance tracking, payroll processing, leave management, and performance evaluation modules.',
+    technology: 'Java, Spring Boot, Hibernate, MySQL, Microservices architecture, REST APIs',
+    result: '100+ employees managed efficiently, 65% increase in HR efficiency, 99.8% payroll accuracy, automated compliance reporting',
     metrics: [
       { label: 'Active Users', value: '100+' },
       { label: 'Efficiency', value: '+65%' },
@@ -40,6 +48,10 @@ const caseStudies = [
     client: 'Group Inc',
     category: 'Web Application',
     description: 'Created a robust lead tracking and management system with automated workflows, pipeline management, and detailed analytics for improved sales conversion.',
+    problem: 'Sales team lost leads due to manual tracking, delayed follow-ups, and lack of visibility into the sales pipeline.',
+    solution: 'Implemented an intelligent lead management system with automated lead assignment, follow-up reminders, pipeline visualization, and analytics dashboard.',
+    technology: 'Next.js, Node.js, PostgreSQL, Chart.js for analytics, WebSocket for real-time notifications',
+    result: '1000+ leads tracked efficiently, 40% increase in conversion rate, response time reduced to under 2 minutes',
     metrics: [
       { label: 'Lead Tracking', value: '1000+' },
       { label: 'Conversion', value: '+40%' },

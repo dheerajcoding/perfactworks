@@ -43,7 +43,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <a href="/" className="inline-block text-2xl font-bold gradient-text mb-4">
-              PerfactWorks
+              PERFACTWORKS
             </a>
             <p className="text-slate-400 mb-6 max-w-md">
               Engineering Perfection in Every Solution. Your trusted technology partner for
@@ -74,7 +74,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-400 text-sm">
-            © {new Date().getFullYear()} PerfactWorks. All rights reserved.
+            © {new Date().getFullYear()} PERFACTWORKS. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
             <a href="#" className="text-slate-400 hover:text-primary-400 transition-colors">

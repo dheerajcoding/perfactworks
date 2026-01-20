@@ -11,6 +11,9 @@ const services = [
     icon: Code,
     title: 'Full-Stack Web Development',
     description: 'Custom web application development using modern technologies like MERN stack, Node.js, React, and Next.js. We build reliable, scalable web applications tailored to your business needs.',
+    problem: 'Struggling with outdated web infrastructure or need a custom solution',
+    delivery: 'Modern, responsive web applications with clean code & scalable architecture',
+    outcome: 'Faster time-to-market, improved user experience, reduced maintenance costs',
     features: ['React & Next.js Apps', 'Node.js Backend APIs', 'Database Design', 'E-commerce Platforms'],
     href: '/services/web-development',
   },
@@ -18,6 +21,9 @@ const services = [
     icon: Rocket,
     title: 'SaaS & MVP Development',
     description: 'Launch your startup MVP efficiently with our agile development approach. We help startups build their first product with clean code, smart architecture, and room to grow.',
+    problem: 'Need to validate your idea quickly without burning through your budget',
+    delivery: 'Production-ready MVP in 6-8 weeks with essential features & scalability',
+    outcome: 'Faster validation, investor-ready product, foundation for growth',
     features: ['MVP Development', 'SaaS Architecture', 'Product Strategy', 'Scalable Design'],
     href: '/services/saas-mvp-development',
   },
@@ -25,6 +31,9 @@ const services = [
     icon: Brain,
     title: 'Custom Business Systems',
     description: 'Custom HRMS, LMS, and CRM development for growing businesses. We build tailored systems that match your workflow and help you scale efficiently.',
+    problem: 'Manual processes or generic software that doesn\'t fit your workflow',
+    delivery: 'Tailored HRMS, CRM, or LMS systems built specifically for your operations',
+    outcome: 'Increased efficiency, better data insights, streamlined operations',
     features: ['Custom HRMS Development', 'LMS Platforms', 'Business Systems', 'CRM Solutions'],
     href: '/services/enterprise-systems',
   },
@@ -32,6 +41,9 @@ const services = [
     icon: Cloud,
     title: 'Cloud Deployment & DevOps',
     description: 'Deploy your application with confidence on AWS, Azure, or GCP. We set up reliable cloud infrastructure with automated deployments and proper monitoring.',
+    problem: 'Complex deployment processes or unreliable infrastructure',
+    delivery: 'Automated CI/CD pipelines, cloud infrastructure, monitoring & scalability',
+    outcome: 'Zero-downtime deployments, cost optimization, improved reliability',
     features: ['Cloud Deployment', 'CI/CD Pipelines', 'Docker Containers', 'Automated Workflows'],
     href: '/services/cloud-devops',
   },
@@ -39,6 +51,9 @@ const services = [
     icon: Brain,
     title: 'AI & Business Automation',
     description: 'Integrate AI capabilities to streamline your business processes. We implement practical automation solutions and AI features that solve real business challenges.',
+    problem: 'Repetitive tasks consuming valuable time and resources',
+    delivery: 'AI-powered automation, intelligent workflows, and smart integrations',
+    outcome: 'Reduced operational costs, faster processing, data-driven decisions',
     features: ['Process Automation', 'AI Integration', 'Smart Features', 'Workflow Optimization'],
     href: '/services/ai-automation',
   },
@@ -46,6 +61,9 @@ const services = [
     icon: Shield,
     title: 'Technology Consulting',
     description: 'Get expert guidance on your technology decisions. We help you choose the right tools, plan your architecture, and make smart technical choices for your business.',
+    problem: 'Uncertain about tech stack or architecture for your project',
+    delivery: 'Strategic technology roadmap, architecture design, best practices',
+    outcome: 'Confident decisions, reduced technical debt, long-term scalability',
     features: ['Tech Stack Selection', 'Architecture Planning', 'Technical Guidance', 'Best Practices'],
     href: '/services',
   },
@@ -145,16 +163,38 @@ export default function Services() {
                   {service.title}
                 </motion.h3>
                 
-                {/* Description with Reveal */}
-                <motion.p 
-                  className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2 relative z-10"
+                {/* Problem/Delivery/Outcome */}
+                <motion.div
+                  className="space-y-3 mb-4 relative z-10"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 + 0.4 }}
                 >
-                  {service.description}
-                </motion.p>
+                  <div className="flex items-start gap-2">
+                    <span className="text-xs font-bold text-red-500 mt-0.5">⚠</span>
+                    <div>
+                      <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Problem</p>
+                      <p className="text-sm text-slate-600 dark:text-slate-400">{service.problem}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-2">
+                    <span className="text-xs font-bold text-blue-500 mt-0.5">📦</span>
+                    <div>
+                      <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">What We Deliver</p>
+                      <p className="text-sm text-slate-600 dark:text-slate-400">{service.delivery}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-2">
+                    <span className="text-xs font-bold text-green-500 mt-0.5">✓</span>
+                    <div>
+                      <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Business Outcome</p>
+                      <p className="text-sm text-slate-600 dark:text-slate-400">{service.outcome}</p>
+                    </div>
+                  </div>
+                </motion.div>
                 
                 {/* Animated Link */}
                 <motion.a

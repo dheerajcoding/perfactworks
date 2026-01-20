@@ -62,6 +62,27 @@ export default function TrustedBy() {
         transition={{ duration: 0.8 }}
         className="text-center relative z-10"
       >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center justify-center gap-3 mb-8"
+        >
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+            className="w-2 h-2 bg-primary-500 rounded-full"
+          />
+          <p className="text-lg font-bold text-primary-600 dark:text-primary-400">
+            Trusted by 50+ Clients
+          </p>
+          <motion.div
+            animate={{ rotate: -360 }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+            className="w-2 h-2 bg-primary-500 rounded-full"
+          />
+        </motion.div>
+        
         <motion.p 
           className="text-sm font-semibold text-slate-600 dark:text-slate-400 mb-8"
           initial={{ opacity: 0, letterSpacing: '0.05em' }}
