@@ -18,6 +18,11 @@ export const metadata: Metadata = {
   creator: 'PerfactWorks',
   publisher: 'PerfactWorks',
   metadataBase: new URL('https://perfactworks.com'),
+  icons: {
+    icon: '/images/logo.png',
+    shortcut: '/images/logo.png',
+    apple: '/images/logo.png',
+  },
   alternates: {
     canonical: '/',
   },

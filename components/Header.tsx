@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import { Menu, X, Sparkles } from 'lucide-react'
+import Image from 'next/image'
 import ThemeToggle from './ThemeToggle'
 import Button from './ui/Button'
 
@@ -48,18 +49,20 @@ export default function Header() {
           {/* Logo */}
           <motion.a
             href="/"
-            className="flex items-center gap-2 text-2xl font-bold bg-gradient-to-r from-neon-cyan to-neon-blue bg-clip-text text-transparent"
+            className="flex items-center gap-2"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-              className="text-neon-cyan"
-            >
-              <Sparkles className="w-6 h-6" />
-            </motion.div>
-            PERFACTWORKS
+            <Image
+              src="/images/logo.png"
+              alt="PerfactWorks Logo"
+              width={600}
+              height={150}
+              priority
+              unoptimized
+              style={{ height: '120px', width: 'auto' }}
+              className="md:!h-[135px] lg:!h-[150px] object-contain"
+            />
           </motion.a>
 
           {/* Desktop Navigation */}

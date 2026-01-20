@@ -1,6 +1,7 @@
 'use client'
 
 import { Github, Twitter, Linkedin, Mail } from 'lucide-react'
+import Image from 'next/image'
 
 const footerLinks = {
   Services: [
@@ -42,8 +43,16 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <a href="/" className="inline-block text-2xl font-bold gradient-text mb-4">
-              PERFACTWORKS
+            <a href="/" className="inline-block mb-4">
+              <Image
+                src="/images/logo.png"
+                alt="PerfactWorks Logo"
+                width={600}
+                height={150}
+                unoptimized
+                style={{ height: '120px', width: 'auto' }}
+                className="md:!h-[135px] lg:!h-[150px] object-contain"
+              />
             </a>
             <p className="text-slate-400 mb-6 max-w-md">
               Engineering Perfection in Every Solution. Your trusted technology partner for
