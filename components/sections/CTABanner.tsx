@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { ArrowRight, Sparkles, Clock, Users, Shield } from 'lucide-react'
+import Link from 'next/link'
 import Section from '../ui/Section'
 import Button from '../ui/Button'
 
@@ -193,7 +194,7 @@ export default function CTABanner() {
           
           {/* Main Title with Letter Animation */}
           <motion.h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight whitespace-nowrap"
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : { opacity: 0 }}
           >
@@ -257,17 +258,18 @@ export default function CTABanner() {
                 className="absolute inset-0 bg-white rounded-full blur-2xl"
               />
               
-              <Button 
-                size="lg" 
-                className="relative bg-white text-primary-600 hover:bg-white/90 font-bold px-8 py-4 text-lg group shadow-2xl"
-              >
-                <span className="relative z-10">Schedule Free Consultation</span>
-                <motion.div
-                  animate={{ x: isHovering ? 5 : 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="inline-block ml-2"
+              <Link href="/contact">
+                <Button 
+                  size="lg" 
+                  className="relative bg-white text-primary-600 hover:bg-white/90 font-bold px-8 py-4 text-lg group shadow-2xl"
                 >
-                  <ArrowRight className="w-6 h-6" />
+                  <span className="relative z-10">Schedule Free Consultation</span>
+                  <motion.div
+                    animate={{ x: isHovering ? 5 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="inline-block ml-2"
+                  >
+                    <ArrowRight className="w-6 h-6" />
                 </motion.div>
                 
                 {/* Button Shine Effect */}
@@ -284,6 +286,7 @@ export default function CTABanner() {
                   style={{ width: '50%' }}
                 />
               </Button>
+              </Link>
             </motion.div>
           </motion.div>
 

@@ -1,22 +1,72 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { Send, Mail, Phone, Globe, Calendar, CheckCircle, Shield, Lock, Clock, Sparkles, ArrowRight } from 'lucide-react'
 import emailjs from '@emailjs/browser'
+
+// Currency conversion rates (base: INR)
+const CURRENCY_CONFIG = {
+  INR: { symbol: '₹', rate: 1, name: 'Indian Rupee' },
+  USD: { symbol: '$', rate: 0.012, name: 'US Dollar' },
+  EUR: { symbol: '€', rate: 0.011, name: 'Euro' },
+  GBP: { symbol: '£', rate: 0.0095, name: 'British Pound' },
+  AUD: { symbol: 'A$', rate: 0.018, name: 'Australian Dollar' },
+  CAD: { symbol: 'C$', rate: 0.016, name: 'Canadian Dollar' },
+}
+
+type CurrencyCode = keyof typeof CURRENCY_CONFIG
+
+// Budget ranges in INR
+const BUDGET_RANGES_INR = [
+  { id: '1k-2k', min: 1000, max: 2000 },
+  { id: '2k-5k', min: 2000, max: 5000 },
+  { id: '5k-15k', min: 5000, max: 15000 },
+  { id: '15k-30k', min: 15000, max: 30000 },
+  { id: '30k-50k', min: 30000, max: 50000 },
+  { id: '50k-80k', min: 50000, max: 80000 },
+  { id: 'custom', min: 0, max: 0, isCustom: true },
+]
 
 export default function ContactNew() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     company: '',
+    currency: 'INR' as CurrencyCode,
     budget: '',
+    customBudgetMin: '',
+    customBudgetMax: '',
     service: '',
     message: '',
   })
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
+
+  // Convert INR amounts to selected currency
+  const formatBudgetRange = useMemo(() => {
+    return (min: number, max: number) => {
+      const currency = CURRENCY_CONFIG[formData.currency]
+      const convertedMin = Math.round(min * currency.rate)
+      const convertedMax = Math.round(max * currency.rate)
+      return `${currency.symbol}${convertedMin.toLocaleString()} - ${currency.symbol}${convertedMax.toLocaleString()}`
+    }
+  }, [formData.currency])
+
+  // Get converted budget ranges based on selected currency
+  const budgetRanges = useMemo(() => {
+    return BUDGET_RANGES_INR.map(range => {
+      if (range.isCustom) {
+        return { ...range, label: 'Custom Range' }
+      }
+      return {
+        ...range,
+        label: formatBudgetRange(range.min, range.max)
+      }
+    })
+  }, [formatBudgetRange])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -37,8 +87,12 @@ export default function ContactNew() {
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
+        phone: formData.phone || 'Not provided',
         company: formData.company || 'Not provided',
-        budget: formData.budget || 'Not specified',
+        currency: formData.currency,
+        budget: formData.budget === 'custom' 
+          ? `Custom: ${CURRENCY_CONFIG[formData.currency].symbol}${formData.customBudgetMin} - ${CURRENCY_CONFIG[formData.currency].symbol}${formData.customBudgetMax}`
+          : (budgetRanges.find(r => r.id === formData.budget)?.label || 'Not specified'),
         service: formData.service,
         message: formData.message,
         to_name: 'PerfactWorks Team',
@@ -64,7 +118,7 @@ export default function ContactNew() {
 
       console.log('Emails sent successfully')
       setStatus('success')
-      setFormData({ name: '', email: '', company: '', budget: '', service: '', message: '' })
+      setFormData({ name: '', email: '', phone: '', company: '', currency: 'INR', budget: '', customBudgetMin: '', customBudgetMax: '', service: '', message: '' })
       setTimeout(() => setStatus('idle'), 5000)
     } catch (error: any) {
       console.error('Email send failed:', error)
@@ -172,7 +226,7 @@ export default function ContactNew() {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 bg-dark-700/50 border border-gray-700/50 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/20 transition-all"
-                      placeholder="John Doe"
+                      placeholder=""
                     />
                   </div>
                   <div>
@@ -187,16 +241,31 @@ export default function ContactNew() {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 bg-dark-700/50 border border-gray-700/50 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/20 transition-all"
-                      placeholder="john@company.com"
+                      placeholder=""
                     />
                   </div>
                 </div>
 
-                {/* Company & Budget Row */}
+                {/* Phone & Company Row */}
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-gray-300 mb-2">
-                      Company/Organization
+                      Contact Number *
+                    </label>
+                    <motion.input
+                      whileFocus={{ scale: 1.01 }}
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-dark-700/50 border border-gray-700/50 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/20 transition-all"
+                      placeholder=""
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-300 mb-2">
+                      Organization/Designation
                     </label>
                     <motion.input
                       whileFocus={{ scale: 1.01 }}
@@ -205,10 +274,32 @@ export default function ContactNew() {
                       value={formData.company}
                       onChange={handleChange}
                       className="w-full px-4 py-3 bg-dark-700/50 border border-gray-700/50 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/20 transition-all"
-                      placeholder="Your Company"
+                      placeholder=""
                     />
                   </div>
+                </div>
+
+                {/* Currency & Budget Row */}
+                <div className="grid md:grid-cols-3 gap-6">
                   <div>
+                    <label className="block text-sm font-semibold text-gray-300 mb-2">
+                      Currency
+                    </label>
+                    <motion.select
+                      whileFocus={{ scale: 1.01 }}
+                      name="currency"
+                      value={formData.currency}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-dark-700/50 border border-gray-700/50 rounded-xl text-white focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/20 transition-all"
+                    >
+                      {Object.entries(CURRENCY_CONFIG).map(([code, config]) => (
+                        <option key={code} value={code}>
+                          {config.symbol} {code}
+                        </option>
+                      ))}
+                    </motion.select>
+                  </div>
+                  <div className="md:col-span-2">
                     <label className="block text-sm font-semibold text-gray-300 mb-2">
                       Project Budget
                     </label>
@@ -220,14 +311,57 @@ export default function ContactNew() {
                       className="w-full px-4 py-3 bg-dark-700/50 border border-gray-700/50 rounded-xl text-white focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/20 transition-all"
                     >
                       <option value="">Select budget range</option>
-                      <option value="10-25k">$10,000 - $25,000</option>
-                      <option value="25-50k">$25,000 - $50,000</option>
-                      <option value="50-100k">$50,000 - $100,000</option>
-                      <option value="100k+">$100,000+</option>
-                      <option value="undecided">Not sure yet</option>
+                      {budgetRanges.map((range) => (
+                        <option key={range.id} value={range.id}>
+                          {range.label}
+                        </option>
+                      ))}
                     </motion.select>
                   </div>
                 </div>
+
+                {/* Custom Budget Range - Shows only when "Custom Range" is selected */}
+                {formData.budget === 'custom' && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="grid md:grid-cols-2 gap-6"
+                  >
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-300 mb-2">
+                        Minimum Budget ({CURRENCY_CONFIG[formData.currency].symbol}) *
+                      </label>
+                      <motion.input
+                        whileFocus={{ scale: 1.01 }}
+                        type="number"
+                        name="customBudgetMin"
+                        value={formData.customBudgetMin}
+                        onChange={handleChange}
+                        required
+                        min="0"
+                        className="w-full px-4 py-3 bg-dark-700/50 border border-gray-700/50 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/20 transition-all"
+                        placeholder="Enter minimum amount"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-300 mb-2">
+                        Maximum Budget ({CURRENCY_CONFIG[formData.currency].symbol}) *
+                      </label>
+                      <motion.input
+                        whileFocus={{ scale: 1.01 }}
+                        type="number"
+                        name="customBudgetMax"
+                        value={formData.customBudgetMax}
+                        onChange={handleChange}
+                        required
+                        min="0"
+                        className="w-full px-4 py-3 bg-dark-700/50 border border-gray-700/50 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/20 transition-all"
+                        placeholder="Enter maximum amount"
+                      />
+                    </div>
+                  </motion.div>
+                )}
 
                 {/* Service Selection */}
                 <div>
@@ -250,6 +384,7 @@ export default function ContactNew() {
                     <option value="cloud">Cloud & DevOps</option>
                     <option value="ai">AI & Automation</option>
                     <option value="consulting">Technology Consulting</option>
+                    <option value="student-project">Student Project</option>
                     <option value="other">Other</option>
                   </motion.select>
                 </div>
@@ -267,7 +402,7 @@ export default function ContactNew() {
                     required
                     rows={5}
                     className="w-full px-4 py-3 bg-dark-700/50 border border-gray-700/50 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/20 transition-all resize-none"
-                    placeholder="Tell us about your project, goals, timeline, and any specific requirements..."
+                    placeholder=""
                   />
                 </div>
 

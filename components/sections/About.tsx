@@ -29,15 +29,6 @@ export default function About() {
         >
           <div className="flex items-center gap-3 mb-6">
             <h3 className="text-2xl font-bold">Our Story: From Idea to Impact</h3>
-            <motion.div
-              initial={{ scale: 0, rotate: -180 }}
-              animate={inView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
-              transition={{ delay: 0.3, type: 'spring' }}
-              className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-bold rounded-full"
-            >
-              <Star className="w-3 h-3" fill="currentColor" />
-              Founded 2023
-            </motion.div>
           </div>
 
           <p className="text-slate-600 dark:text-slate-400 mb-4">
