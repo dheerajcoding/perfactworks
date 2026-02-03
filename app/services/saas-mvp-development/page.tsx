@@ -384,29 +384,28 @@ export default function SaaSMVPPage() {
           </div>
         </Section>
 
+        <Section>
+          <SectionHeader
+            subtitle="Related Services"
+            title="Extend Your MVP with Growth Services"
+            description="Build the full product stack with web, mobile, and SEO support."
+          />
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button variant="secondary" size="lg" href="/services/web-development">
+              Web Development
+            </Button>
+            <Button variant="secondary" size="lg" href="/services/app-development">
+              App Development
+            </Button>
+            <Button variant="secondary" size="lg" href="/services/seo-services">
+              SEO Services
+            </Button>
+          </div>
+        </Section>
+
         <CTABanner />
       </main>
       <Footer />
-
-      {/* Service Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Service',
-            name: 'SaaS MVP Development',
-            description: 'Rapid MVP development services for startups. Launch your SaaS product in 6-8 weeks with scalable architecture and go-to-market support.',
-            provider: {
-              '@type': 'Organization',
-              name: 'PerfactWorks',
-              url: 'https://perfactworks.com',
-            },
-            areaServed: 'Worldwide',
-            serviceType: 'MVP Development',
-          }),
-        }}
-      />
     </>
   )
 }

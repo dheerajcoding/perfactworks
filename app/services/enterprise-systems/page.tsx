@@ -372,29 +372,28 @@ export default function EnterpriseSystemsPage() {
           </div>
         </Section>
 
+        <Section className="bg-slate-50 dark:bg-slate-900/50">
+          <SectionHeader
+            subtitle="Related Services"
+            title="Strengthen Your Enterprise Stack"
+            description="Pair enterprise systems with web platforms, mobile apps, and SEO growth."
+          />
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button variant="secondary" size="lg" href="/services/web-development">
+              Web Development
+            </Button>
+            <Button variant="secondary" size="lg" href="/services/app-development">
+              App Development
+            </Button>
+            <Button variant="secondary" size="lg" href="/services/seo-services">
+              SEO Services
+            </Button>
+          </div>
+        </Section>
+
         <CTABanner />
       </main>
       <Footer />
-
-      {/* Service Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Service',
-            name: 'Custom Enterprise System Development',
-            description: 'Bespoke HRMS, LMS, ERP, and CRM development for enterprises. Custom software tailored to your business processes.',
-            provider: {
-              '@type': 'Organization',
-              name: 'PerfactWorks',
-              url: 'https://perfactworks.com',
-            },
-            areaServed: 'Worldwide',
-            serviceType: 'Enterprise Software Development',
-          }),
-        }}
-      />
     </>
   )
 }

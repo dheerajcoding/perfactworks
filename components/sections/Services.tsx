@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Brain, Code, Cloud, Shield, Rocket, ArrowRight } from 'lucide-react'
+import { Brain, Code, Smartphone, Shield, Rocket, ArrowRight } from 'lucide-react'
 import Section from '../ui/Section'
 import SectionHeader from '../ui/SectionHeader'
 import Card from '../ui/Card'
@@ -38,24 +38,24 @@ const services = [
     href: '/services/enterprise-systems',
   },
   {
-    icon: Cloud,
-    title: 'Cloud Deployment & DevOps',
-    description: 'Deploy your application with confidence on AWS, Azure, or GCP. We set up reliable cloud infrastructure with automated deployments and proper monitoring.',
-    problem: 'Complex deployment processes or unreliable infrastructure',
-    delivery: 'Automated CI/CD pipelines, cloud infrastructure, monitoring & scalability',
-    outcome: 'Zero-downtime deployments, cost optimization, improved reliability',
-    features: ['Cloud Deployment', 'CI/CD Pipelines', 'Docker Containers', 'Automated Workflows'],
-    href: '/services/cloud-devops',
+    icon: Smartphone,
+    title: 'Mobile App Development',
+    description: 'iOS and Android app development with product strategy, robust APIs, and performance-first engineering for global scale.',
+    problem: 'Need a reliable mobile product that performs and scales',
+    delivery: 'Native and cross-platform apps with secure backend integration',
+    outcome: 'Higher user retention, faster releases, and measurable growth',
+    features: ['iOS & Android Apps', 'Cross-Platform Builds', 'Secure APIs', 'App Store Launch'],
+    href: '/services/app-development',
   },
   {
     icon: Brain,
-    title: 'AI & Business Automation',
-    description: 'Integrate AI capabilities to streamline your business processes. We implement practical automation solutions and AI features that solve real business challenges.',
-    problem: 'Repetitive tasks consuming valuable time and resources',
-    delivery: 'AI-powered automation, intelligent workflows, and smart integrations',
-    outcome: 'Reduced operational costs, faster processing, data-driven decisions',
-    features: ['Process Automation', 'AI Integration', 'Smart Features', 'Workflow Optimization'],
-    href: '/services/ai-automation',
+    title: 'SEO Services',
+    description: 'Technical SEO and performance optimization that improves Core Web Vitals, rankings, and qualified organic traffic.',
+    problem: 'Low organic visibility despite strong products',
+    delivery: 'Technical audits, on-page optimization, and speed improvements',
+    outcome: 'Higher rankings, better conversion rates, and more qualified leads',
+    features: ['Technical SEO', 'On-Page Optimization', 'Core Web Vitals', 'Content Strategy'],
+    href: '/services/seo-services',
   },
   {
     icon: Shield,

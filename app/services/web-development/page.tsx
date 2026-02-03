@@ -113,7 +113,7 @@ export default function WebDevelopmentPage() {
               className="text-xl text-slate-600 dark:text-slate-400 mb-8"
             >
               Enterprise-grade <strong className="font-semibold text-slate-700 dark:text-slate-300">custom web application development</strong> using modern MERN stack, Node.js, React, and Next.js. 
-              We build scalable, secure, and high-performance web applications that drive business growth.
+              We build scalable, secure, and high-performance web applications for India and global businesses that drive measurable growth.
             </motion.p>
 
             <motion.div
@@ -329,29 +329,31 @@ export default function WebDevelopmentPage() {
           </div>
         </Section>
 
+        <Section className="bg-slate-50 dark:bg-slate-900/50">
+          <SectionHeader
+            subtitle="Related Services"
+            title="Explore More Ways We Can Help"
+            description="Complement your web application with mobile apps, SEO growth, or a rapid MVP build."
+          />
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button variant="secondary" size="lg" href="/services/app-development">
+              Mobile App Development
+            </Button>
+            <Button variant="secondary" size="lg" href="/services/seo-services">
+              SEO Services
+            </Button>
+            <Button variant="secondary" size="lg" href="/services/saas-mvp-development">
+              SaaS MVP Development
+            </Button>
+            <Button variant="secondary" size="lg" href="/services/enterprise-systems">
+              Enterprise Systems
+            </Button>
+          </div>
+        </Section>
+
         <CTABanner />
       </main>
       <Footer />
-
-      {/* Service Schema for SEO */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Service',
-            name: 'Custom Web Application Development',
-            description: 'Professional full-stack web development services using MERN stack, Node.js, React, and Next.js for startups and enterprises.',
-            provider: {
-              '@type': 'Organization',
-              name: 'PerfactWorks',
-              url: 'https://perfactworks.com',
-            },
-            areaServed: 'Worldwide',
-            serviceType: 'Web Development',
-          }),
-        }}
-      />
     </>
   )
 }

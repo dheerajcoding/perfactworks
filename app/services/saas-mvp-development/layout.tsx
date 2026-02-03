@@ -1,15 +1,16 @@
-import { generateMetadata as genMeta } from '@/lib/seo'
+import type { Metadata } from 'next'
+import SeoJsonLd from '@/components/SeoJsonLd'
+import { generateBreadcrumbSchema, generateMetadata, generateServiceSchema } from '@/lib/seo'
 
-export const metadata = genMeta({
-  title: 'SaaS MVP Development Services | Launch Your Startup in 6-8 Weeks',
-  description: 'Rapid MVP development for startups. Launch your SaaS product in 6-8 weeks with scalable architecture, modern tech stack, and go-to-market support. Expert startup technology consulting.',
+export const metadata: Metadata = generateMetadata({
+  title: 'SaaS MVP Development Services',
+  description: 'Launch your SaaS MVP in 6-8 weeks with a scalable architecture, product strategy, and investor-ready build from PerfactWorks.',
   keywords: [
     'MVP development for startups',
     'SaaS development services',
     'rapid MVP development',
     'startup technology consulting',
     'scalable SaaS architecture',
-    'product-market fit development',
   ],
   canonical: '/services/saas-mvp-development',
 })
@@ -19,5 +20,21 @@ export default function SaaSMVPLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <>{children}</>
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Services', url: '/services' },
+    { name: 'SaaS MVP Development', url: '/services/saas-mvp-development' },
+  ])
+  const serviceSchema = generateServiceSchema({
+    name: 'SaaS MVP Development',
+    description: 'Rapid SaaS MVP development with product-market fit validation, scalable architecture, and go-to-market support.',
+    url: 'https://perfactworks.com/services/saas-mvp-development',
+  })
+
+  return (
+    <>
+      {children}
+      <SeoJsonLd data={[breadcrumbSchema, serviceSchema]} />
+    </>
+  )
 }

@@ -181,6 +181,10 @@ export default function ContactNew() {
           <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-4">
             Book a free 30-minute consultation. No commitments, just honest advice on how we can help achieve your goals.
           </p>
+          <p className="text-base md:text-lg text-gray-400 max-w-3xl mx-auto">
+            Talk to our team about web development, app development, or SEO services. We work with India and global clients to deliver
+            performance-first digital products and measurable growth.
+          </p>
           
           {/* Conversion Boost Text */}
           <motion.div

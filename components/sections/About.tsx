@@ -17,8 +17,8 @@ export default function About() {
     <Section className="bg-slate-50 dark:bg-slate-900/50" id="about">
       <SectionHeader
         subtitle="About PerfactWorks"
-        title="Your Trusted Partner for Web Applications & Digital Solutions"
-        description="We're a dedicated team specializing in web applications, professional websites, and custom software solutions for businesses and organizations."
+        title="Your Trusted Partner for Web, App & SEO Growth"
+        description="PerfactWorks helps India and global businesses build high-performance web apps, mobile products, and SEO-ready digital platforms that convert."
       />
       <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
         <motion.div
@@ -32,30 +32,28 @@ export default function About() {
           </div>
 
           <p className="text-slate-600 dark:text-slate-400 mb-4">
-            <strong>PERFACTWORKS</strong> was founded with a mission to provide <strong>quality, trustworthy software development</strong> services. 
-            We bring dedication, expertise, and a commitment to excellence in every project we undertake.
+            <strong>PERFACTWORKS</strong> was founded to deliver <strong>reliable web development, app development, and SEO services</strong>
+            for growth-focused teams. We partner with startups, SMEs, and enterprises across India and worldwide to build products that perform.
           </p>
           
           {/* Mission-Driven Paragraph */}
           <div className="bg-gradient-to-r from-primary-50 to-purple-50 dark:from-primary-900/20 dark:to-purple-900/20 border-l-4 border-primary-500 p-4 rounded-r-lg mb-4">
             <p className="text-slate-700 dark:text-slate-300 font-medium">
-              <strong>Our Mission:</strong> Engineering quality software solutions with a focus on scalability, performance, and long-term partnership. 
-              We don't just build software—we architect sustainable technology foundations that grow with your business.
+              <strong>Our Mission:</strong> Engineering scalable, performance-first software with measurable business outcomes.
+              We design systems that grow with your traffic, revenue, and operational needs.
             </p>
           </div>
           
           <p className="text-slate-600 dark:text-slate-400 mb-4">
-            We've successfully delivered projects for <strong>growing startups and businesses</strong>—helping them launch MVPs, build custom 
-            solutions, and create reliable software that serves their customers well. Our focus is on delivering <strong>quality work</strong> that 
-            provides real value.
+            We've delivered MVPs, enterprise systems, and conversion-focused websites that improve time-to-market and reduce technical debt.
+            Our approach blends product strategy, engineering excellence, and SEO-friendly architecture to help you win in competitive markets.
           </p>
           <p className="text-slate-600 dark:text-slate-400 mb-4">
-            What sets us apart? <strong>We care about your success</strong>. You work with dedicated developers who are invested in delivering 
-            quality solutions—not rushed work or shortcuts. We combine technical knowledge with honest communication and transparent processes.
+            What sets us apart? <strong>We care about your success</strong>. You work with dedicated specialists who obsess over quality, speed,
+            and measurable outcomes—from Core Web Vitals to revenue-driving features.
           </p>
           <p className="text-slate-600 dark:text-slate-400 mb-6">
-            We're a focused team committed to delivering reliable, well-built software solutions
-            for businesses that value quality, scalability, and long-term partnerships.
+            If you need a dependable tech partner for web apps, mobile apps, or SEO-led growth, PerfactWorks is ready to help.
           </p>
 
           {/* Achievement Badges */}

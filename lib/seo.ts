@@ -5,6 +5,25 @@ export const SITE_URL = 'https://perfactworks.com'
 export const SITE_NAME = 'PerfactWorks'
 export const SITE_DESCRIPTION = 'Premium technology consulting services for startups and enterprises. Full-stack development, SaaS MVP, custom enterprise systems, cloud deployment, and AI automation.'
 
+// Core service definitions for structured data and SEO
+export const CORE_SERVICES = [
+  {
+    name: 'Web Development',
+    description: 'Custom web application development with modern frameworks, performance optimization, and scalable architecture for global businesses.',
+    url: `${SITE_URL}/services/web-development`,
+  },
+  {
+    name: 'App Development',
+    description: 'iOS and Android app development for startups and enterprises, including product strategy, UX, and scalable mobile architecture.',
+    url: `${SITE_URL}/services/app-development`,
+  },
+  {
+    name: 'SEO Services',
+    description: 'Technical SEO, on-page optimization, and performance improvements to grow qualified organic traffic globally and in India.',
+    url: `${SITE_URL}/services/seo-services`,
+  },
+]
+
 // Primary target keywords
 export const PRIMARY_KEYWORDS = [
   'technology consulting services',
@@ -60,6 +79,40 @@ export function generateOrganizationSchema() {
       'Worldwide',
     ],
   }
+}
+
+// Website schema
+export function generateWebsiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE_NAME,
+    url: SITE_URL,
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    inLanguage: 'en',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${SITE_URL}/?s={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
+  }
+}
+
+// Core service schemas
+export function generateCoreServiceSchemas() {
+  return CORE_SERVICES.map((service) =>
+    generateServiceSchema({
+      name: service.name,
+      description: service.description,
+      url: service.url,
+      provider: SITE_NAME,
+      areaServed: 'Worldwide',
+    })
+  )
 }
 
 // Service schema for service pages

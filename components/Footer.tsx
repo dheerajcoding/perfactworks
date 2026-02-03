@@ -47,11 +47,11 @@ export default function Footer() {
               <Image
                 src="/images/logo.png"
                 alt="PerfactWorks Logo"
-                width={600}
-                height={150}
+                width={520}
+                height={140}
                 unoptimized
-                style={{ height: '120px', width: 'auto' }}
-                className="md:!h-[135px] lg:!h-[150px] object-contain"
+                style={{ height: '110px', width: 'auto' }}
+                className="md:!h-[130px] lg:!h-[140px] object-contain"
               />
             </a>
             <p className="text-slate-400 mb-6 max-w-md">

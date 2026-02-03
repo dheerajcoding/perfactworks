@@ -8,7 +8,7 @@ import Button from '../ui/Button'
 export default function HeroNew() {
   const [mounted, setMounted] = useState(false)
   const [text, setText] = useState('')
-  const fullText = 'We Engineer Digital Excellence.'
+  const fullText = 'We Build High-Performance Digital Products.'
   
   useEffect(() => {
     setMounted(true)
@@ -25,7 +25,7 @@ export default function HeroNew() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" suppressHydrationWarning>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 md:pt-0" suppressHydrationWarning>
       {/* Dark Futuristic Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900 -z-20" />
       
@@ -124,6 +124,16 @@ export default function HeroNew() {
             ))}
           </motion.div>
 
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.2, duration: 0.8 }}
+            className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-10"
+          >
+            PerfactWorks is a premium web development, app development, and SEO services partner for India and global businesses.
+            We design, build, and optimize digital products that load fast, rank higher, and convert more customers.
+          </motion.p>
+
           {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -131,22 +141,24 @@ export default function HeroNew() {
             transition={{ delay: 2.5, duration: 0.8 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <motion.button
+            <motion.a
+              href="/contact"
               whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(0, 240, 255, 0.5)' }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-gradient-to-r from-neon-cyan to-neon-blue text-dark-900 font-bold rounded-lg text-lg flex items-center gap-2 shadow-lg shadow-neon-cyan/50 hover:shadow-neon-cyan/70 transition-shadow"
             >
               Start Your Project
               <ArrowRight className="w-5 h-5" />
-            </motion.button>
+            </motion.a>
 
-            <motion.button
+            <motion.a
+              href="/services"
               whileHover={{ scale: 1.05, borderColor: '#00f0ff' }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-transparent border-2 border-gray-600 text-white font-bold rounded-lg text-lg hover:border-neon-cyan transition-colors backdrop-blur-sm"
             >
               Explore Our Capabilities
-            </motion.button>
+            </motion.a>
           </motion.div>
         </div>
       </div>

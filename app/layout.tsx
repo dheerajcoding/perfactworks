@@ -1,8 +1,10 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import ParticleBackground from '@/components/ParticleBackground'
+import SeoJsonLd from '@/components/SeoJsonLd'
+import { generateOrganizationSchema, generateWebsiteSchema, generateCoreServiceSchemas, SITE_NAME } from '@/lib/seo'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -11,12 +13,12 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'PerfactWorks | Engineering Perfection in Every Solution',
-  description: 'Premium global technology consultancy for startups, founders, and enterprises. Expert solutions in AI, web development, cloud, cybersecurity, and SaaS development.',
-  keywords: 'technology consulting, AI solutions, web development, mobile app development, cloud services, DevOps, cybersecurity, SaaS development, MVP development, digital transformation',
-  authors: [{ name: 'PerfactWorks' }],
-  creator: 'PerfactWorks',
-  publisher: 'PerfactWorks',
+  title: 'PerfactWorks | Web, App & SEO Development Company',
+  description: 'PerfactWorks is a premium technology partner delivering web development, app development, and SEO services for India and global businesses. Build faster, scale smarter, and grow revenue with performance-first engineering.',
+  keywords: 'web development company, app development company, SEO services, custom software development, SaaS MVP development, technology consulting, India software agency, global software partner',
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
   metadataBase: new URL('https://perfactworks.com'),
   icons: {
     icon: '/images/logo.png',
@@ -27,10 +29,10 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'PerfactWorks | Engineering Perfection in Every Solution',
-    description: 'Premium global technology consultancy for startups, founders, and enterprises.',
+    title: 'PerfactWorks | Web, App & SEO Development Company',
+    description: 'Premium web development, app development, and SEO services for India and global businesses. Build scalable digital products with PerfactWorks.',
     url: 'https://perfactworks.com',
-    siteName: 'PerfactWorks',
+    siteName: SITE_NAME,
     locale: 'en_US',
     type: 'website',
     images: [
@@ -38,14 +40,14 @@ export const metadata: Metadata = {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'PerfactWorks - Engineering Perfection in Every Solution',
+        alt: 'PerfactWorks - Web, App & SEO Development Company',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'PerfactWorks | Engineering Perfection in Every Solution',
-    description: 'Premium global technology consultancy for startups, founders, and enterprises.',
+    title: 'PerfactWorks | Web, App & SEO Development Company',
+    description: 'Premium web development, app development, and SEO services for India and global businesses.',
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -64,16 +66,26 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const organizationSchema = generateOrganizationSchema()
+  const websiteSchema = generateWebsiteSchema()
+  const serviceSchemas = generateCoreServiceSchemas()
+
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.className} overflow-x-hidden`}>
         <ThemeProvider>
           <ParticleBackground />
+          <SeoJsonLd data={[organizationSchema, websiteSchema, ...serviceSchemas]} />
           {children}
         </ThemeProvider>
       </body>

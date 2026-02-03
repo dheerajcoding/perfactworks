@@ -45,7 +45,7 @@ export default function Header() {
       }`}
     >
       <nav className="container-custom">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-24 md:h-28">
           {/* Logo */}
           <motion.a
             href="/"
@@ -53,15 +53,11 @@ export default function Header() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Image
+            <img
               src="/images/logo.png"
               alt="PerfactWorks Logo"
-              width={600}
-              height={150}
-              priority
-              unoptimized
               style={{ height: '120px', width: 'auto' }}
-              className="md:!h-[135px] lg:!h-[150px] object-contain"
+              className="object-contain"
             />
           </motion.a>
 
@@ -112,28 +108,40 @@ export default function Header() {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden overflow-hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden fixed inset-0 z-50"
             >
-              <div className="py-4 space-y-4">
-                {navigation.map((item) => (
-                  <motion.a
-                    key={item.name}
-                    href={item.href}
-                    className="block py-2 text-slate-700 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
-                    onClick={() => setIsOpen(false)}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {item.name}
-                  </motion.a>
-                ))}
-                <Button variant="primary" size="md" href="/contact" className="w-full">
-                  Book a Call
-                </Button>
-              </div>
+              <div
+                className="absolute inset-0 bg-dark-900/80 backdrop-blur-xl"
+                onClick={() => setIsOpen(false)}
+              />
+              <motion.div
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -20, opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="relative mx-4 mt-20 rounded-2xl bg-dark-800/90 border border-neon-cyan/20 shadow-2xl p-6"
+              >
+                <div className="space-y-4">
+                  {navigation.map((item) => (
+                    <motion.a
+                      key={item.name}
+                      href={item.href}
+                      className="block py-2 text-slate-100 hover:text-neon-cyan transition-colors"
+                      onClick={() => setIsOpen(false)}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      {item.name}
+                    </motion.a>
+                  ))}
+                  <Button variant="primary" size="md" href="/contact" className="w-full">
+                    Book a Call
+                  </Button>
+                </div>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
