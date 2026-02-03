@@ -2,11 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   devIndicators: false,
-  swcMinify: true,
   images: {
-    domains: [],
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60,
+    unoptimized: true,
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',

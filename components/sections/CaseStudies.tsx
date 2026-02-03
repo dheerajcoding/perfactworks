@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight, TrendingUp } from 'lucide-react'
-import Image from 'next/image'
 import Section from '../ui/Section'
 import SectionHeader from '../ui/SectionHeader'
 import Card from '../ui/Card'
@@ -128,12 +127,10 @@ export default function CaseStudies() {
               transition={{ duration: 0.3 }}
               className="h-48 rounded-xl mb-6 relative overflow-hidden bg-slate-100 dark:bg-slate-800"
             >
-              <Image
+              <img
                 src={study.image}
                 alt={study.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="w-full h-full object-cover absolute inset-0"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
             </motion.div>
