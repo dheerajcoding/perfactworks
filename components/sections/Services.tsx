@@ -1,10 +1,6 @@
-'use client'
-
-import { motion } from 'framer-motion'
 import { Brain, Code, Smartphone, Shield, Rocket, ArrowRight } from 'lucide-react'
 import Section from '../ui/Section'
 import SectionHeader from '../ui/SectionHeader'
-import Card from '../ui/Card'
 
 const services = [
   {
@@ -78,153 +74,62 @@ export default function Services() {
         description="We specialize in building professional websites, web applications, and custom software solutions—our core expertise and main focus."
       />
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        {services.map((service, index) => {
+        {services.map((service) => {
           const Icon = service.icon
           return (
-            <motion.div
+            <div
               key={service.title}
-              initial={{ opacity: 0, y: 50, rotateX: -15 }}
-              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-              viewport={{ once: true, margin: '-100px' }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.1,
-                ease: [0.6, 0.05, 0.01, 0.9],
-              }}
-              style={{
-                transformStyle: 'preserve-3d',
-                perspective: '1000px',
-              }}
+              className="glass-card p-6 md:p-8 group cursor-pointer hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden flex flex-col"
             >
-              <Card 
-                delay={0} 
-                className="group cursor-pointer hover:shadow-2xl transition-all duration-500 h-full relative overflow-hidden"
+              {/* Hover gradient layer */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/0 to-purple-500/0 group-hover:from-primary-500/10 group-hover:to-purple-500/10 transition-all duration-500 pointer-events-none" />
+
+              {/* Icon */}
+              <div className="mb-4 relative z-10">
+                <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-primary-500 to-purple-600 shadow-lg group-hover:shadow-primary-500/30 transition-shadow duration-300">
+                  <Icon className="w-6 h-6 text-white" />
+                </div>
+              </div>
+
+              <h3 className="text-xl font-bold mb-3 group-hover:text-primary-500 transition-colors duration-200 relative z-10">
+                {service.title}
+              </h3>
+
+              <div className="space-y-3 mb-4 relative z-10 flex-1">
+                <div className="flex items-start gap-2">
+                  <span className="text-xs font-bold text-red-500 mt-0.5">⚠</span>
+                  <div>
+                    <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Problem</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">{service.problem}</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-xs font-bold text-blue-500 mt-0.5">📦</span>
+                  <div>
+                    <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">What We Deliver</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">{service.delivery}</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-xs font-bold text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Business Outcome</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">{service.outcome}</p>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href={service.href}
+                className="inline-flex items-center text-primary-500 hover:text-primary-400 font-semibold text-sm mt-auto relative z-10 group/link"
               >
-                {/* Animated Background Gradient */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-primary-500/0 via-purple-500/0 to-primary-500/0 group-hover:from-primary-500/10 group-hover:via-purple-500/10 group-hover:to-primary-500/10 transition-all duration-500"
-                  animate={{
-                    backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
-                  }}
-                  transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    ease: 'linear',
-                  }}
-                />
-                
-                {/* Floating Icon */}
-                <motion.div
-                  initial={{ scale: 0, rotate: -180 }}
-                  whileInView={{ scale: 1, rotate: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.6,
-                    delay: index * 0.1 + 0.2,
-                    type: 'spring',
-                    stiffness: 200,
-                  }}
-                  whileHover={{ 
-                    scale: 1.1, 
-                    rotate: [0, -10, 10, 0],
-                    y: -5,
-                    transition: { duration: 0.4 }
-                  }}
-                  className="mb-4 relative z-10"
-                >
-                  <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-primary-500 to-purple-600 shadow-lg group-hover:shadow-2xl transition-all duration-300 relative">
-                    <motion.div
-                      animate={{
-                        boxShadow: [
-                          '0 0 20px rgba(139, 92, 246, 0.5)',
-                          '0 0 40px rgba(139, 92, 246, 0.8)',
-                          '0 0 20px rgba(139, 92, 246, 0.5)',
-                        ],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: 'easeInOut',
-                      }}
-                      className="absolute inset-0 rounded-xl"
-                    />
-                    <Icon className="w-6 h-6 text-white relative z-10" />
-                  </div>
-                </motion.div>
-                
-                {/* Animated Title */}
-                <motion.h3 
-                  className="text-xl font-bold mb-3 group-hover:text-primary-500 transition-colors relative z-10"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 + 0.3 }}
-                >
-                  {service.title}
-                </motion.h3>
-                
-                {/* Problem/Delivery/Outcome */}
-                <motion.div
-                  className="space-y-3 mb-4 relative z-10"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 + 0.4 }}
-                >
-                  <div className="flex items-start gap-2">
-                    <span className="text-xs font-bold text-red-500 mt-0.5">⚠</span>
-                    <div>
-                      <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Problem</p>
-                      <p className="text-sm text-slate-600 dark:text-slate-400">{service.problem}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-2">
-                    <span className="text-xs font-bold text-blue-500 mt-0.5">📦</span>
-                    <div>
-                      <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">What We Deliver</p>
-                      <p className="text-sm text-slate-600 dark:text-slate-400">{service.delivery}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-2">
-                    <span className="text-xs font-bold text-green-500 mt-0.5">✓</span>
-                    <div>
-                      <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Business Outcome</p>
-                      <p className="text-sm text-slate-600 dark:text-slate-400">{service.outcome}</p>
-                    </div>
-                  </div>
-                </motion.div>
-                
-                {/* Animated Link */}
-                <motion.a
-                  href={service.href}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 + 0.5 }}
-                  whileHover={{ x: 5 }}
-                  className="inline-flex items-center text-primary-500 hover:text-primary-600 font-semibold text-sm group-hover:underline mt-auto relative z-10"
-                >
-                  Learn More
-                  <motion.div
-                    animate={{ x: [0, 3, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >
-                    <ArrowRight className="w-4 h-4 ml-1" />
-                  </motion.div>
-                </motion.a>
-                
-                {/* Corner Accent */}
-                <motion.div
-                  className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary-500/20 to-transparent rounded-bl-full"
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 + 0.6 }}
-                />
-              </Card>
-            </motion.div>
+                Learn More
+                <ArrowRight className="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform duration-200" />
+              </a>
+
+              {/* Corner accent */}
+              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-primary-500/10 to-transparent rounded-bl-full pointer-events-none" />
+            </div>
           )
         })}
       </div>

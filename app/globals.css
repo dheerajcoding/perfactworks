@@ -60,7 +60,7 @@
 @layer components {
   .glass {
     background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(16px);
+    backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
@@ -71,11 +71,11 @@
 
   .glass-card {
     background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(16px);
+    backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 1rem;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1), 0 4px 8px -4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark .glass-card {
@@ -161,3 +161,54 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background-image: linear-gradient(to bottom, #0284c7, #9333ea);
 }
+
+/* ─────────────────────────────────────────────
+   Hero CSS animations (replaces framer-motion)
+───────────────────────────────────────────── */
+@keyframes orb-cyan {
+  0%, 100% { opacity: 0.25; transform: scale(1) translateX(0); }
+  50%       { opacity: 0.45; transform: scale(1.2) translateX(16px); }
+}
+
+@keyframes orb-purple {
+  0%, 100% { opacity: 0.25; transform: scale(1.1) translateX(0); }
+  50%       { opacity: 0.40; transform: scale(1) translateX(-16px); }
+}
+
+@keyframes hero-fade {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-orb-cyan {
+  background: radial-gradient(circle, rgba(0,240,255,0.35) 0%, transparent 70%);
+  animation: orb-cyan 8s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+.hero-orb-purple {
+  background: radial-gradient(circle, rgba(180,0,255,0.30) 0%, transparent 70%);
+  animation: orb-purple 10s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+/* Staggered fade-in for hero content */
+.hero-fade-in {
+  opacity: 0;
+  animation: hero-fade 0.6s ease-out forwards;
+}
+.hero-fade-in-delay-1 { animation-delay: 0.1s; }
+.hero-fade-in-delay-2 { animation-delay: 0.25s; }
+.hero-fade-in-delay-3 { animation-delay: 0.4s; }
+
+/* Reduce motion: honour user preference */
+@media (prefers-reduced-motion: reduce) {
+  .hero-orb-cyan,
+  .hero-orb-purple,
+  .hero-fade-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+

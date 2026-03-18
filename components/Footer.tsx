@@ -1,7 +1,4 @@
-'use client'
-
 import { Github, Twitter, Linkedin, Mail } from 'lucide-react'
-import Image from 'next/image'
 
 const footerLinks = {
   Services: [
@@ -44,12 +41,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <a href="/" className="inline-block mb-4">
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/images/logo.png"
                 alt="PerfactWorks Logo"
-                width={520}
-                height={140}
-                unoptimized
+                loading="lazy"
                 style={{ height: '110px', width: 'auto' }}
                 className="md:!h-[130px] lg:!h-[140px] object-contain"
               />

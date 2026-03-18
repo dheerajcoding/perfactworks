@@ -1,31 +1,27 @@
-'use client'
-
 import dynamic from 'next/dynamic'
 import HeroNew from '@/components/sections/HeroNew'
 import Header from '@/components/Header'
-import ScrollProgress from '@/components/ScrollProgress'
-import { motion } from 'framer-motion'
+import Services from '@/components/sections/Services'
+import WhyPerfactWorks from '@/components/sections/WhyPerfactWorks'
+import CTABanner from '@/components/sections/CTABanner'
+import Footer from '@/components/Footer'
 
-// Dynamically import below-the-fold components
-const Services = dynamic(() => import('@/components/sections/Services'), { ssr: true })
-const WhyPerfactWorks = dynamic(() => import('@/components/sections/WhyPerfactWorks'), { ssr: true })
-const TrustedBy = dynamic(() => import('@/components/sections/TrustedBy'), { ssr: true })
-const Stats = dynamic(() => import('@/components/sections/Stats'), { ssr: true })
-const Testimonials = dynamic(() => import('@/components/sections/Testimonials'), { ssr: true })
-const CTABanner = dynamic(() => import('@/components/sections/CTABanner'), { ssr: true })
-const Footer = dynamic(() => import('@/components/Footer'), { ssr: true })
+// Non-critical client-only component — loaded after page renders
+const ScrollProgress = dynamic(() => import('@/components/ScrollProgress'))
+
+// Below-the-fold sections: lazy-loaded to keep initial bundle small
+const TrustedBy = dynamic(() => import('@/components/sections/TrustedBy'))
+const Stats = dynamic(() => import('@/components/sections/Stats'))
+const Testimonials = dynamic(() => import('@/components/sections/Testimonials'))
+
+export const revalidate = 3600 // ISR: revalidate page every hour
 
 export default function Home() {
   return (
     <>
       <ScrollProgress />
       <Header />
-      <motion.main 
-        className="overflow-hidden bg-dark-900"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
+      <main className="overflow-hidden bg-dark-900">
         <HeroNew />
         <TrustedBy />
         <Services />
@@ -33,7 +29,7 @@ export default function Home() {
         <Stats />
         <Testimonials />
         <CTABanner />
-      </motion.main>
+      </main>
       <Footer />
     </>
   )

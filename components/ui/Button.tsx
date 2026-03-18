@@ -1,7 +1,5 @@
-'use client'
-
-import { motion } from 'framer-motion'
 import { ReactNode } from 'react'
+import Link from 'next/link'
 
 interface ButtonProps {
   children: ReactNode
@@ -39,20 +37,16 @@ export default function Button({
   const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`
 
   const content = (
-    <motion.span
-      className="flex items-center gap-2"
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-    >
+    <span className="flex items-center gap-2">
       {children}
-    </motion.span>
+    </span>
   )
 
   if (href) {
     return (
-      <a href={href} className={classes}>
+      <Link href={href} className={classes}>
         {content}
-      </a>
+      </Link>
     )
   }
 

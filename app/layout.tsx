@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/ThemeProvider'
-import ParticleBackground from '@/components/ParticleBackground'
 import SeoJsonLd from '@/components/SeoJsonLd'
 import { generateOrganizationSchema, generateWebsiteSchema, generateCoreServiceSchemas, SITE_NAME } from '@/lib/seo'
+import ClientParticles from '@/components/ClientParticles'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -84,7 +84,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} overflow-x-hidden`}>
         <ThemeProvider>
-          <ParticleBackground />
+          <ClientParticles />
           <SeoJsonLd data={[organizationSchema, websiteSchema, ...serviceSchemas]} />
           {children}
         </ThemeProvider>
@@ -92,3 +92,4 @@ export default function RootLayout({
     </html>
   )
 }
+//#endregion components

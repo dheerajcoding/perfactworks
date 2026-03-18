@@ -40,7 +40,7 @@ export function generateOrganizationSchema() {
     '@type': 'Organization',
     name: SITE_NAME,
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.png`,
+    logo: `${SITE_URL}/images/logo.png`,
     description: SITE_DESCRIPTION,
     address: {
       '@type': 'PostalAddress',
@@ -312,7 +312,7 @@ export function generateArticleSchema(article: {
       name: SITE_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE_URL}/logo.png`,
+        url: `${SITE_URL}/images/logo.png`,
       },
     },
     mainEntityOfPage: {

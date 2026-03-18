@@ -1,10 +1,6 @@
-'use client'
-
-import { motion } from 'framer-motion'
-import { ArrowRight, TrendingUp } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import Section from '../ui/Section'
 import SectionHeader from '../ui/SectionHeader'
-import Card from '../ui/Card'
 import Button from '../ui/Button'
 
 const caseStudies = [
@@ -109,31 +105,27 @@ export default function CaseStudies() {
         description="See how we've helped businesses transform their technology and achieve measurable success."
       />
       <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
-        {caseStudies.map((study, index) => (
-          <Card key={study.title} delay={index * 0.1} className="flex flex-col group cursor-pointer relative overflow-hidden">
+        {caseStudies.map((study) => (
+          <div
+            key={study.title}
+            className="glass-card p-6 md:p-8 flex flex-col group cursor-pointer relative overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
+          >
             {/* Success Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5 + index * 0.1 }}
-              className="absolute top-4 right-4 z-10 px-3 py-1 bg-green-500 text-white text-xs font-bold rounded-full shadow-lg"
-            >
+            <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-green-500 text-white text-xs font-bold rounded-full shadow-lg">
               ✓ Success
-            </motion.div>
+            </div>
 
             {/* Image */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-              className="h-48 rounded-xl mb-6 relative overflow-hidden bg-slate-100 dark:bg-slate-800"
-            >
+            <div className="h-48 rounded-xl mb-6 relative overflow-hidden bg-slate-100 dark:bg-slate-800 group-hover:scale-[1.02] transition-transform duration-300">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={study.image}
                 alt={study.title}
+                loading="lazy"
                 className="w-full h-full object-cover absolute inset-0"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-            </motion.div>
+            </div>
 
             {/* Content */}
             <div className="flex-1">
@@ -150,47 +142,34 @@ export default function CaseStudies() {
 
               {/* Metrics */}
               <div className="grid grid-cols-3 gap-4 mb-6">
-                {study.metrics.map((metric, idx) => (
-                  <motion.div
+                {study.metrics.map((metric) => (
+                  <div
                     key={metric.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 + index * 0.1 + idx * 0.1 }}
-                    whileHover={{ scale: 1.1 }}
-                    className="text-center p-2 glass rounded-lg"
+                    className="text-center p-2 glass rounded-lg hover:scale-105 transition-transform duration-200"
                   >
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      transition={{ delay: 0.8 + index * 0.1 + idx * 0.1, type: "spring" }}
-                      className="text-lg font-bold gradient-text"
-                    >
+                    <div className="text-lg font-bold gradient-text">
                       {metric.value}
-                    </motion.div>
+                    </div>
                     <div className="text-xs text-slate-500 dark:text-slate-400">
                       {metric.label}
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
 
               {/* Tags */}
               <div className="flex flex-wrap gap-2">
-                {study.tags.map((tag, idx) => (
-                  <motion.span
+                {study.tags.map((tag) => (
+                  <span
                     key={tag}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.7 + index * 0.1 + idx * 0.05 }}
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    className="px-2 py-1 text-xs font-medium rounded-lg glass cursor-pointer"
+                    className="px-2 py-1 text-xs font-medium rounded-lg glass"
                   >
                     {tag}
-                  </motion.span>
+                  </span>
                 ))}
               </div>
             </div>
-          </Card>
+          </div>
         ))}
       </div>
 
