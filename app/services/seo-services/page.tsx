@@ -47,57 +47,94 @@ export default function SeoServicesPage() {
     <>
       <Header />
       <main className="overflow-hidden pt-20">
-        <Section className="relative">
-          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary-500/10 via-emerald-500/10 to-transparent" />
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 rounded-full mb-6"
-            >
-              <TrendingUp className="w-4 h-4 text-primary-500" />
-              <span className="text-sm font-semibold text-primary-600 dark:text-primary-400">
-                SEO Services
-              </span>
-            </motion.div>
+        <Section className="relative pt-6 pb-12">
+          <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary-50/40 via-surface-100/50 to-white" />
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
-            >
-              Technical SEO & Performance Growth
-            </motion.h1>
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center mb-12">
+            {/* Left Content */}
+            <div className="lg:col-span-6 text-left">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 border border-primary-200/80 rounded-full mb-6 shadow-teal-sm"
+              >
+                <TrendingUp className="w-4 h-4 text-primary-600" />
+                <span className="text-xs sm:text-sm font-bold text-primary-700 uppercase tracking-wider">
+                  Technical SEO & Performance
+                </span>
+              </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-xl text-slate-600 dark:text-slate-400 mb-8"
-            >
-              Improve rankings, speed, and conversions with a performance-first SEO strategy. We help India and global businesses
-              fix indexability issues, build authority, and grow qualified organic traffic.
-            </motion.p>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-800 mb-6 leading-tight"
+              >
+                Technical SEO & <span className="gradient-text">Organic Search Growth</span>
+              </motion.h1>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <Button variant="primary" size="lg" href="/contact">
-                Request SEO Audit
-                <ArrowRight className="w-5 h-5" />
-              </Button>
-              <Button variant="secondary" size="lg" href="/case-studies">
-                View Results
-              </Button>
-            </motion.div>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-base sm:text-lg text-slate-600 mb-8 leading-relaxed"
+              >
+                Dominate high-intent search queries with programmatic SEO, 99+ Core Web Vitals optimization, automated schema markup, and high-authority search indexation for sustainable revenue growth.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <Button variant="primary" size="lg" href="/contact">
+                  Request SEO Audit
+                  <ArrowRight className="w-5 h-5" />
+                </Button>
+                <Button variant="secondary" size="lg" href="/case-studies">
+                  View Results
+                </Button>
+              </motion.div>
+            </div>
+
+            {/* Right 3D Visual with Floating Badges */}
+            <div className="lg:col-span-6 relative flex items-center justify-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6 }}
+                className="relative w-full max-w-[500px]"
+              >
+                <motion.div
+                  animate={{ y: [-8, 8, -8] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                  className="relative"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/hero-tech-3d.png"
+                    alt="Search Engine Optimization & Cloud Architecture 3D illustration"
+                    className="w-full h-auto rounded-3xl object-contain drop-shadow-[0_20px_40px_rgba(20,184,166,0.25)]"
+                  />
+
+                  {/* Floating Badge 1 */}
+                  <div className="absolute -top-3 left-2 bg-white/95 backdrop-blur-xl border border-primary-200 px-3.5 py-2 rounded-2xl shadow-teal-md flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="text-xs font-bold text-slate-800">100/100 Core Web Vitals</span>
+                  </div>
+
+                  {/* Floating Badge 2 */}
+                  <div className="absolute -bottom-3 right-2 bg-white/95 backdrop-blur-xl border border-primary-200 px-3.5 py-2 rounded-2xl shadow-teal-md flex items-center gap-2">
+                    <span className="text-xs font-bold text-slate-800">Rank #1 Strategy</span>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </div>
           </div>
         </Section>
 
-        <Section className="bg-slate-50 dark:bg-slate-900/50">
+        <Section className="bg-slate-50 bg-white">
           <SectionHeader
             subtitle="Core SEO Pillars"
             title="Everything Search Engines Need to Trust You"
@@ -114,7 +151,7 @@ export default function SeoServicesPage() {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold mb-2">{pillar.title}</h3>
-                      <p className="text-slate-600 dark:text-slate-400">{pillar.description}</p>
+                      <p className="text-slate-600 text-slate-500">{pillar.description}</p>
                     </div>
                   </div>
                 </Card>
@@ -146,7 +183,7 @@ export default function SeoServicesPage() {
           </div>
         </Section>
 
-        <Section className="bg-slate-50 dark:bg-slate-900/50">
+        <Section className="bg-slate-50 bg-white">
           <SectionHeader
             subtitle="Related Services"
             title="Combine SEO with Product Growth"

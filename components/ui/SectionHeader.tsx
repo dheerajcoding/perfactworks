@@ -14,15 +14,15 @@ export default function SectionHeader({
   return (
     <div className={`mb-12 md:mb-16 ${centered ? 'text-center max-w-3xl mx-auto' : ''}`}>
       {subtitle && (
-        <div className="inline-block px-4 py-1 mb-4 text-sm font-semibold rounded-full glass">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-4 text-sm font-semibold rounded-full bg-primary-50 border border-primary-100">
           <span className="gradient-text">{subtitle}</span>
         </div>
       )}
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-balance">
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-balance text-slate-800">
         {title}
       </h2>
       {description && (
-        <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 text-balance">
+        <p className="text-lg md:text-xl text-slate-500 text-balance">
           {description}
         </p>
       )}

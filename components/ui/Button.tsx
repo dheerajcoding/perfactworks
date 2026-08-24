@@ -20,12 +20,12 @@ export default function Button({
   className = '',
   type = 'button',
 }: ButtonProps) {
-  const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500'
-  
+  const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500'
+
   const variants = {
-    primary: 'bg-gradient-to-r from-primary-500 to-purple-600 text-white hover:from-primary-600 hover:to-purple-700 shadow-lg hover:shadow-xl',
-    secondary: 'glass text-slate-900 dark:text-white hover:bg-white/20 dark:hover:bg-white/10',
-    outline: 'border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white',
+    primary: 'bg-gradient-to-r from-primary-500 to-primary-600 text-white hover:from-primary-600 hover:to-primary-700 shadow-teal-md hover:shadow-teal-lg',
+    secondary: 'bg-primary-50 text-primary-700 hover:bg-primary-100',
+    outline: 'border-2 border-primary-300 text-primary-600 hover:bg-primary-50 hover:border-primary-400',
   }
 
   const sizes = {

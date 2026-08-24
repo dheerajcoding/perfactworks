@@ -14,7 +14,7 @@ export default function ProcessPage() {
         <section className="container mx-auto px-6 pt-6 pb-10">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Delivery Process</h1>
-            <p className="text-lg text-slate-600 dark:text-slate-400">
+            <p className="text-lg text-slate-600 text-slate-500">
               A proven, transparent framework for strategy, design, development, QA, and performance optimization.
             </p>
           </div>

@@ -8,24 +8,52 @@ import SectionHeader from '../ui/SectionHeader'
 
 const testimonials = [
   {
-    quote: "PerfactWorks delivered quality work and stayed committed to our project from start to finish. They were responsive, professional, and delivered exactly what we needed.",
-    author: "Sarah Chen",
-    role: "CEO, CloudStream",
-    company: "CloudStream Technologies",
+    quote: "PerfactWorks built our financial portal 'mycashbridge' (similar to PaisaBazaar) with end-to-end encryption, strict KYC compliance, and automated loan comparison algorithms. The security architecture and smooth UI have earned our users' and banking partners' absolute trust.",
+    author: "Vishal Bora",
+    role: "Founder & CEO",
+    company: "mycashbridge Financial Services",
     rating: 5,
   },
   {
-    quote: "Working with PerfactWorks was a great experience. They took time to understand our requirements and built a solid solution that works reliably for our business.",
-    author: "Michael Rodriguez",
-    role: "Founder, FinanceHub",
-    company: "FinanceHub Inc",
+    quote: "The brand website crafted by PerfactWorks for Reddington Global Consultancy perfectly captures our premium international advisory standards. The sleek motion design, ultra-fast load times, and structured presentation elevated our client conversions immediately.",
+    author: "Jordy",
+    role: "Managing Director",
+    company: "Reddington Global Consultancy",
     rating: 5,
   },
   {
-    quote: "The team was professional, communicative, and delivered quality code. They built features that our users love and provided excellent support throughout the project.",
-    author: "Emily Watson",
-    role: "CTO, HealthTech Solutions",
-    company: "HealthTech Solutions",
+    quote: "PerfactWorks built our NGO foundation website for RGcare Foundation with empathy, beautiful donor interfaces, and transparent community project tracking. It has helped us connect with donors worldwide and amplify our social mission.",
+    author: "Jyotsana Bora",
+    role: "Trustee & Founder",
+    company: "RGcare Foundation",
+    rating: 5,
+  },
+  {
+    quote: "PerfactWorks built our CA firm website and automated our client tax filing workflows seamlessly. The attention to detail, fast communication, and clean architecture saved our practice countless hours every month.",
+    author: "Anil Choudhary",
+    role: "Chartered Accountant",
+    company: "ARS Financial Enterprises",
+    rating: 5,
+  },
+  {
+    quote: "They developed a custom business workflow automation system for our operations. The automated pipelines eliminated manual bottlenecks and gave us real-time visibility across our team's work.",
+    author: "Giriraj Saboo",
+    role: "Founder & Director",
+    company: "SAS Aarthik Samadhan LLP",
+    rating: 5,
+  },
+  {
+    quote: "Working with PerfactWorks for our client Stellard was an outstanding experience. They built a scalable, high-performance web platform on a tight deadline with zero compromises on quality.",
+    author: "INDIFONE Team",
+    role: "Project Lead for Stellard",
+    company: "INDIFONE",
+    rating: 5,
+  },
+  {
+    quote: "PerfactWorks engineered our 'Pooja App' for spiritual rituals, online puja booking, and pandit scheduling with a smooth mobile interface, instant booking notifications, and reliable payment integration. The launch was flawless!",
+    author: "Ishank",
+    role: "Founder & Product Creator",
+    company: "Pooja Mobile App",
     rating: 5,
   },
 ]
@@ -37,7 +65,7 @@ export default function Testimonials() {
   const prev = () => setCurrent((current - 1 + testimonials.length) % testimonials.length)
 
   return (
-    <Section>
+    <Section className="bg-surface-200/30">
       <SectionHeader
         subtitle="Client Success"
         title="Trusted by Startups & Enterprises"
@@ -49,47 +77,45 @@ export default function Testimonials() {
           <motion.div
             animate={{
               scale: [1, 1.2, 1],
-              opacity: [0.1, 0.2, 0.1],
-              rotate: [0, 180, 360],
+              opacity: [0.08, 0.15, 0.08],
             }}
-            transition={{ duration: 20, repeat: Infinity }}
-            className="absolute -top-20 -left-20 w-64 h-64 bg-primary-500/20 rounded-full blur-3xl"
+            transition={{ duration: 15, repeat: Infinity }}
+            className="absolute -top-20 -left-20 w-64 h-64 bg-primary-400/20 rounded-full blur-3xl"
           />
           <motion.div
             animate={{
               scale: [1.2, 1, 1.2],
-              opacity: [0.2, 0.1, 0.2],
-              rotate: [360, 180, 0],
+              opacity: [0.12, 0.06, 0.12],
             }}
-            transition={{ duration: 20, repeat: Infinity }}
-            className="absolute -bottom-20 -right-20 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl"
+            transition={{ duration: 18, repeat: Infinity }}
+            className="absolute -bottom-20 -right-20 w-64 h-64 bg-tech-400/20 rounded-full blur-3xl"
           />
 
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
-              initial={{ 
-                opacity: 0, 
-                x: 300, 
-                rotateY: 90,
-                scale: 0.8 
+              initial={{
+                opacity: 0,
+                x: 200,
+                rotateY: 45,
+                scale: 0.9
               }}
-              animate={{ 
-                opacity: 1, 
-                x: 0, 
+              animate={{
+                opacity: 1,
+                x: 0,
                 rotateY: 0,
-                scale: 1 
+                scale: 1
               }}
-              exit={{ 
-                opacity: 0, 
-                x: -300, 
-                rotateY: -90,
-                scale: 0.8 
+              exit={{
+                opacity: 0,
+                x: -200,
+                rotateY: -45,
+                scale: 0.9
               }}
-              transition={{ 
-                duration: 0.6,
+              transition={{
+                duration: 0.5,
                 type: "spring",
-                stiffness: 100
+                stiffness: 120
               }}
               className="glass-card p-8 md:p-12 relative overflow-hidden"
               style={{ transformStyle: "preserve-3d" }}
@@ -99,80 +125,56 @@ export default function Testimonials() {
                 animate={{
                   backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                 }}
-                transition={{ duration: 8, repeat: Infinity }}
-                className="absolute inset-0 bg-gradient-to-br from-primary-500/5 via-purple-500/5 to-pink-500/5 bg-[length:200%_200%]"
+                transition={{ duration: 10, repeat: Infinity }}
+                className="absolute inset-0 bg-gradient-to-br from-primary-50/50 via-white to-tech-50/50 bg-[length:200%_200%]"
               />
 
-              {/* Verified Badge with Pulse */}
+              {/* Verified Badge */}
               <motion.div
                 initial={{ scale: 0, rotate: -180 }}
                 animate={{ scale: 1, rotate: 0 }}
                 transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
-                className="absolute top-6 right-6 flex items-center gap-1 px-3 py-1 bg-green-500/20 border border-green-500 rounded-full z-10"
+                className="absolute top-6 right-6 flex items-center gap-1.5 px-3 py-1.5 bg-primary-50 border border-primary-200 rounded-full z-10"
               >
                 <motion.span
-                  animate={{ 
-                    scale: [1, 1.3, 1],
-                    rotate: [0, 360, 0]
-                  }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                  className="text-green-500 text-xs font-bold"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="text-primary-500 text-xs font-bold"
                 >
                   ✓
                 </motion.span>
-                <span className="text-xs font-semibold text-green-500">Verified Client</span>
-                <motion.div
-                  animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="absolute inset-0 border-2 border-green-500 rounded-full"
-                />
+                <span className="text-xs font-semibold text-primary-600">Verified Client</span>
               </motion.div>
 
-              {/* Animated Quote Icon */}
+              {/* Quote Icon */}
               <motion.div
-                initial={{ scale: 0, rotate: -90, y: -50 }}
-                animate={{ scale: 1, rotate: 0, y: 0 }}
-                transition={{ 
-                  delay: 0.2, 
-                  type: "spring",
-                  stiffness: 150 
-                }}
-                whileHover={{ 
-                  scale: 1.1, 
-                  rotate: 10,
-                  transition: { duration: 0.3 }
-                }}
+                initial={{ scale: 0, rotate: -90 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ delay: 0.2, type: "spring", stiffness: 150 }}
+                whileHover={{ scale: 1.1, rotate: 10 }}
               >
-                <Quote className="w-12 h-12 text-primary-500 mb-6 relative" />
-                <motion.div
-                  animate={{ 
-                    scale: [1, 1.5, 1],
-                    opacity: [0.3, 0, 0.3]
-                  }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="absolute inset-0 bg-primary-500/30 blur-xl rounded-full"
-                />
+                <Quote className="w-12 h-12 text-primary-400 mb-6 relative" />
               </motion.div>
-              
-              {/* Quote Text with Character Reveal */}
-              <motion.p 
-                className="text-xl md:text-2xl mb-8 text-slate-700 dark:text-slate-300 leading-relaxed relative z-10"
+
+              {/* Quote Text */}
+              <motion.p
+                className="text-xl md:text-2xl mb-8 text-slate-700 leading-relaxed relative z-10"
               >
                 <motion.span
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
                 >
-                  "
+                  &ldquo;
                 </motion.span>
                 {testimonials[current].quote.split(' ').map((word, i) => (
                   <motion.span
                     key={i}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ 
-                      duration: 0.3, 
-                      delay: 0.4 + (i * 0.03),
+                    transition={{
+                      duration: 0.25,
+                      delay: 0.4 + (i * 0.025),
                     }}
                     className="inline-block mr-[0.3em]"
                   >
@@ -182,98 +184,58 @@ export default function Testimonials() {
                 <motion.span
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.4 + (testimonials[current].quote.split(' ').length * 0.03) }}
+                  transition={{ duration: 0.5, delay: 0.4 + (testimonials[current].quote.split(' ').length * 0.025) }}
                 >
-                  "
+                  &rdquo;
                 </motion.span>
               </motion.p>
+
+              {/* Author */}
               <div className="flex items-center gap-4 relative z-10">
                 <motion.div
-                  initial={{ scale: 0, rotate: -180 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ 
-                    delay: 0.6, 
-                    type: "spring",
-                    stiffness: 200
-                  }}
-                  whileHover={{ 
-                    scale: 1.2, 
-                    rotate: 360,
-                    transition: { duration: 0.6 }
-                  }}
-                  className="w-16 h-16 rounded-full bg-gradient-to-br from-primary-500 to-purple-500 flex items-center justify-center text-white text-2xl font-bold relative overflow-hidden shadow-2xl"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
+                  whileHover={{ scale: 1.1 }}
+                  className="w-14 h-14 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white text-xl font-bold shadow-teal-md"
                 >
-                  <motion.div
-                    animate={{ 
-                      scale: [1, 1.5, 1],
-                      opacity: [0.5, 0, 0.5]
-                    }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="absolute inset-0 bg-white/30 rounded-full"
-                  />
-                  <span className="relative z-10">
-                    {testimonials[current].author.split(' ').map(n => n[0]).join('')}
-                  </span>
+                  {testimonials[current].author.split(' ').map(n => n[0]).join('')}
                 </motion.div>
                 <motion.div
-                  initial={{ opacity: 0, x: -30 }}
+                  initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.7 }}
+                  transition={{ delay: 0.6 }}
                 >
-                  <motion.div 
-                    className="font-bold text-slate-900 dark:text-white"
-                    whileHover={{ x: 5 }}
-                  >
+                  <div className="font-bold text-slate-800">
                     {testimonials[current].author}
-                  </motion.div>
-                  <motion.div 
-                    className="text-sm text-slate-600 dark:text-slate-400"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8 }}
-                  >
+                  </div>
+                  <div className="text-sm text-slate-500">
                     {testimonials[current].role} • {testimonials[current].company}
-                  </motion.div>
+                  </div>
                 </motion.div>
               </div>
 
-              {/* Star Rating with Sequential Animation */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
+              {/* Star Rating */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9 }}
+                transition={{ delay: 0.8 }}
                 className="flex gap-1 mt-6 relative z-10"
               >
                 {[...Array(testimonials[current].rating)].map((_, i) => (
-                  <motion.div
+                  <motion.span
                     key={i}
                     initial={{ scale: 0, rotate: -180 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{
-                      delay: 0.9 + (i * 0.1),
+                      delay: 0.8 + (i * 0.08),
                       type: "spring",
                       stiffness: 200
                     }}
-                    whileHover={{ 
-                      scale: 1.3, 
-                      rotate: 360,
-                      transition: { duration: 0.3 }
-                    }}
+                    className="text-amber-400 text-2xl"
                   >
-                    <motion.span
-                      animate={{
-                        textShadow: [
-                          '0 0 5px rgba(251, 191, 36, 0.5)',
-                          '0 0 20px rgba(251, 191, 36, 0.8)',
-                          '0 0 5px rgba(251, 191, 36, 0.5)',
-                        ]
-                      }}
-                      transition={{ duration: 2, repeat: Infinity, delay: i * 0.2 }}
-                      className="text-yellow-400 text-2xl"
-                    >
-                      ★
-                    </motion.span>
-                  </motion.div>
+                    ★
+                  </motion.span>
                 ))}
               </motion.div>
             </motion.div>
@@ -285,21 +247,22 @@ export default function Testimonials() {
               onClick={prev}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="p-3 glass rounded-full hover:bg-white/20 dark:hover:bg-white/10 transition-colors"
+              className="p-3 rounded-full bg-white border border-primary-100 shadow-teal-sm hover:shadow-teal-md hover:border-primary-200 transition-all duration-300 text-primary-600"
               aria-label="Previous testimonial"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-5 h-5" />
             </motion.button>
 
             <div className="flex gap-2">
               {testimonials.map((_, index) => (
-                <button
+                <motion.button
                   key={index}
                   onClick={() => setCurrent(index)}
-                  className={`h-2 rounded-full transition-all ${
+                  whileHover={{ scale: 1.2 }}
+                  className={`h-2.5 rounded-full transition-all duration-400 ${
                     index === current
-                      ? 'w-8 bg-gradient-to-r from-primary-500 to-purple-600'
-                      : 'w-2 bg-slate-300 dark:bg-slate-600'
+                      ? 'w-8 bg-gradient-to-r from-primary-500 to-tech-500'
+                      : 'w-2.5 bg-primary-200 hover:bg-primary-300'
                   }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
@@ -310,10 +273,10 @@ export default function Testimonials() {
               onClick={next}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="p-3 glass rounded-full hover:bg-white/20 dark:hover:bg-white/10 transition-colors"
+              className="p-3 rounded-full bg-white border border-primary-100 shadow-teal-sm hover:shadow-teal-md hover:border-primary-200 transition-all duration-300 text-primary-600"
               aria-label="Next testimonial"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-5 h-5" />
             </motion.button>
           </div>
         </div>

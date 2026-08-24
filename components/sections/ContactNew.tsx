@@ -45,7 +45,6 @@ export default function ContactNew() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
 
-  // Convert INR amounts to selected currency
   const formatBudgetRange = useMemo(() => {
     return (min: number, max: number) => {
       const currency = CURRENCY_CONFIG[formData.currency]
@@ -55,7 +54,6 @@ export default function ContactNew() {
     }
   }, [formData.currency])
 
-  // Get converted budget ranges based on selected currency
   const budgetRanges = useMemo(() => {
     return BUDGET_RANGES_INR.map(range => {
       if (range.isCustom) {
@@ -74,7 +72,6 @@ export default function ContactNew() {
     setErrorMessage('')
 
     try {
-      // EmailJS configuration from environment variables
       const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
       const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
       const autoReplyTemplateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_AUTOREPLY_ID
@@ -90,7 +87,7 @@ export default function ContactNew() {
         phone: formData.phone || 'Not provided',
         company: formData.company || 'Not provided',
         currency: formData.currency,
-        budget: formData.budget === 'custom' 
+        budget: formData.budget === 'custom'
           ? `Custom: ${CURRENCY_CONFIG[formData.currency].symbol}${formData.customBudgetMin} - ${CURRENCY_CONFIG[formData.currency].symbol}${formData.customBudgetMax}`
           : (budgetRanges.find(r => r.id === formData.budget)?.label || 'Not specified'),
         service: formData.service,
@@ -98,30 +95,16 @@ export default function ContactNew() {
         to_name: 'PerfactWorks Team',
       }
 
-      // Send admin notification email
-      await emailjs.send(
-        serviceId,
-        templateId,
-        templateParams,
-        publicKey
-      )
+      await emailjs.send(serviceId, templateId, templateParams, publicKey)
 
-      // Send auto-reply to customer if template ID is configured
       if (autoReplyTemplateId) {
-        await emailjs.send(
-          serviceId,
-          autoReplyTemplateId,
-          templateParams,
-          publicKey
-        )
+        await emailjs.send(serviceId, autoReplyTemplateId, templateParams, publicKey)
       }
 
-      console.log('Emails sent successfully')
       setStatus('success')
       setFormData({ name: '', email: '', phone: '', company: '', currency: 'INR', budget: '', customBudgetMin: '', customBudgetMax: '', service: '', message: '' })
       setTimeout(() => setStatus('idle'), 5000)
     } catch (error: any) {
-      console.error('Email send failed:', error)
       setStatus('error')
       setErrorMessage(error.text || error.message || 'Failed to send message. Please try again.')
       setTimeout(() => setStatus('idle'), 5000)
@@ -132,21 +115,24 @@ export default function ContactNew() {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
+  const inputClass = "w-full px-4 py-3.5 bg-white border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary-400 focus:ring-2 focus:ring-primary-100 transition-all duration-300"
+  const labelClass = "block text-sm font-semibold text-slate-600 mb-2"
+
   return (
-    <section className="relative min-h-screen py-20 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900 -z-20" />
-      
+    <section className="relative min-h-screen py-24 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-surface-200 to-surface-300 -z-20" />
+
+      {/* Decorative orbs */}
       <motion.div
-        animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
-        transition={{ duration: 8, repeat: Infinity }}
-        className="absolute top-20 right-20 w-[600px] h-[600px] bg-neon-cyan rounded-full blur-[150px] -z-10"
-      />
-      
-      <motion.div
-        animate={{ scale: [1.2, 1, 1.2], opacity: [0.15, 0.25, 0.15] }}
+        animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.15, 0.08] }}
         transition={{ duration: 10, repeat: Infinity }}
-        className="absolute bottom-20 left-20 w-[500px] h-[500px] bg-neon-purple rounded-full blur-[150px] -z-10"
+        className="absolute top-20 right-20 w-[500px] h-[500px] bg-primary-200 rounded-full blur-[120px] -z-10"
+      />
+      <motion.div
+        animate={{ scale: [1.2, 1, 1.2], opacity: [0.1, 0.18, 0.1] }}
+        transition={{ duration: 12, repeat: Infinity }}
+        className="absolute bottom-20 left-20 w-[400px] h-[400px] bg-tech-200 rounded-full blur-[120px] -z-10"
       />
 
       <div className="container mx-auto px-6 relative z-10">
@@ -159,46 +145,42 @@ export default function ContactNew() {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-dark-700/60 backdrop-blur-xl border border-neon-cyan/30 rounded-full"
+            className="inline-flex items-center gap-2 px-5 py-2.5 mb-6 bg-white/80 backdrop-blur-xl border border-primary-200/50 rounded-full shadow-teal-sm"
           >
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
             >
-              <Sparkles className="w-4 h-4 text-neon-cyan" />
+              <Sparkles className="w-4 h-4 text-primary-500" />
             </motion.div>
-            <span className="text-sm font-semibold text-neon-cyan uppercase tracking-wider">
+            <span className="text-sm font-semibold text-primary-700 uppercase tracking-wider">
               Free Consultation
             </span>
           </motion.div>
-          
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-            Let's Build Something
-            <span className="block bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
-              Extraordinary
-            </span>
+
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            <span className="text-slate-800">Let&apos;s Build Something</span>
+            <span className="block gradient-text">Extraordinary</span>
           </h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-4">
+          <p className="text-lg text-slate-500 max-w-2xl mx-auto mb-4">
             Book a free 30-minute consultation. No commitments, just honest advice on how we can help achieve your goals.
           </p>
-          <p className="text-base md:text-lg text-gray-400 max-w-3xl mx-auto">
-            Talk to our team about web development, app development, or SEO services. We work with India and global clients to deliver
-            performance-first digital products and measurable growth.
+          <p className="text-base text-slate-400 max-w-3xl mx-auto">
+            Talk to our team about web development, app development, or SEO services.
           </p>
-          
-          {/* Conversion Boost Text */}
+
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="flex items-center justify-center gap-4 text-sm md:text-base"
+            className="flex items-center justify-center gap-4 mt-6 text-sm"
           >
-            <div className="flex items-center gap-2 text-green-400">
+            <div className="flex items-center gap-2 text-primary-600">
               <CheckCircle className="w-5 h-5" />
               <span className="font-semibold">Free consultation</span>
             </div>
-            <div className="w-1 h-1 bg-gray-500 rounded-full" />
-            <div className="flex items-center gap-2 text-neon-cyan">
+            <div className="w-1 h-1 bg-slate-300 rounded-full" />
+            <div className="flex items-center gap-2 text-tech-600">
               <Clock className="w-5 h-5" />
               <span className="font-semibold">Response within 24 hours</span>
             </div>
@@ -206,40 +188,38 @@ export default function ContactNew() {
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {/* Main Form - Takes 2 columns */}
+          {/* Main Form */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
             className="lg:col-span-2"
           >
-            <div className="bg-dark-800/50 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 md:p-10 shadow-2xl">
+            <div className="glass-card p-8 md:p-10">
               {/* Trust Badges */}
-              <div className="flex flex-wrap gap-3 mb-8 pb-6 border-b border-gray-700/50">
+              <div className="flex flex-wrap gap-3 mb-8 pb-6 border-b border-slate-100">
                 {[
-                  { icon: Shield, text: 'SSL Secured', color: 'text-green-400' },
-                  { icon: Lock, text: 'Data Protected', color: 'text-blue-400' },
-                  { icon: CheckCircle, text: '24hr Response', color: 'text-neon-cyan' },
-                  { icon: Clock, text: 'No Spam Ever', color: 'text-purple-400' }
+                  { icon: Shield, text: 'SSL Secured', color: 'text-primary-500' },
+                  { icon: Lock, text: 'Data Protected', color: 'text-tech-500' },
+                  { icon: CheckCircle, text: '24hr Response', color: 'text-primary-600' },
+                  { icon: Clock, text: 'No Spam Ever', color: 'text-tech-600' }
                 ].map((badge, index) => (
                   <motion.div
                     key={index}
                     whileHover={{ scale: 1.05, y: -2 }}
-                    className="flex items-center gap-2 px-4 py-2 bg-dark-700/60 backdrop-blur-sm border border-gray-700/50 rounded-full"
+                    className="flex items-center gap-2 px-4 py-2 bg-primary-50/60 border border-primary-100/50 rounded-full"
                   >
                     <badge.icon className={`w-4 h-4 ${badge.color}`} />
-                    <span className="text-sm font-semibold text-gray-300">{badge.text}</span>
+                    <span className="text-sm font-semibold text-slate-600">{badge.text}</span>
                   </motion.div>
                 ))}
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Name & Email Row */}
+                {/* Name & Email */}
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-300 mb-2">
-                      Full Name *
-                    </label>
+                    <label className={labelClass}>Full Name *</label>
                     <motion.input
                       whileFocus={{ scale: 1.01 }}
                       type="text"
@@ -247,14 +227,12 @@ export default function ContactNew() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-dark-700/50 border border-gray-700/50 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/20 transition-all"
-                      placeholder=""
+                      className={inputClass}
+                      placeholder="Your full name"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-300 mb-2">
-                      Email Address *
-                    </label>
+                    <label className={labelClass}>Email Address *</label>
                     <motion.input
                       whileFocus={{ scale: 1.01 }}
                       type="email"
@@ -262,18 +240,16 @@ export default function ContactNew() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-dark-700/50 border border-gray-700/50 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/20 transition-all"
-                      placeholder=""
+                      className={inputClass}
+                      placeholder="you@company.com"
                     />
                   </div>
                 </div>
 
-                {/* Phone & Company Row */}
+                {/* Phone & Company */}
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-300 mb-2">
-                      Contact Number *
-                    </label>
+                    <label className={labelClass}>Contact Number *</label>
                     <motion.input
                       whileFocus={{ scale: 1.01 }}
                       type="tel"
@@ -281,38 +257,34 @@ export default function ContactNew() {
                       value={formData.phone}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-dark-700/50 border border-gray-700/50 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/20 transition-all"
-                      placeholder=""
+                      className={inputClass}
+                      placeholder="+91 XXXXX XXXXX"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-300 mb-2">
-                      Organization/Designation
-                    </label>
+                    <label className={labelClass}>Organization/Designation</label>
                     <motion.input
                       whileFocus={{ scale: 1.01 }}
                       type="text"
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-dark-700/50 border border-gray-700/50 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/20 transition-all"
-                      placeholder=""
+                      className={inputClass}
+                      placeholder="Company name"
                     />
                   </div>
                 </div>
 
-                {/* Currency & Budget Row */}
+                {/* Currency & Budget */}
                 <div className="grid md:grid-cols-3 gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-300 mb-2">
-                      Currency
-                    </label>
+                    <label className={labelClass}>Currency</label>
                     <motion.select
                       whileFocus={{ scale: 1.01 }}
                       name="currency"
                       value={formData.currency}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-dark-700/50 border border-gray-700/50 rounded-xl text-white focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/20 transition-all"
+                      className={inputClass}
                     >
                       {Object.entries(CURRENCY_CONFIG).map(([code, config]) => (
                         <option key={code} value={code}>
@@ -322,15 +294,13 @@ export default function ContactNew() {
                     </motion.select>
                   </div>
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-semibold text-gray-300 mb-2">
-                      Project Budget
-                    </label>
+                    <label className={labelClass}>Project Budget</label>
                     <motion.select
                       whileFocus={{ scale: 1.01 }}
                       name="budget"
                       value={formData.budget}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-dark-700/50 border border-gray-700/50 rounded-xl text-white focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/20 transition-all"
+                      className={inputClass}
                     >
                       <option value="">Select budget range</option>
                       {budgetRanges.map((range) => (
@@ -342,7 +312,7 @@ export default function ContactNew() {
                   </div>
                 </div>
 
-                {/* Custom Budget Range - Shows only when "Custom Range" is selected */}
+                {/* Custom Budget Range */}
                 {formData.budget === 'custom' && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
@@ -351,7 +321,7 @@ export default function ContactNew() {
                     className="grid md:grid-cols-2 gap-6"
                   >
                     <div>
-                      <label className="block text-sm font-semibold text-gray-300 mb-2">
+                      <label className={labelClass}>
                         Minimum Budget ({CURRENCY_CONFIG[formData.currency].symbol}) *
                       </label>
                       <motion.input
@@ -362,12 +332,12 @@ export default function ContactNew() {
                         onChange={handleChange}
                         required
                         min="0"
-                        className="w-full px-4 py-3 bg-dark-700/50 border border-gray-700/50 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/20 transition-all"
+                        className={inputClass}
                         placeholder="Enter minimum amount"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-gray-300 mb-2">
+                      <label className={labelClass}>
                         Maximum Budget ({CURRENCY_CONFIG[formData.currency].symbol}) *
                       </label>
                       <motion.input
@@ -378,7 +348,7 @@ export default function ContactNew() {
                         onChange={handleChange}
                         required
                         min="0"
-                        className="w-full px-4 py-3 bg-dark-700/50 border border-gray-700/50 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/20 transition-all"
+                        className={inputClass}
                         placeholder="Enter maximum amount"
                       />
                     </div>
@@ -387,16 +357,14 @@ export default function ContactNew() {
 
                 {/* Service Selection */}
                 <div>
-                  <label className="block text-sm font-semibold text-gray-300 mb-2">
-                    Service Interested In *
-                  </label>
+                  <label className={labelClass}>Service Interested In *</label>
                   <motion.select
                     whileFocus={{ scale: 1.01 }}
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-dark-700/50 border border-gray-700/50 rounded-xl text-white focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/20 transition-all"
+                    className={inputClass}
                   >
                     <option value="">Select a service</option>
                     <option value="web-app">Custom Web Application</option>
@@ -413,9 +381,7 @@ export default function ContactNew() {
 
                 {/* Project Details */}
                 <div>
-                  <label className="block text-sm font-semibold text-gray-300 mb-2">
-                    Project Details *
-                  </label>
+                  <label className={labelClass}>Project Details *</label>
                   <motion.textarea
                     whileFocus={{ scale: 1.01 }}
                     name="message"
@@ -423,18 +389,18 @@ export default function ContactNew() {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 bg-dark-700/50 border border-gray-700/50 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan/50 focus:ring-2 focus:ring-neon-cyan/20 transition-all resize-none"
-                    placeholder=""
+                    className={`${inputClass} resize-none`}
+                    placeholder="Tell us about your project requirements..."
                   />
                 </div>
 
                 {/* Submit Button */}
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(0, 240, 255, 0.5)' }}
+                  whileHover={{ scale: 1.02, boxShadow: '0 16px 48px rgba(20, 184, 166, 0.35)' }}
                   whileTap={{ scale: 0.98 }}
                   disabled={status === 'loading' || status === 'success'}
-                  className="w-full px-8 py-4 bg-gradient-to-r from-neon-cyan to-neon-blue text-dark-900 font-bold rounded-xl text-lg flex items-center justify-center gap-3 shadow-lg shadow-neon-cyan/30 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                  className="w-full px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold rounded-2xl text-lg flex items-center justify-center gap-3 shadow-teal-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
                 >
                   {status === 'loading' ? (
                     <>
@@ -471,10 +437,10 @@ export default function ContactNew() {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-center p-4 bg-green-500/10 border border-green-500/30 rounded-xl"
+                    className="text-center p-4 bg-primary-50 border border-primary-200 rounded-xl"
                   >
-                    <p className="text-green-400 font-semibold">
-                      🎉 Thank you! We'll get back to you within 24 hours.
+                    <p className="text-primary-700 font-semibold">
+                      🎉 Thank you! We&apos;ll get back to you within 24 hours.
                     </p>
                   </motion.div>
                 )}
@@ -483,9 +449,9 @@ export default function ContactNew() {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-center p-4 bg-red-500/10 border border-red-500/30 rounded-xl"
+                    className="text-center p-4 bg-red-50 border border-red-200 rounded-xl"
                   >
-                    <p className="text-red-400 font-semibold">
+                    <p className="text-red-600 font-semibold">
                       ❌ {errorMessage}
                     </p>
                   </motion.div>
@@ -501,10 +467,34 @@ export default function ContactNew() {
             transition={{ delay: 0.3 }}
             className="space-y-6"
           >
+            {/* Consultation Visual Showcase Card */}
+            <div className="glass-card p-4 rounded-3xl border border-primary-200/80 shadow-teal-md relative overflow-hidden group">
+              <div className="relative w-full h-56 rounded-2xl overflow-hidden mb-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/contact-consultation.jpg"
+                  alt="Live 1-on-1 Technology Consultation"
+                  className="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-105"
+                />
+                <span className="absolute top-2.5 right-2.5 text-[10px] font-bold px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-primary-700 border border-primary-200 shadow-sm flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  Live Booking Open
+                </span>
+              </div>
+              <div className="px-1 text-left">
+                <h4 className="text-sm font-extrabold text-slate-800 mb-1">
+                  1-on-1 Strategy & Architecture Call
+                </h4>
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  Join a direct 30-minute video session with our senior engineers to review technical specs, budgets, and milestones.
+                </p>
+              </div>
+            </div>
+
             {/* What Happens Next */}
-            <div className="bg-dark-800/50 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-6 shadow-2xl">
-              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-neon-cyan" />
+            <div className="glass-card p-6">
+              <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <Calendar className="w-5 h-5 text-primary-500" />
                 What Happens Next?
               </h3>
               <div className="space-y-4">
@@ -520,12 +510,12 @@ export default function ContactNew() {
                     transition={{ delay: 0.4 + index * 0.1 }}
                     className="flex gap-4"
                   >
-                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-neon-cyan to-neon-blue rounded-full flex items-center justify-center font-bold text-dark-900">
+                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center font-bold text-white shadow-teal-sm">
                       {item.step}
                     </div>
                     <div>
-                      <p className="text-white font-semibold">{item.text}</p>
-                      <p className="text-sm text-gray-400">{item.time}</p>
+                      <p className="text-slate-700 font-semibold">{item.text}</p>
+                      <p className="text-sm text-slate-400">{item.time}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -533,8 +523,8 @@ export default function ContactNew() {
             </div>
 
             {/* Contact Info */}
-            <div className="bg-dark-800/50 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-6 shadow-2xl">
-              <h3 className="text-xl font-bold text-white mb-6">Direct Contact</h3>
+            <div className="glass-card p-6">
+              <h3 className="text-xl font-bold text-slate-800 mb-6">Direct Contact</h3>
               <div className="space-y-4">
                 {[
                   { icon: Mail, label: 'Email', value: 'worksperfact@gmail.com', href: 'mailto:worksperfact@gmail.com' },
@@ -548,12 +538,12 @@ export default function ContactNew() {
                     whileHover={{ x: 5 }}
                     className="flex items-center gap-3 group"
                   >
-                    <div className="p-3 bg-gradient-to-br from-neon-cyan/20 to-neon-purple/20 rounded-xl group-hover:from-neon-cyan/30 group-hover:to-neon-purple/30 transition-all">
-                      <item.icon className="w-5 h-5 text-neon-cyan" />
+                    <div className="p-3 bg-gradient-to-br from-primary-50 to-tech-50 rounded-xl group-hover:from-primary-100 group-hover:to-tech-100 transition-all duration-300">
+                      <item.icon className="w-5 h-5 text-primary-600" />
                     </div>
                     <div>
-                      <p className="text-xs text-gray-400">{item.label}</p>
-                      <p className="text-white font-semibold group-hover:text-neon-cyan transition-colors">{item.value}</p>
+                      <p className="text-xs text-slate-400">{item.label}</p>
+                      <p className="text-slate-700 font-semibold group-hover:text-primary-600 transition-colors">{item.value}</p>
                     </div>
                   </motion.a>
                 ))}
@@ -561,9 +551,9 @@ export default function ContactNew() {
             </div>
 
             {/* Office Hours */}
-            <div className="bg-dark-800/50 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-6 shadow-2xl">
-              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                <Clock className="w-5 h-5 text-neon-cyan" />
+            <div className="glass-card p-6">
+              <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <Clock className="w-5 h-5 text-primary-500" />
                 Office Hours
               </h3>
               <div className="space-y-3">
@@ -573,11 +563,11 @@ export default function ContactNew() {
                   { day: 'Sunday', hours: 'Closed' }
                 ].map((item, index) => (
                   <div key={index} className="flex justify-between text-sm">
-                    <span className="text-gray-400">{item.day}</span>
-                    <span className="text-white font-semibold">{item.hours}</span>
+                    <span className="text-slate-400">{item.day}</span>
+                    <span className="text-slate-700 font-semibold">{item.hours}</span>
                   </div>
                 ))}
-                <p className="text-xs text-gray-500 mt-4">* Pacific Standard Time (PST)</p>
+                <p className="text-xs text-slate-400 mt-4">* Indian Standard Time (IST)</p>
               </div>
             </div>
           </motion.div>

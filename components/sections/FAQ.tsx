@@ -57,13 +57,13 @@ export default function FAQ() {
   }
 
   return (
-    <Section className="bg-slate-50 dark:bg-slate-900/50">
+    <Section className="bg-slate-50 bg-white">
       <SectionHeader
         subtitle="Frequently Asked Questions"
         title="Everything You Need to Know About Our Services"
         description="Common questions about our technology consulting, custom software development, and MVP services."
       />
-      
+
       <div className="max-w-3xl mx-auto">
         {faqs.map((faq, index) => (
           <motion.div
@@ -81,7 +81,7 @@ export default function FAQ() {
               whileTap={{ scale: 0.99 }}
             >
               <div className="flex items-start justify-between gap-4">
-                <h3 className="text-lg font-semibold text-slate-900 dark:text-white pr-4">
+                <h3 className="text-lg font-semibold text-slate-900 text-slate-800 pr-4">
                   {faq.question}
                 </h3>
                 <motion.div
@@ -96,7 +96,7 @@ export default function FAQ() {
                   )}
                 </motion.div>
               </div>
-              
+
               <motion.div
                 initial={false}
                 animate={{
@@ -106,7 +106,7 @@ export default function FAQ() {
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden"
               >
-                <p className="text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">
+                <p className="text-slate-600 text-slate-500 mt-4 leading-relaxed">
                   {faq.answer}
                 </p>
               </motion.div>

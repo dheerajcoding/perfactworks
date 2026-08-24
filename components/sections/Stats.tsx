@@ -1,41 +1,48 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { TrendingUp, Users, Code, Award } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { TrendingUp, Users, Code2, Award, Sparkles, CheckCircle2 } from 'lucide-react'
 import Section from '../ui/Section'
+import SectionHeader from '../ui/SectionHeader'
 
 const stats = [
   {
-    icon: Code,
+    icon: Code2,
     value: 15,
     suffix: '+',
     label: 'Projects Delivered',
-    description: 'Successfully completed and deployed',
-    color: 'from-blue-500 to-cyan-500',
+    description: 'High-performance web apps & mobile solutions',
+    accent: 'from-primary-500 to-tech-500',
+    percent: 85,
   },
   {
     icon: TrendingUp,
     value: 100,
     suffix: '%',
-    label: 'Quality Focused',
-    description: 'Committed to excellence in every project',
-    color: 'from-green-500 to-emerald-500',
+    label: 'Quality & Reliability',
+    description: 'Committed to clean architecture and zero debt',
+    accent: 'from-emerald-500 to-teal-500',
+    percent: 100,
   },
   {
     icon: Users,
     value: 10,
     suffix: '+',
-    label: 'Happy Clients',
-    description: 'Building lasting partnerships',
-    color: 'from-purple-500 to-pink-500',
+    label: 'Happy Global Clients',
+    description: 'Long-term partnerships across India & worldwide',
+    accent: 'from-tech-500 to-blue-600',
+    percent: 90,
   },
   {
     icon: Award,
     value: 95,
     suffix: '%',
     label: 'Client Satisfaction',
-    description: 'Would recommend us to others',
-    color: 'from-orange-500 to-red-500',
+    description: 'Verified positive feedback & referrals',
+    accent: 'from-amber-500 to-primary-500',
+    percent: 95,
   },
 ]
 
@@ -51,12 +58,11 @@ function Counter({ target, suffix }: { target: number; suffix: string }) {
       ([entry]) => {
         if (entry.isIntersecting && !started.current) {
           started.current = true
-          const duration = 1800
+          const duration = 2000
           const start = performance.now()
           const tick = (now: number) => {
             const elapsed = now - start
             const progress = Math.min(elapsed / duration, 1)
-            // ease-out cubic
             const eased = 1 - Math.pow(1 - progress, 3)
             setCount(Math.round(eased * target))
             if (progress < 1) requestAnimationFrame(tick)
@@ -64,7 +70,7 @@ function Counter({ target, suffix }: { target: number; suffix: string }) {
           requestAnimationFrame(tick)
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     )
     observer.observe(el)
     return () => observer.disconnect()
@@ -78,46 +84,70 @@ function Counter({ target, suffix }: { target: number; suffix: string }) {
 }
 
 export default function Stats() {
-  return (
-    <Section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-purple-600 -z-10" />
-      <div className="relative">
-        <div className="text-center mb-12 text-white">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Numbers That Speak for Themselves
-          </h2>
-          <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
-            Our track record of delivering exceptional results
-          </p>
-        </div>
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 })
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat) => {
+  return (
+    <Section className="bg-gradient-to-b from-white via-surface-200/40 to-white py-20" id="stats">
+      <SectionHeader
+        subtitle="Proven Track Record"
+        title="Numbers That Speak for Themselves"
+        description="Our commitment to speed, security, and performance reflected in measurable results."
+      />
+
+      <div ref={ref} className="max-w-7xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((stat, i) => {
             const Icon = stat.icon
             return (
-              <div
+              <motion.div
                 key={stat.label}
-                className="text-center text-white group"
+                initial={{ opacity: 0, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: i * 0.12, ease: 'easeOut' }}
+                whileHover={{ y: -6, boxShadow: '0 20px 40px -12px rgba(20, 184, 166, 0.2)' }}
+                className="glass-card p-6 md:p-7 rounded-3xl border border-primary-100/80 shadow-teal-sm text-left flex flex-col justify-between relative overflow-hidden group transition-all duration-300"
               >
-                <div className="relative p-6 rounded-3xl overflow-hidden hover:-translate-y-2 transition-transform duration-300">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-20`} />
-                  <div className="relative z-10">
-                    <div className="mb-4 flex justify-center">
-                      <div className="p-4 rounded-2xl bg-white/10 backdrop-blur-sm">
-                        <Icon className="w-8 h-8" />
-                      </div>
-                    </div>
-                    <div className="text-4xl md:text-5xl font-bold mb-2">
-                      <Counter target={stat.value} suffix={stat.suffix} />
-                    </div>
-                    <div className="text-lg font-bold mb-1">{stat.label}</div>
-                    <div className="text-sm text-white/80">{stat.description}</div>
-                    <div className="mt-4 h-1 bg-white/20 rounded-full overflow-hidden">
-                      <div className="h-full bg-white/50 rounded-full w-full" />
-                    </div>
+                {/* Ambient Card Glow on Hover */}
+                <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${stat.accent} opacity-5 group-hover:opacity-15 rounded-bl-full transition-opacity duration-500 pointer-events-none`} />
+
+                <div>
+                  {/* Icon Header */}
+                  <div className="flex items-center justify-between mb-5">
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 10 }}
+                      className={`p-3.5 rounded-2xl bg-gradient-to-br ${stat.accent} text-white shadow-teal-sm`}
+                    >
+                      <Icon className="w-6 h-6" />
+                    </motion.div>
+                    <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-primary-50 text-primary-700 border border-primary-200">
+                      Verified
+                    </span>
                   </div>
+
+                  {/* Counter Value */}
+                  <div className="text-4xl sm:text-5xl font-extrabold text-slate-800 mb-2 tracking-tight">
+                    <span className="gradient-text">
+                      <Counter target={stat.value} suffix={stat.suffix} />
+                    </span>
+                  </div>
+
+                  {/* Label */}
+                  <h4 className="text-base font-bold text-slate-800 mb-1.5">{stat.label}</h4>
+
+                  {/* Description */}
+                  <p className="text-xs text-slate-500 leading-relaxed mb-6">{stat.description}</p>
                 </div>
-              </div>
+
+                {/* Progress Bar Fill */}
+                <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                  <motion.div
+                    initial={{ width: '0%' }}
+                    animate={inView ? { width: `${stat.percent}%` } : {}}
+                    transition={{ duration: 1.5, delay: 0.4 + i * 0.15, ease: 'easeOut' }}
+                    className={`h-full rounded-full bg-gradient-to-r ${stat.accent}`}
+                  />
+                </div>
+              </motion.div>
             )
           })}
         </div>

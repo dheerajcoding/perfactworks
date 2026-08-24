@@ -172,7 +172,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 mb-8 max-w-3xl mx-auto text-balance font-medium"
+            className="text-xl md:text-2xl text-slate-600 text-slate-500 mb-8 max-w-3xl mx-auto text-balance font-medium"
           >
             Custom web, app, and software solutions built for scale, performance, and security.
           </motion.p>
@@ -216,7 +216,7 @@ export default function Hero() {
                   rotate: [0, -5, 5, 0],
                   boxShadow: '0 10px 30px rgba(99, 102, 241, 0.3)',
                 }}
-                className="px-4 py-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-full font-medium text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 cursor-pointer"
+                className="px-4 py-2 bg-white/80 bg-white/80 backdrop-blur-sm rounded-full font-medium text-slate-700 text-slate-600 border border-slate-200 dark:border-slate-700 cursor-pointer"
               >
                 {point}
               </motion.span>
@@ -347,7 +347,7 @@ export default function Hero() {
                   >
                     {stat.value}
                   </motion.div>
-                  <div className="text-sm text-slate-600 dark:text-slate-400 relative z-10">
+                  <div className="text-sm text-slate-600 text-slate-500 relative z-10">
                     {stat.label}
                   </div>
                 </motion.div>

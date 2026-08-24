@@ -22,6 +22,11 @@ export const CORE_SERVICES = [
     description: 'Technical SEO, on-page optimization, and performance improvements to grow qualified organic traffic globally and in India.',
     url: `${SITE_URL}/services/seo-services`,
   },
+  {
+    name: 'Graphic & Motion Design',
+    description: 'Brand identity systems, 3D visual modeling, and 60 FPS UI motion design for high-growth tech brands.',
+    url: `${SITE_URL}/services/graphic-motion-design`,
+  },
 ]
 
 // Primary target keywords
@@ -318,6 +323,72 @@ export function generateArticleSchema(article: {
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': article.url,
+    },
+  }
+}
+
+export function generatePageMetadata({
+  title,
+  description,
+  keywords = [],
+  canonical,
+  ogImage = '/og-image.jpg',
+  type = 'website',
+}: {
+  title: string
+  description: string
+  keywords?: string[]
+  canonical?: string
+  ogImage?: string
+  type?: 'website' | 'article'
+}): Metadata {
+  const fullTitle = `${title} | ${SITE_NAME}`
+  const url = canonical ? `${SITE_URL}${canonical}` : SITE_URL
+  const allKeywords = [...PRIMARY_KEYWORDS, ...keywords].join(', ')
+
+  return {
+    title: fullTitle,
+    description,
+    keywords: allKeywords,
+    authors: [{ name: SITE_NAME }],
+    creator: SITE_NAME,
+    publisher: SITE_NAME,
+    metadataBase: new URL(SITE_URL),
+    alternates: {
+      canonical,
+    },
+    openGraph: {
+      title: fullTitle,
+      description,
+      url,
+      siteName: SITE_NAME,
+      locale: 'en_US',
+      type,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: fullTitle,
+      description,
+      images: [ogImage],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
   }
 }

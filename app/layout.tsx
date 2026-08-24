@@ -1,12 +1,10 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { ThemeProvider } from '@/components/ThemeProvider'
 import SeoJsonLd from '@/components/SeoJsonLd'
 import { generateOrganizationSchema, generateWebsiteSchema, generateCoreServiceSchemas, SITE_NAME } from '@/lib/seo'
-import ClientParticles from '@/components/ClientParticles'
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   preload: true,
@@ -81,15 +79,16 @@ export default function RootLayout({
   const serviceSchemas = generateCoreServiceSchemas()
 
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} overflow-x-hidden`}>
-        <ThemeProvider>
-          <ClientParticles />
-          <SeoJsonLd data={[organizationSchema, websiteSchema, ...serviceSchemas]} />
-          {children}
-        </ThemeProvider>
+    <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+      </head>
+      <body className={`${inter.className} overflow-x-hidden bg-white text-slate-900 antialiased`}>
+        <SeoJsonLd data={[organizationSchema, websiteSchema, ...serviceSchemas]} />
+        {children}
       </body>
     </html>
   )
 }
-//#endregion components

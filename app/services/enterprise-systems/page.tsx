@@ -98,60 +98,95 @@ export default function EnterpriseSystemsPage() {
       <Header />
       <main className="overflow-hidden pt-20">
         {/* Hero Section */}
-        <Section className="relative">
-          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-500/10 via-primary-500/10 to-transparent" />
-          
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 rounded-full mb-6"
-            >
-              <Building2 className="w-4 h-4 text-blue-500" />
-              <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">
-                Enterprise Systems
-              </span>
-            </motion.div>
+        <Section className="relative pt-6 pb-12">
+          <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary-50/40 via-surface-100/50 to-white" />
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
-            >
-              Custom HRMS, LMS, ERP & CRM Development
-            </motion.h1>
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center mb-12">
+            {/* Left Content */}
+            <div className="lg:col-span-6 text-left">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 border border-primary-200/80 rounded-full mb-6 shadow-teal-sm"
+              >
+                <Building2 className="w-4 h-4 text-primary-600" />
+                <span className="text-xs sm:text-sm font-bold text-primary-700 uppercase tracking-wider">
+                  Enterprise Systems
+                </span>
+              </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-xl text-slate-600 dark:text-slate-400 mb-8"
-            >
-              Bespoke <strong className="font-semibold text-slate-700 dark:text-slate-300">HRMS, LMS, ERP, and CRM development</strong> for enterprises. 
-              We build custom enterprise systems tailored to your unique business processes, workflows, and compliance requirements. 
-              No templates, no compromises—just solutions that fit your business perfectly.
-            </motion.p>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-800 mb-6 leading-tight"
+              >
+                Custom <span className="gradient-text">HRMS, LMS, ERP & CRM</span> Solutions
+              </motion.h1>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <Button variant="primary" size="lg" href="/contact">
-                Discuss Your Requirements
-                <ArrowRight className="w-5 h-5" />
-              </Button>
-              <Button variant="secondary" size="lg" href="/case-studies">
-                View Case Studies
-              </Button>
-            </motion.div>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-base sm:text-lg text-slate-600 mb-8 leading-relaxed"
+              >
+                Bespoke enterprise software tailored to your complex workflows, multi-department hierarchies, and strict regulatory compliances. Built with high-throughput microservices and bank-grade data security.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <Button variant="primary" size="lg" href="/contact">
+                  Discuss Your Requirements
+                  <ArrowRight className="w-5 h-5" />
+                </Button>
+                <Button variant="secondary" size="lg" href="/case-studies">
+                  View Case Studies
+                </Button>
+              </motion.div>
+            </div>
+
+            {/* Right 3D Visual with Floating Badges */}
+            <div className="lg:col-span-6 relative flex items-center justify-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6 }}
+                className="relative w-full max-w-[500px]"
+              >
+                <motion.div
+                  animate={{ y: [-8, 8, -8] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                  className="relative"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/service-enterprise-systems.png"
+                    alt="Custom HRMS, ERP and CRM Enterprise Software 3D illustration"
+                    className="w-full h-auto rounded-3xl object-contain drop-shadow-[0_20px_40px_rgba(20,184,166,0.25)] border border-primary-200/60"
+                  />
+
+                  {/* Floating Badge 1 */}
+                  <div className="absolute -top-3 left-2 bg-white/95 backdrop-blur-xl border border-primary-200 px-3.5 py-2 rounded-2xl shadow-teal-md flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                    <span className="text-xs font-bold text-slate-800">Role-Based Access (RBAC)</span>
+                  </div>
+
+                  {/* Floating Badge 2 */}
+                  <div className="absolute -bottom-3 right-2 bg-white/95 backdrop-blur-xl border border-primary-200 px-3.5 py-2 rounded-2xl shadow-teal-md flex items-center gap-2">
+                    <span className="text-xs font-bold text-slate-800">Bank-Grade Compliance</span>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </div>
           </div>
         </Section>
 
         {/* Systems Overview */}
-        <Section className="bg-slate-50 dark:bg-slate-900/50">
+        <Section className="bg-slate-50 bg-white">
           <SectionHeader
             subtitle="Enterprise Solutions"
             title="Custom Business Management Systems We Build"
@@ -178,14 +213,14 @@ export default function EnterpriseSystemsPage() {
                           </div>
                           <h3 className="text-2xl font-bold">{system.name.split('(')[0]}</h3>
                         </div>
-                        <p className="text-slate-600 dark:text-slate-400">{system.description}</p>
+                        <p className="text-slate-600 text-slate-500">{system.description}</p>
                       </div>
                       <div className="md:w-2/3">
                         <div className="grid md:grid-cols-2 gap-3">
                           {system.features.map((feature) => (
                             <div key={feature} className="flex items-start gap-2">
                               <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                              <span className="text-sm text-slate-600 dark:text-slate-400">{feature}</span>
+                              <span className="text-sm text-slate-600 text-slate-500">{feature}</span>
                             </div>
                           ))}
                         </div>
@@ -216,7 +251,7 @@ export default function EnterpriseSystemsPage() {
                       <Icon className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
-                    <p className="text-slate-600 dark:text-slate-400">{benefit.description}</p>
+                    <p className="text-slate-600 text-slate-500">{benefit.description}</p>
                   </div>
                 </Card>
               )
@@ -237,7 +272,7 @@ export default function EnterpriseSystemsPage() {
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-2">
                     <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                    <span className="text-slate-600 dark:text-slate-400">{item}</span>
+                    <span className="text-slate-600 text-slate-500">{item}</span>
                   </div>
                 ))}
               </div>
@@ -246,7 +281,7 @@ export default function EnterpriseSystemsPage() {
         </Section>
 
         {/* Industries Served */}
-        <Section className="bg-slate-50 dark:bg-slate-900/50">
+        <Section className="bg-slate-50 bg-white">
           <SectionHeader
             subtitle="Industry Expertise"
             title="Industries We Serve with Custom Enterprise Systems"
@@ -321,7 +356,7 @@ export default function EnterpriseSystemsPage() {
                       </div>
                       <div>
                         <h3 className="text-lg font-bold mb-1">{step.phase}</h3>
-                        <p className="text-slate-600 dark:text-slate-400 text-sm">{step.description}</p>
+                        <p className="text-slate-600 text-slate-500 text-sm">{step.description}</p>
                       </div>
                     </div>
                   </Card>
@@ -332,7 +367,7 @@ export default function EnterpriseSystemsPage() {
         </Section>
 
         {/* Pricing */}
-        <Section className="bg-slate-50 dark:bg-slate-900/50">
+        <Section className="bg-slate-50 bg-white">
           <div className="max-w-3xl mx-auto text-center">
             <SectionHeader
               subtitle="Investment"
@@ -346,7 +381,7 @@ export default function EnterpriseSystemsPage() {
                   <span className="font-semibold">Small to Medium System</span>
                   <span className="text-2xl font-bold gradient-text">$30,000 - $60,000</span>
                 </div>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
+                <p className="text-sm text-slate-600 text-slate-500">
                   Suitable for: Basic HRMS, small LMS, departmental CRM (10-20 features, 100-500 users)
                 </p>
 
@@ -354,12 +389,12 @@ export default function EnterpriseSystemsPage() {
                   <span className="font-semibold">Large Enterprise System</span>
                   <span className="text-2xl font-bold gradient-text">$70,000 - $150,000+</span>
                 </div>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
+                <p className="text-sm text-slate-600 text-slate-500">
                   Suitable for: Comprehensive ERP, full-featured HRMS, advanced CRM (30+ features, 1000+ users, multiple integrations)
                 </p>
 
                 <div className="pt-4">
-                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                  <p className="text-sm text-slate-600 text-slate-500 mb-4">
                     <strong>Project timeline:</strong> 3-6 months depending on scope and complexity
                   </p>
                   <Button variant="primary" href="/contact" className="w-full">
@@ -372,7 +407,7 @@ export default function EnterpriseSystemsPage() {
           </div>
         </Section>
 
-        <Section className="bg-slate-50 dark:bg-slate-900/50">
+        <Section className="bg-slate-50 bg-white">
           <SectionHeader
             subtitle="Related Services"
             title="Strengthen Your Enterprise Stack"

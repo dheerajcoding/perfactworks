@@ -82,54 +82,91 @@ export default function WebDevelopmentPage() {
       <Header />
       <main className="overflow-hidden pt-20">
         {/* Hero Section */}
-        <Section className="relative">
-          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary-500/10 via-purple-500/10 to-transparent" />
-          
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 rounded-full mb-6"
-            >
-              <Code className="w-4 h-4 text-primary-500" />
-              <span className="text-sm font-semibold text-primary-600 dark:text-primary-400">
-                Full-Stack Web Development
-              </span>
-            </motion.div>
+        <Section className="relative pt-6 pb-12">
+          <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary-50/40 via-surface-100/50 to-white" />
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
-            >
-              Custom Web Application Development Services
-            </motion.h1>
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center mb-12">
+            {/* Left Content */}
+            <div className="lg:col-span-6 text-left">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 border border-primary-200/80 rounded-full mb-6 shadow-teal-sm"
+              >
+                <Code className="w-4 h-4 text-primary-600" />
+                <span className="text-xs sm:text-sm font-bold text-primary-700 uppercase tracking-wider">
+                  Full-Stack Web Development
+                </span>
+              </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-xl text-slate-600 dark:text-slate-400 mb-8"
-            >
-              Enterprise-grade <strong className="font-semibold text-slate-700 dark:text-slate-300">custom web application development</strong> using modern MERN stack, Node.js, React, and Next.js. 
-              We build scalable, secure, and high-performance web applications for India and global businesses that drive measurable growth.
-            </motion.p>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-800 mb-6 leading-tight"
+              >
+                Custom Web Applications Built for <span className="gradient-text">Speed & Scale</span>
+              </motion.h1>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <Button variant="primary" size="lg" href="/contact">
-                Start Your Project
-                <ArrowRight className="w-5 h-5" />
-              </Button>
-              <Button variant="secondary" size="lg" href="/case-studies">
-                View Portfolio
-              </Button>
-            </motion.div>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-base sm:text-lg text-slate-600 mb-8 leading-relaxed"
+              >
+                Enterprise-grade custom web application development using modern Next.js 15, React, Node.js, and PostgreSQL. We build scalable, secure, and high-performance cloud platforms that drive measurable conversions.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <Button variant="primary" size="lg" href="/contact">
+                  Start Your Project
+                  <ArrowRight className="w-5 h-5" />
+                </Button>
+                <Button variant="secondary" size="lg" href="/case-studies">
+                  View Portfolio
+                </Button>
+              </motion.div>
+            </div>
+
+            {/* Right 3D Visual with Floating Badges */}
+            <div className="lg:col-span-6 relative flex items-center justify-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6 }}
+                className="relative w-full max-w-[500px]"
+              >
+                <motion.div
+                  animate={{ y: [-8, 8, -8] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                  className="relative"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/service-cloud-platform.jpg"
+                    alt="Full-Stack Web Development Architecture 3D illustration"
+                    className="w-full h-auto rounded-3xl object-contain drop-shadow-[0_20px_40px_rgba(20,184,166,0.25)] border border-primary-200/60"
+                  />
+
+                  {/* Floating Badge 1 */}
+                  <div className="absolute -top-3 left-2 bg-white/95 backdrop-blur-xl border border-primary-200 px-3.5 py-2 rounded-2xl shadow-teal-md flex items-center gap-2">
+                    <Zap className="w-4 h-4 text-primary-500" />
+                    <span className="text-xs font-bold text-slate-800">React 19 & Next.js 15</span>
+                  </div>
+
+                  {/* Floating Badge 2 */}
+                  <div className="absolute -bottom-3 right-2 bg-white/95 backdrop-blur-xl border border-primary-200 px-3.5 py-2 rounded-2xl shadow-teal-md flex items-center gap-2">
+                    <Shield className="w-4 h-4 text-emerald-500" />
+                    <span className="text-xs font-bold text-slate-800">Sub-Second Latency</span>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </div>
           </div>
 
           {/* Technologies */}
@@ -154,7 +191,7 @@ export default function WebDevelopmentPage() {
         </Section>
 
         {/* What We Deliver */}
-        <Section className="bg-slate-50 dark:bg-slate-900/50">
+        <Section className="bg-slate-50 bg-white">
           <SectionHeader
             subtitle="Comprehensive Solutions"
             title="What We Deliver in Our Web Development Services"
@@ -172,7 +209,7 @@ export default function WebDevelopmentPage() {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                      <p className="text-slate-600 dark:text-slate-400">{feature.description}</p>
+                      <p className="text-slate-600 text-slate-500">{feature.description}</p>
                     </div>
                   </div>
                 </Card>
@@ -221,7 +258,7 @@ export default function WebDevelopmentPage() {
                 <Card hover className="h-full">
                   <div className="text-5xl font-bold text-primary-500/20 mb-4">{item.step}</div>
                   <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                  <p className="text-slate-600 dark:text-slate-400">{item.description}</p>
+                  <p className="text-slate-600 text-slate-500">{item.description}</p>
                 </Card>
               </motion.div>
             ))}
@@ -229,7 +266,7 @@ export default function WebDevelopmentPage() {
         </Section>
 
         {/* Tech Stack Details */}
-        <Section className="bg-slate-50 dark:bg-slate-900/50">
+        <Section className="bg-slate-50 bg-white">
           <SectionHeader
             subtitle="Technology Stack"
             title="Modern Technologies for Scalable Web Applications"
@@ -241,7 +278,7 @@ export default function WebDevelopmentPage() {
               <div className="text-center">
                 <Globe className="w-12 h-12 text-primary-500 mx-auto mb-4" />
                 <h3 className="text-lg font-bold mb-3">Frontend Excellence</h3>
-                <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                <ul className="space-y-2 text-sm text-slate-600 text-slate-500">
                   <li>React & Next.js</li>
                   <li>TypeScript</li>
                   <li>Tailwind CSS</li>
@@ -255,7 +292,7 @@ export default function WebDevelopmentPage() {
               <div className="text-center">
                 <Server className="w-12 h-12 text-primary-500 mx-auto mb-4" />
                 <h3 className="text-lg font-bold mb-3">Backend Power</h3>
-                <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                <ul className="space-y-2 text-sm text-slate-600 text-slate-500">
                   <li>Node.js & Express</li>
                   <li>REST & GraphQL APIs</li>
                   <li>Authentication & Authorization</li>
@@ -269,7 +306,7 @@ export default function WebDevelopmentPage() {
               <div className="text-center">
                 <Database className="w-12 h-12 text-primary-500 mx-auto mb-4" />
                 <h3 className="text-lg font-bold mb-3">Data & Infrastructure</h3>
-                <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                <ul className="space-y-2 text-sm text-slate-600 text-slate-500">
                   <li>MongoDB & PostgreSQL</li>
                   <li>Redis Caching</li>
                   <li>AWS/Azure/GCP</li>
@@ -321,7 +358,7 @@ export default function WebDevelopmentPage() {
                       <CheckCircle className="w-5 h-5 text-green-500" />
                       {item.title}
                     </h3>
-                    <p className="text-slate-600 dark:text-slate-400 pl-7">{item.description}</p>
+                    <p className="text-slate-600 text-slate-500 pl-7">{item.description}</p>
                   </Card>
                 </motion.div>
               ))}
@@ -329,7 +366,7 @@ export default function WebDevelopmentPage() {
           </div>
         </Section>
 
-        <Section className="bg-slate-50 dark:bg-slate-900/50">
+        <Section className="bg-slate-50 bg-white">
           <SectionHeader
             subtitle="Related Services"
             title="Explore More Ways We Can Help"

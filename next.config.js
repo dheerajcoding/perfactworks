@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig = { 
+  // Added to explicitly set Turbopack root directory
+  turbopack: { root: __dirname },
   reactStrictMode: true,
   devIndicators: false,
   images: {

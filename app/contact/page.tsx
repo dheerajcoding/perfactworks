@@ -7,9 +7,9 @@ import { motion } from 'framer-motion'
 
 export default function ContactPage() {
   return (
-    <div className="bg-dark-900 min-h-screen">
+    <div className="bg-white min-h-screen">
       <Header />
-      <motion.main 
+      <motion.main
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}

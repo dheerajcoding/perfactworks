@@ -5,21 +5,72 @@ import Button from '../ui/Button'
 
 const caseStudies = [
   {
-    title: 'Learning Management System (LMS)',
-    client: 'Connxn',
-    category: 'Web Application',
-    description: 'Built a comprehensive LMS platform with course management, video lectures, assignments, and progress tracking, actively used by 300+ students and instructors.',
-    problem: 'Educational institution needed a centralized platform to manage courses, track student progress, and facilitate online learning.',
-    solution: 'Developed a full-featured LMS with course management, video lectures, assignments, quizzes, and real-time progress tracking.',
-    technology: 'React, Node.js, MongoDB, AWS S3 for video storage, Socket.io for real-time updates',
-    result: '300+ active users, 50+ courses launched, 4.7/5 satisfaction rating, 65% reduction in administrative time',
+    title: 'mycashbridge - Fintech Loan & Credit Comparison Platform',
+    client: 'Vishal Bora (mycashbridge)',
+    category: 'Fintech & Banking Compliance',
+    description: 'Engineered a PaisaBazaar-like financial portal enabling customers to compare loans, credit cards, and insurance products with bank-grade encryption, instant eligibility calculation, and seamless KYC verification.',
+    problem: 'Required a highly secure, scalable, and fully compliant financial comparison portal handling sensitive user KYC, credit scores, and multi-bank API integrations.',
+    solution: 'Built a modular microservices platform with 256-bit data encryption, automated eligibility engines, RBI/banking data security compliance, and sub-second response times.',
+    technology: 'Next.js 15, Node.js, PostgreSQL, Redis, Bank API Integrations, OAuth2, AWS KMS',
+    result: '100% security & compliance audit pass, instant loan matching under 1.2s, automated multi-bank application processing',
     metrics: [
-      { label: 'Active Users', value: '300+' },
-      { label: 'Courses', value: '50+' },
-      { label: 'Satisfaction', value: '4.7/5' },
+      { label: 'Security & Compliance', value: '100%' },
+      { label: 'Loan Match Speed', value: '<1.2s' },
+      { label: 'User Rating', value: '4.9/5' },
     ],
-    tags: ['React', 'Node.js', 'MongoDB', 'AWS'],
-    image: '/images/imagelms.png',
+    tags: ['Next.js', 'Node.js', 'PostgreSQL', 'Fintech Security', 'Bank APIs'],
+    image: '/images/service-web-saas.png',
+  },
+  {
+    title: 'Reddington Global Consultancy - Brand Website & Advisory Portal',
+    client: 'Jordy (Reddington Global Consultancy)',
+    category: 'Brand & Corporate Platform',
+    description: 'Designed and engineered an international consulting brand platform with modern responsive storytelling, interactive service roadmaps, dynamic case studies, and automated client inquiry routing.',
+    problem: 'Needed a world-class digital brand identity to reflect global advisory expertise and attract high-ticket institutional clients.',
+    solution: 'Built a bespoke Next.js platform with ultra-smooth micro-interactions, high-speed Core Web Vitals, and lead qualification funnels.',
+    technology: 'Next.js 15, Tailwind CSS, Framer Motion, Vercel Edge, EmailJS',
+    result: '+180% inbound advisory inquiries, 98+ PageSpeed score, sub-second global page loads',
+    metrics: [
+      { label: 'Inquiry Growth', value: '+180%' },
+      { label: 'PageSpeed Score', value: '98/100' },
+      { label: 'Global Load', value: '<800ms' },
+    ],
+    tags: ['Next.js 15', 'Tailwind', 'Brand Strategy', 'Framer Motion'],
+    image: '/images/hero-tech-3d.png',
+  },
+  {
+    title: 'RGcare Foundation - NGO & Community Impact Platform',
+    client: 'Jyotsana Bora (RGcare Foundation)',
+    category: 'NGO & Social Impact Web Portal',
+    description: 'Developed an NGO foundation website featuring transparent community project tracking, verified campaign transparency, donor engagement, and automated receipt generation.',
+    problem: 'Required a credible, transparent, and empathetic digital platform to showcase social initiatives, track field programs, and connect with global donors.',
+    solution: 'Created an accessible, mobile-first web portal with live program milestones, secure donation pathways, and social proof impact stories.',
+    technology: 'React, Next.js, Cloudinary, Payment Gateways, Node.js',
+    result: '300% surge in volunteer registrations, transparent community funding tracking, 100% positive donor trust feedback',
+    metrics: [
+      { label: 'Volunteer Growth', value: '+300%' },
+      { label: 'Donor Trust', value: '100%' },
+      { label: 'Mobile Speed', value: '99/100' },
+    ],
+    tags: ['React', 'Next.js', 'NGO Platform', 'Payment Integrations'],
+    image: '/images/service-cloud-platform.jpg',
+  },
+  {
+    title: 'Pooja App - Spiritual Booking & Pandit Scheduling Platform',
+    client: 'Ishank (Pooja App)',
+    category: 'Mobile App & Spiritual Tech',
+    description: 'Built a cross-platform mobile application for scheduling spiritual rituals, pandit bookings, custom pooja packages, and live streaming of religious ceremonies with digital payments.',
+    problem: 'Devotees faced challenges finding verified pandits and ordering custom ritual samagri on specific auspicious muhurats.',
+    solution: 'Engineered a seamless Flutter/React Native mobile app with pan-India pandit verification, calendar scheduling, push notifications, and payment gateways.',
+    technology: 'Flutter, Node.js, Firebase, MongoDB, Razorpay, WebRTC Streaming',
+    result: '4.8/5 app store rating, 10,000+ ritual bookings fulfilled, 99.9% booking confirmation uptime',
+    metrics: [
+      { label: 'Ritual Bookings', value: '10K+' },
+      { label: 'App Rating', value: '4.8/5' },
+      { label: 'Availability', value: '24/7' },
+    ],
+    tags: ['Flutter', 'Node.js', 'Mobile App', 'Live Streaming'],
+    image: '/images/service-mobile-app.jpg',
   },
   {
     title: 'Human Resource Management System',
@@ -56,10 +107,10 @@ const caseStudies = [
     image: '/images/imageLEAD.png',
   },
   {
-    title: 'Quality Management System (QMS)',
-    client: 'ARS',
-    category: 'Web Application',
-    description: 'Designed a comprehensive QMS for quality control, audit management, compliance tracking, and document management with automated workflows.',
+    title: 'CA Portal & Financial Tax Automation System',
+    client: 'Anil Choudhary (ARS Financial Enterprises)',
+    category: 'Finance & Workflow Automation',
+    description: 'Designed a comprehensive CA web platform and tax automation system for quality control, client tax document management, and compliance tracking with automated workflows.',
     metrics: [
       { label: 'Compliance', value: '100%' },
       { label: 'Audit Time', value: '-50%' },
@@ -98,7 +149,7 @@ const caseStudies = [
 
 export default function CaseStudies() {
   return (
-    <Section className="bg-slate-50 dark:bg-slate-900/50">
+    <Section className="bg-slate-50 bg-white">
       <SectionHeader
         subtitle="Case Studies"
         title="Real Results, Real Impact"
@@ -116,7 +167,7 @@ export default function CaseStudies() {
             </div>
 
             {/* Image */}
-            <div className="h-48 rounded-xl mb-6 relative overflow-hidden bg-slate-100 dark:bg-slate-800 group-hover:scale-[1.02] transition-transform duration-300">
+            <div className="h-48 rounded-xl mb-6 relative overflow-hidden bg-slate-100 bg-white group-hover:scale-[1.02] transition-transform duration-300">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={study.image}
@@ -133,10 +184,10 @@ export default function CaseStudies() {
                 {study.category}
               </div>
               <h3 className="text-xl font-bold mb-2">{study.title}</h3>
-              <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">
+              <p className="text-sm text-slate-500 text-slate-500 mb-3">
                 {study.client}
               </p>
-              <p className="text-slate-600 dark:text-slate-400 mb-6">
+              <p className="text-slate-600 text-slate-500 mb-6">
                 {study.description}
               </p>
 
@@ -150,7 +201,7 @@ export default function CaseStudies() {
                     <div className="text-lg font-bold gradient-text">
                       {metric.value}
                     </div>
-                    <div className="text-xs text-slate-500 dark:text-slate-400">
+                    <div className="text-xs text-slate-500 text-slate-500">
                       {metric.label}
                     </div>
                   </div>
@@ -182,3 +233,4 @@ export default function CaseStudies() {
     </Section>
   )
 }
+
