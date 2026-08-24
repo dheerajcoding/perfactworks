@@ -22,6 +22,9 @@ rm -rf .next
 echo "🏗️ Building Next.js..."
 npm run build
 
+echo "🔒 Setting permissions for Nginx..."
+chmod -R 755 .next public
+
 echo "♻️ Restarting Next.js via PM2..."
 pm2 reload ecosystem.config.js --update-env || pm2 start ecosystem.config.js
 
