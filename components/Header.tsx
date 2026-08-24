@@ -141,7 +141,7 @@ export default function Header() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="flex items-center justify-between gap-2 md:gap-4">
-          {/* Brand Logo - Guaranteed Bold & Prominently Large */}
+          {/* Brand Logo - Bold, Crisp and Perfectly Proportioned */}
           <Link href="/" className="flex items-center group flex-shrink-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -149,12 +149,10 @@ export default function Header() {
               alt="PerfactWorks Logo"
               fetchPriority="high"
               style={{
-                width: '260px',
-                height: 'auto',
-                minWidth: '200px',
-                maxWidth: '320px',
+                height: '56px',
+                width: 'auto',
               }}
-              className="w-[200px] sm:w-[230px] md:w-[250px] lg:w-[270px] xl:w-[290px] h-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-sm"
+              className="h-10 sm:h-12 md:h-13 lg:h-14 xl:h-[56px] w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-sm"
             />
           </Link>
 

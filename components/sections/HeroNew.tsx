@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function HeroNew() {
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden pt-28 pb-16 lg:pt-32 lg:pb-24">
+    <section className="relative min-h-[95vh] flex items-center justify-center overflow-hidden pt-36 sm:pt-40 md:pt-44 lg:pt-48 pb-16 lg:pb-24">
       {/* Premium light gradient background */}
       <div className="absolute inset-0 bg-gradient-hero -z-20" />
 
